@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Sam Muir"
+  favicon: images/logo_tab.png
+
+  navbar:
+    logo: images/logos.png
+    title: false
+    left:
+      - href: index.qmd ## name of file
+        text: Home ## what you want it to be called in the nav bar
+      - about.qmd ## or if not specified it will just use the doc name in the nav bar
+      - resources.qmd
+      - href: projects.qmd
+        text: Projects
+
+format:
+  html:
+    theme: 
+      dark: solar
+      light: flatly
+    css: styles.css
+    toc: true
+    page-layout: full
+
+editor: source
+
