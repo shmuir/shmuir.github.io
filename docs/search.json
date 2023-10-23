@@ -1,24 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sam Muir",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology research. I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
-  },
-  {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Sam Muir",
-    "section": "",
-    "text": "Hi my name is Sam! I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. I am interested in modeling and data visualization to inform ecosystem conservation (especially for plant communities) in climate change. I also have a passion for accessible data communication and environmental justice for underrepresented populations. I’m excited to continue my educational journey in data science and looking forward to working with ecologists, conservation biologists, and anyone passionate about plants and climate science."
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Sam Muir",
-    "section": "Education",
-    "text": "Education\nMaster of Environmental Data Science (MEDS), UCSB (Expected 2024)\nB.S. Biology and B.A. Environmental Studies, St. Mary’s College of Maryland (2023)"
+    "text": "First blog post\n\n\n\nQuarto\n\n\nMEDS\n\n\nWorkshop\n\n\n\nabout this post\n\n\n\nSam Muir, Co-author\n\n\nOct 23, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -28,11 +14,18 @@
     "text": "About this site\nComing soon"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sam Muir",
+    "section": "",
+    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
+  },
+  {
     "objectID": "index.html#hello",
     "href": "index.html#hello",
     "title": "Sam Muir",
     "section": "",
-    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology research. I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
+    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
   },
   {
     "objectID": "index.html#skills-interests",
@@ -42,25 +35,18 @@
     "text": "Skills & Interests\n Plants –  Coding –  Ecology –  Music/ Cello –  Sailing"
   },
   {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Sam Muir",
+    "section": "Education",
+    "text": "Education\nMaster of Environmental Data Science (MEDS); University of California Santa Barbara (Expected 2024)\nB.S. Biology and B.A. Environmental Studies, Minor in French; St. Mary’s College of Maryland (2023)"
+  },
+  {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects and Research",
     "section": "",
     "text": "Here are some of the projects and research I’ve done in reverse chronological order."
-  },
-  {
-    "objectID": "projects.html#species-distribution-of-w.-fluitans",
-    "href": "projects.html#species-distribution-of-w.-fluitans",
-    "title": "Projects and Research",
-    "section": "Species distribution of W. fluitans",
-    "text": "Species distribution of W. fluitans"
-  },
-  {
-    "objectID": "projects.html#species-distribution-modeling-of-w.-fluitans",
-    "href": "projects.html#species-distribution-modeling-of-w.-fluitans",
-    "title": "Projects and Research",
-    "section": "Species Distribution Modeling of W. fluitans",
-    "text": "Species Distribution Modeling of W. fluitans\nIn my last semester at St. Mary’s College of Maryland I took a Conservation Biology course. Our final project was to map the current distribution, habitat suitability, and predicted future range of a species of our choice. I chose the aquatic moss species Warnstorfia fluitans and to focus on their native habitats of the E.U., Australia, and New Zealand."
   },
   {
     "objectID": "projects.html#seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils",
@@ -70,11 +56,11 @@
     "text": "Seawater intrusion and Phytophthora abundance in Southern Maryland coastal soils"
   },
   {
-    "objectID": "projects.html#coastal-ecology-summer-research",
-    "href": "projects.html#coastal-ecology-summer-research",
+    "objectID": "projects.html#coastal-ecology-summer-research--sav-lyngbya-and-oysters",
+    "href": "projects.html#coastal-ecology-summer-research--sav-lyngbya-and-oysters",
     "title": "Projects and Research",
-    "section": "Coastal Ecology Summer Research",
-    "text": "Coastal Ecology Summer Research"
+    "section": "Coastal Ecology Summer Research- SAV, Lyngbya, and oysters",
+    "text": "Coastal Ecology Summer Research- SAV, Lyngbya, and oysters"
   },
   {
     "objectID": "projects.html#using-low-cost-pressure-gauges-to-measure-wave-attenuation-in-a-restored-oyster-reef-in-southern-maryland",
@@ -84,17 +70,38 @@
     "text": "Using low-cost pressure gauges to measure wave attenuation in a restored oyster reef in Southern Maryland\nWaves formed by wind and wake are increasingly contributing to coastal erosion. Climate change is also increasing the severity and frequency of storm events that damage coastlines. These coastlines are an area of great importance ecologically and economically from ecosystem services, tourism, and infrastructure. To mitigate coastal erosion, there have been several different techniques developed with varying success. In the Chesapeake Bay, 3D oyster reef balls have been constructed for oyster restoration purposes. These submerged concrete structures though may also be attenuating waves. To find whether they are having an effect on waves and possibly mitigating coastal erosion, I constructed Do-It-Yourself (DIY) pressure gauges, since commercial pressure gauges are quite expensive. These gauges were placed between the shore and an array of 3D oyster reef balls located in the St. Mary’s River in front of St. Mary’s College of Maryland, taking pressure readings at 9 Hz for 5.5 days. Although wave height and energy were generally lower at stations located directly behind the oyster reefs, these differences were not statistically different. Additional research that encompasses a greater range of wind and wave conditions is needed to more rigorously test whether these 3D reef balls attenuate waves.\n  \n\nSignificant wave height (indicated by symbol size) as a function of wind speed and water depth for wave gauge 1 (A) and gauge 4 (B). Wind direction (0–90 = NE, 90– 180 = SE; 180–270 = SW; 270– 360 = NW) is indicated by symbol color. (C) The difference in significant wave height for wave gauges 1 and 4. Symbol size indicates the magnitude of the wave height difference."
   },
   {
-    "objectID": "projects.html#coastal-ecology-summer-research--sav-lyngbya-and-oysters",
-    "href": "projects.html#coastal-ecology-summer-research--sav-lyngbya-and-oysters",
-    "title": "Projects and Research",
-    "section": "Coastal Ecology Summer Research- SAV, Lyngbya, and oysters",
-    "text": "Coastal Ecology Summer Research- SAV, Lyngbya, and oysters"
-  },
-  {
     "objectID": "projects.html#apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate",
     "href": "projects.html#apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate",
     "title": "Projects and Research",
     "section": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
     "text": "Apple bloom dates in the Mid-Atlantic region in a changing climate\nDeciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms. In this study, we aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days, and full bloom dates for the Golden Delicious apple. Temperature data for Hudson Valley, NY, Rock Springs, PA, and Winchester, VA were gathered from the Global Historical Climatology Network. We calculated accumulated growing degree days (GDD) from February 1st, March 1st, March 15th, and April 1st until full bloom using 4 degrees Celsius as the minimum temperature that apple trees begin to grow. Linear regression was used to analyze relationships between growing degree days and full bloom. We also plotted the day of full bloom for each year and location. We found that there is a moderate relationship between growing degree days and the day of full bloom, but there is still a lot of variation that is not explained by the linear regressions. Hudson Valley and Rock Springs have similar slopes, but the slopes of the Winchester line depend more on the date of accumulated growing degree days. Winchester on average had earlier bloom dates, most likely due to its more southerly location. From these plots, we cannot accurately predict bloom dates. In the future, we plan to study other variables that may affect bloom dates, such as the number of days/hours above or below threshold temperatures, maximum and minimum temperatures or growing degree days from the previous year, and fruit yield from the previous year. Previous research on carbohydrate accumulation shows that this variable may also influence bloom date.\n\nLocations of the temperature data and orchard study sites. Top right blue marks Hudson Valley NY; Center black marks Rock Springs, PA; Bottom orange marks Winchester, VA."
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html",
+    "href": "blog/2023-10-23-first-post/index.html",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html#first-section",
+    "href": "blog/2023-10-23-first-post/index.html#first-section",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html#another-section",
+    "href": "blog/2023-10-23-first-post/index.html#another-section",
+    "title": "First blog post",
+    "section": "Another Section",
+    "text": "Another Section\nBlogging is cool2\nThis blog workshop was taught by Sam Csik (Csik 2022).\nI’m citing another resource here from Zotero (Rychlik, Johannesson, and Leadbetter 1997).\nAnother citation added by DOI (Stroo and Alexander 1985)"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html#footnotes",
+    "href": "blog/2023-10-23-first-post/index.html#footnotes",
+    "title": "First blog post",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nthis is a footnote!↩︎\na different kind of footnote↩︎"
   }
 ]

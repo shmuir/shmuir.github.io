@@ -13,7 +13,7 @@ about:
       href: https://github.com/shmuir
       icon: github
     - text: Email
-      href: mailto::smuir@ucsb.edu
+      href: mailto::smuir@bren.ucsb.edu
       icon: envelope
 
 ---

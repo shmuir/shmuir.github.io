@@ -1,0 +1,37 @@
+---
+title: "First blog post"
+subtitle: "a subtitle"
+description: "about this post"
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+    orcid: 
+    affiliation: MEDS
+    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
+  - name: Co-author
+date: 10-23-2023
+categories: [Quarto, MEDS, Workshop]
+bibliography: references.bib
+citation:
+  url: https://shmuir.github.io/blog/2023-10-23-first-post/
+image: preview-image.jpeg
+draft: false
+---
+
+## First Section
+
+Here is an exciting[^1] post
+
+[^1]: this is a footnote!
+
+## Another Section
+
+Blogging is cool[^2]
+
+[^2]: a different kind of footnote
+
+This blog workshop was taught by Sam Csik [@csik2022].
+
+I'm citing another resource here from Zotero [@rychlik1997].
+
+Another citation added by DOI [@stroo1985]
