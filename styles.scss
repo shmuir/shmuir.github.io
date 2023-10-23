@@ -3,14 +3,16 @@
 // Colors 
 $dark-green: #364539;
 $dark-grey: #474747;
-$sage: #94a697;
+$sage: #94a699;
 $light-grey: #a9aba9;
 $cream: #FDFBF7;
+$dark-sage: #505e54;
+$light-green: #dff2e4;
 
 
 // base document colors
-$navbar-bg: $sage;
-$navbar-fg: $dark-green;
+$navbar-bg: $dark-sage;
+$navbar-fg: $light-green;
 $body-bg: $cream;
 $footer-bg: $light-grey;
 $link-color: $sage;
@@ -27,7 +29,7 @@ h1, h2 {
 }
 
   .title {
-    color: $dark-green;
+    color: $cream;
   }
   
   .center-text {

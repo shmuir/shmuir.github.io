@@ -1,0 +1,4 @@
+title-block-banner: true #banner style title blocks to all blog posts
+
+
+freeze: auto # will only re-render blog posts if you've made changes to it

@@ -14,14 +14,15 @@ website:
         text: Home ## what you want it to be called in the nav bar
       - about.qmd ## or if not specified it will just use the doc name in the nav bar
       - resources.qmd
+      - blog.qmd
       - href: projects.qmd
         text: Projects
 
 format:
   html:
     theme: 
+      light: styles.scss
       dark: solar
-      light: flatly
     css: styles.css
     toc: true
     page-layout: full

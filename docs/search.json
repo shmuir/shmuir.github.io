@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sam Muir",
     "section": "",
-    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology research. I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
+    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
   },
   {
     "objectID": "index.html#about",
@@ -18,7 +18,7 @@
     "href": "index.html#education",
     "title": "Sam Muir",
     "section": "Education",
-    "text": "Education\nMaster of Environmental Data Science (MEDS), UCSB (Expected 2024)\nB.S. Biology and B.A. Environmental Studies, St. Mary’s College of Maryland (2023)"
+    "text": "Education\nMaster of Environmental Data Science (MEDS); University of California Santa Barbara (Expected 2024)\nB.S. Biology and B.A. Environmental Studies, Minor in French; St. Mary’s College of Maryland (2023)"
   },
   {
     "objectID": "about.html",
@@ -32,7 +32,7 @@
     "href": "index.html#hello",
     "title": "Sam Muir",
     "section": "",
-    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology research. I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
+    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara with experience in plant sciences & coastal ecology I’m excited to continue my environmental education focusing on data science I also have a passion for accessible data communication and environmental justice for underrepresented populations"
   },
   {
     "objectID": "index.html#skills-interests",
@@ -96,5 +96,40 @@
     "title": "Projects and Research",
     "section": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
     "text": "Apple bloom dates in the Mid-Atlantic region in a changing climate\nDeciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms. In this study, we aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days, and full bloom dates for the Golden Delicious apple. Temperature data for Hudson Valley, NY, Rock Springs, PA, and Winchester, VA were gathered from the Global Historical Climatology Network. We calculated accumulated growing degree days (GDD) from February 1st, March 1st, March 15th, and April 1st until full bloom using 4 degrees Celsius as the minimum temperature that apple trees begin to grow. Linear regression was used to analyze relationships between growing degree days and full bloom. We also plotted the day of full bloom for each year and location. We found that there is a moderate relationship between growing degree days and the day of full bloom, but there is still a lot of variation that is not explained by the linear regressions. Hudson Valley and Rock Springs have similar slopes, but the slopes of the Winchester line depend more on the date of accumulated growing degree days. Winchester on average had earlier bloom dates, most likely due to its more southerly location. From these plots, we cannot accurately predict bloom dates. In the future, we plan to study other variables that may affect bloom dates, such as the number of days/hours above or below threshold temperatures, maximum and minimum temperatures or growing degree days from the previous year, and fruit yield from the previous year. Previous research on carbohydrate accumulation shows that this variable may also influence bloom date.\n\nLocations of the temperature data and orchard study sites. Top right blue marks Hudson Valley NY; Center black marks Rock Springs, PA; Bottom orange marks Winchester, VA."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "First blog post\n\n\n\nQuarto\n\n\nMEDS\n\n\nWorkshop\n\n\n\nabout this post\n\n\n\nSam Muir, Co-author\n\n\nOct 23, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html",
+    "href": "blog/2023-10-23-first-post/index.html",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html#first-section",
+    "href": "blog/2023-10-23-first-post/index.html#first-section",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html#another-section",
+    "href": "blog/2023-10-23-first-post/index.html#another-section",
+    "title": "First blog post",
+    "section": "Another Section",
+    "text": "Another Section\nBlogging is cool2\nThis blog workshop was taught by Sam Csik (Csik 2022).\nI’m citing another resource here from Zotero (Rychlik, Johannesson, and Leadbetter 1997).\nAnother citation added by DOI (Stroo and Alexander 1985)"
+  },
+  {
+    "objectID": "blog/2023-10-23-first-post/index.html#footnotes",
+    "href": "blog/2023-10-23-first-post/index.html#footnotes",
+    "title": "First blog post",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nthis is a footnote!↩︎\na different kind of footnote↩︎"
   }
 ]
