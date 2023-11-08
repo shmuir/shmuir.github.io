@@ -21,8 +21,8 @@ website:
 format:
   html:
     theme: 
-      light: styles.scss
-      dark: solar
+      light: light_styles.scss
+      #dark: dark_styles.scss
     css: styles.css
     toc: true
     page-layout: full

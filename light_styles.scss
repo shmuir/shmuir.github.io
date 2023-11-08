@@ -9,16 +9,16 @@ $light-green: #dff2e4;
 
 $dusty-pink: #9b7173;
 $cream: #FDFBF7;
-$sage2: #91a080;
 $dark-green: #223a2b;
 $blue-green: #1E4147;
 
 
 // base document colors
 $navbar-bg: $sage;
-$navbar-fg: $blue-green;
+$navbar-fg: $cream;
+$body-color: $dark-grey;
 $body-bg: $cream;
-$footer-bg: $dark-green;
+$footer-bg: $dark-sage;
 $link-color: $dusty-pink;
 
 // fonts
@@ -27,13 +27,14 @@ $link-color: $dusty-pink;
 
 /*-- scss:rules --*/
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   letter-spacing: 4px;
-  color: $blue-green;
+  font-weight: 500;
+  color: $dark-sage;
 }
 
   .title {
-    color: $cream;
+    color: $dark-grey;
   }
   
   .center-text {

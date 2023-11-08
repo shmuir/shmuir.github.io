@@ -1,8 +1,18 @@
 ---
 title: "Blog"
+subtitle: "some of my..." 
 listing:
   contents: blog
-  type: grid
+  feed: true
   sort: "date desc"
-  categories: true
+  type: grid
+  grid-item-border: true
+  grid-item-align: left
+  max-description-length: 175
+  date-format: medium
+  #categories: numbered
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
 ---

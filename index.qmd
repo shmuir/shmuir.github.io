@@ -1,5 +1,5 @@
 ---
-title: "Sam Muir"
+title: ""
 toc: false
 image: images/sam_pic.jpg
 about: 
