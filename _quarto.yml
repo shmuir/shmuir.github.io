@@ -12,7 +12,8 @@ website:
     left:
       - href: index.qmd ## name of file
         text: Home ## what you want it to be called in the nav bar
-      - about.qmd ## or if not specified it will just use the doc name in the nav bar
+      - href: about.qmd ## or if not specified it will just use the doc name in the nav bar
+        text: About
       - resources.qmd
       - blog.qmd
       - href: projects.qmd

@@ -1,7 +1,16 @@
 ---
-title: "About"
+title: "A bit about me professionally and personally"
+subtitle: ""
 ---
 
-About this site
+## {{< fa bacteria >}} Professionally
 
-Coming soon
+I'm a Masters of Environmental Data Science student at the Bren School at the University of California, Santa Barbara. I am also an Arnhold Environmental Fellow collaborating with the emLab and Conservation International, focusing on elephant connectivity under climate change. 
+
+Previously, I completed my undergraduate degrees in Biology and Environmental Studies (+ French Minor) at St. Mary's College of Maryland (SMCM). There, I had two main areas I focused on: plant sciences and coastal ecology. I conducted research on plant-microbe interactions and the effect of salinity in a lab where I was also the lab manager for my last 6 months there. My undergraduate thesis was on measuring wave mitigation of constructed oyster reefs using DIY wave gauges, and I continued research with my same thesis adviser on submerged aquatic vegetation. A big reoccurring theme is my love for plants! Towards the end of my undergrad, I also discovered my love for environmental data science and began to merge these two themes.
+
+## {{< fa sailboat >}} Personally
+
+A big part of my life has been devoted to dinghy sailing, especially during undergrad. I was on the SMCM varsity sailing team and was a captain for two years. During this time, I competed all over the country, ending my sailing career with multiple conference championship victories, a team top-ten national ranking, two All-America titles, and wonderful memories with amazing teammates who became another family. 
+
+Now that I'm not sailing as much, I have been able to devote more time to other hobbies including running, playing cello, and transcribing/ arranging music. During 2020 when playing music with others was not possible, I began arranging music for me and my dad (a flautist) to play together. I mainly use the MuseScore4 engraving software and am working on uploading my transcriptions and arrangements to my MuseScore profile - [check it out!](https://musescore.com/user/29095840) 
