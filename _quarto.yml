@@ -16,15 +16,15 @@ website:
         text: About
       - resources.qmd
       - blog.qmd
-      - href: projects.qmd
-        text: Projects
+     # - href: projects.qmd
+     #   text: Projects
     right:
       - icon: github
         href: https://github.com/shmuir
       - icon: linkedin
         href: https://www.linkedin.com/in/shmuir/
       - icon: envelope
-        href: mailto:scsik@ucsb.edu
+        href: mailto:smuir@bren.ucsb.edu
       #- href: CV/SCsik_CV.pdf
       #  text: cv
 
