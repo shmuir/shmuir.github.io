@@ -16,10 +16,18 @@ $blue-green: #1E4147;
 // base document colors
 $navbar-bg: $sage;
 $navbar-fg: $cream;
+$navbar-hl: $dark-grey;
 $body-color: $dark-grey;
 $body-bg: $cream;
 $footer-bg: $dark-sage;
 $link-color: $dusty-pink;
+
+// Inline code
+$code-bg: $light-green;
+$code-color: $light-grey; 
+
+// Code blocks
+$code-block-bg: $dusty-pink;
 
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Bitter&family=Montserrat&display=swap');

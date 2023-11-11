@@ -1,0 +1,153 @@
+---
+title: "Phytophthora presence in Southern Maryland coasal soils"
+subtitle: "Analyzing the influence of seawater intrusion on oomycete abundance"
+description: "This was my directed research project as an undergraduate student at St. Mary's College of Maryland in Dr. Lorena Torres-Martinez's lab."
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+    orcid: 
+    affiliation: St. Mary's College of Maryland; Torres-Martinez
+    affiliation-url: https://ltorresmartinez.com/
+date: 11-10-2023
+categories: [Plants, Ecology, Coastal]
+bibliography: references.bib
+citation:
+  url: https://shmuir.github.io/projects/2023-11-10-phytophthora/
+image: phytop.jpg
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+library(usmap)
+library(tidyverse)
+library(ggplot2)
+library(maptools)
+library(ggrepel)
+library(viridis)
+library(plotly)
+```
+
+## Project Overview
+
+Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete *Phytophthora spp.* is responsible for many plant diseases that have had significant environmental and economic consequences [@klinkowski1970]. Recently, invasive *P. ramorum* has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change [@marylanddepartmentofagriculture2017]. 
+```{r}
+#| echo: false
+#| column: margin
+#| fig-cap: "Pipetting PARPH media onto petri dishes to prepare for oomycete plating."
+
+knitr::include_graphics(here::here("projects", "2023-11-10-phytophthora", "sam_plate.jpg")) 
+```
+Increased salinity in soil imposes similar physiological stress as drought does in native plants [@sanogo2004]. Therefore, I explored whether seawater intrusion would promote higher abundances of *Phytophthora spp.* in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress.
+
+## Soil Collection
+
+Soil sampling was performed by Jordan Manns and Mel Byrne for their research in Dr. Torres-Martínez\'s lab. The samples were collected from four different sites across a natural salinity gradient on the Potomac River at two different times of the year. One collection was performed in spring when *Phytophthora spp.* is likely to be more active, and at the end of summer when hurricane season starts on the Atlantic coast and there is likely to be increased seawater intrusion.
+
+```{r}
+#| label: fig-main-margin-cap
+#| fig-cap: "Map of soil collection locations in Southern Maryland and the salinity."
+#| cap-location: margin
+soil <- read_csv(here::here("projects", "2023-11-10-phytophthora/soil_collection.csv")) %>%
+  rename(lon = long) 
+  
+
+soil_trans <- usmap_transform(soil) %>%
+  mutate(site = case_when(site == "chapman" ~ "Chapman State Park",
+                   site == "point_lookout" ~ "Point Lookout State Park",
+                   site == "chapel" ~ "Chapel Point State Park",
+                   site == "newtowne" ~ "Newtowne Neck State Park"))
+
+plot_usmap("counties", fill = "lightgreen", alpha = 0.25,
+           include = c("24037", "24009", "24017", "24033"),
+           labels = T) +
+  geom_point(data = soil_trans, aes(x = x, y = y, color = salinity_ppt),
+             size = 4) +
+  theme(legend.position = "right", 
+        text = element_text(size = 12)) +
+  labs(color = "Salinity (ppt)") +
+   ggrepel::geom_label_repel(data = soil_trans,
+             aes(x = x, y = y, label = site),
+             size = 3, alpha = 1,
+             box.padding = 0.5,
+             label.r = unit(0.15, "lines"), label.size = 0.5,
+             seed = 1002) +
+  scale_color_viridis(end = 0.8)
+
+```
+
+## Culturing
+
+```{r}
+#| echo: false
+#| column: margin
+#| fig-cap: "Agar plug culture of *Phytophthora*!"
+
+knitr::include_graphics(here::here("projects", "2023-11-10-phytophthora", "phytop.jpg"))
+```
+
+The abundance of *Phytophthora spp.* was determined by performing serial dilutions of soil samples, plating them on the highly selective PARPH media, and incubating them at 25ºC. Colonies were counted after 4 days of incubation. 
+
+## Analysis
+
+The abundance of *Phytophthora spp.* varied by site depending on the season that the soil was collected. In both seasons, it is hard to tell a clear relationship between salinity and *Phytophthora* abundance. In the spring and summer, there is the highest abundances at the sites with the lowest salinity, but we also see a relatively high abundance at some higher salinity. These results suggest that seawater intrusion and seasonality could modify patterns of *Phytophthora spp* abundances in coastal soils of Southern Maryland, but further analyses should be done to make any definite conclusions. One possible approach would be to sample soil from a wider salinity range and in colder months as well.
+
+
+```{r}
+#| label: fig-bar
+#| fig-cap: "Mean cfu/ml across sites and seasons."
+#| cap-location: margin
+
+salinity <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"soil_collection.csv")) %>%
+  mutate(site = case_when(site == "chapman" ~ "Chapman",
+                          site == "chapel" ~ "Chapel Point",
+                          site == "point_lookout" ~ "Point Lookout",
+                          site == "newtowne" ~ "Newtowne Neck")) %>%
+  rename(location = site)
+
+phyto_join <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"plate_counts.csv")) %>%
+  mutate(location = case_when(location == "CM" ~ "Chapman",
+                          location == "CP" ~ "Chapel Point",
+                          location == "PL" ~ "Point Lookout",
+                          location == "NN" ~ "Newtowne Neck")) %>%
+  mutate(season = "Spring") %>%
+  select(-notes) %>%
+  left_join(salinity) %>%
+  rename(salinity = salinity_ppt,
+         cfu_ml = `cfu/ml`,
+         cfu_g = `cfu/g`) %>%
+  filter(dilution == "10-1",
+         date_counted == "2022-11-22") %>%
+  mutate(cfu_ml = cfu_ml/10)
+
+phyto_mel <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"platecount.csv")) %>%
+  mutate(season = "Summer") %>%
+  rename(location = Site)
+
+phyto_comb <- phyto_mel %>%
+  select(- plate) %>%
+  rename(colonies = count,
+         cfu_ml = CFUsperml,
+         salinity = Salinity) %>%
+  full_join(phyto_join) %>%
+  group_by(location, season) %>%
+  mutate(mean_cfu = mean(cfu_ml),
+         sd_cfu = sd(cfu_ml))
+
+ggplot(phyto_comb, aes(mean_cfu, location, fill = salinity)) +
+  geom_bar(position="dodge", stat = "identity", linewidth = 0.8) +
+  facet_wrap(~season) +
+  geom_errorbar(aes(xmin=mean_cfu-sd_cfu, 
+                    xmax=mean_cfu+sd_cfu), 
+                width=0.2, linewidth = 0.5,
+                 position=position_dodge(.9)) +
+  theme_light() +
+  labs(y = "", x = "Mean cfu/ml", fill = "Salinity (ppt)", caption = "*Soil collection was not performed for Smallwood in the Spring.") +
+  scale_fill_viridis_c(end = 0.8) +
+  theme(plot.background = element_rect(color = "black"),
+        plot.caption = element_text(hjust = 0, face = "italic"))
+  
+```
