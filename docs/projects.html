@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sam Muir - Projects and Research</title>
+<title>Sam Muir - Projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./images/logo_tab.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -60,7 +62,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -91,8 +124,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html" rel="" target="">
- <span class="menu-text">Resources</span></a>
+    <a class="nav-link active" href="./projects.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog.html" rel="" target="">
@@ -123,75 +156,71 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">Projects</h1>
+            <p class="subtitle lead">some of my…</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils" id="toc-seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils" class="nav-link active" data-scroll-target="#seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils">Seawater intrusion and <em>Phytophthora</em> abundance in Southern Maryland coastal soils</a></li>
-  <li><a href="#coastal-ecology-summer-research--sav-lyngbya-and-oysters" id="toc-coastal-ecology-summer-research--sav-lyngbya-and-oysters" class="nav-link" data-scroll-target="#coastal-ecology-summer-research--sav-lyngbya-and-oysters">Coastal Ecology Summer Research- SAV, <em>Lyngbya</em>, and oysters</a></li>
-  <li><a href="#using-low-cost-pressure-gauges-to-measure-wave-attenuation-in-a-restored-oyster-reef-in-southern-maryland" id="toc-using-low-cost-pressure-gauges-to-measure-wave-attenuation-in-a-restored-oyster-reef-in-southern-maryland" class="nav-link" data-scroll-target="#using-low-cost-pressure-gauges-to-measure-wave-attenuation-in-a-restored-oyster-reef-in-southern-maryland">Using low-cost pressure gauges to measure wave attenuation in a restored oyster reef in Southern Maryland</a></li>
-  <li><a href="#apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate" id="toc-apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate" class="nav-link" data-scroll-target="#apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate">Apple bloom dates in the Mid-Atlantic region in a changing climate</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Projects and Research</h1>
+
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="Quarto,MEDS,Workshop" data-listing-date-sort="1698044400000" data-listing-file-modified-sort="1698084714835" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./projects/2023-10-23-first-post/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./projects/2023-10-23-first-post/preview-image.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+First blog post
+</h5>
+<div class="card-text listing-description">
+about this post
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>Here are some of the projects and research I’ve done in reverse chronological order.</p>
-<details>
-<summary>
-Species Distribution Modeling of <em>W. fluitans</em>
-</summary>
-In my last semester at St.&nbsp;Mary’s College of Maryland I took a Conservation Biology course. Our final project was to map the current distribution, habitat suitability, and predicted future range of a species of our choice. I chose the aquatic moss species <em>Warnstorfia fluitans</em> and to focus on their native habitats of the E.U., Australia, and New Zealand. <img src="images/wfluitans_map.png" class="img-fluid" width="600"> <img src="images/future.png" class="img-fluid" width="600">
-<details>
-<section id="seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils" class="level2">
-<h2 class="anchored" data-anchor-id="seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils"><a href="https://github.com/shmuir/phytophthora">Seawater intrusion and <em>Phytophthora</em> abundance in Southern Maryland coastal soils</a></h2>
-<p><img src="images/soil_collection_map.png" class="img-fluid" width="600"></p>
-<p><img src="images/phyto_avg.png" class="img-fluid" width="600"></p>
-</section>
-<section id="coastal-ecology-summer-research--sav-lyngbya-and-oysters" class="level2">
-<h2 class="anchored" data-anchor-id="coastal-ecology-summer-research--sav-lyngbya-and-oysters">Coastal Ecology Summer Research- SAV, <em>Lyngbya</em>, and oysters</h2>
-<p><img src="images/Sam_CBL_fieldwork.jpeg" class="img-fluid" width="400"> <img src="images/sam_SAV.JPG" class="img-fluid" width="400"></p>
-</section>
-<section id="using-low-cost-pressure-gauges-to-measure-wave-attenuation-in-a-restored-oyster-reef-in-southern-maryland" class="level2">
-<h2 class="anchored" data-anchor-id="using-low-cost-pressure-gauges-to-measure-wave-attenuation-in-a-restored-oyster-reef-in-southern-maryland"><a href="https://github.com/cgurbisz/sam_waves">Using low-cost pressure gauges to measure wave attenuation in a restored oyster reef in Southern Maryland</a></h2>
-<p>Waves formed by wind and wake are increasingly contributing to coastal erosion. Climate change is also increasing the severity and frequency of storm events that damage coastlines. These coastlines are an area of great importance ecologically and economically from ecosystem services, tourism, and infrastructure. To mitigate coastal erosion, there have been several different techniques developed with varying success. In the Chesapeake Bay, 3D oyster reef balls have been constructed for oyster restoration purposes. These submerged concrete structures though may also be attenuating waves. To find whether they are having an effect on waves and possibly mitigating coastal erosion, I constructed Do-It-Yourself (DIY) pressure gauges, since commercial pressure gauges are quite expensive. These gauges were placed between the shore and an array of 3D oyster reef balls located in the St.&nbsp;Mary’s River in front of St.&nbsp;Mary’s College of Maryland, taking pressure readings at 9 Hz for 5.5 days. Although wave height and energy were generally lower at stations located directly behind the oyster reefs, these differences were not statistically different. Additional research that encompasses a greater range of wind and wave conditions is needed to more rigorously test whether these 3D reef balls attenuate waves.</p>
-<p><img src="images/gauges.png" class="img-fluid" width="300"> <img src="images/smcm.jpeg" class="img-fluid" width="250"> <img src="images/gauge.jpeg" class="img-fluid" width="250"></p>
-<p><img src="images/Hsig_comp.jpg" class="img-fluid" width="800"></p>
-<p>Significant wave height (indicated by symbol size) as a function of wind speed and water depth for wave gauge 1 (A) and gauge 4 (B). Wind direction (0–90 = NE, 90– 180 = SE; 180–270 = SW; 270– 360 = NW) is indicated by symbol color. (C) The difference in significant wave height for wave gauges 1 and 4. Symbol size indicates the magnitude of the wave height difference.</p>
-</section>
-<section id="apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate" class="level2">
-<h2 class="anchored" data-anchor-id="apple-bloom-dates-in-the-mid-atlantic-region-in-a-changing-climate">Apple bloom dates in the Mid-Atlantic region in a changing climate</h2>
-<p>Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms. In this study, we aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days, and full bloom dates for the Golden Delicious apple. Temperature data for Hudson Valley, NY, Rock Springs, PA, and Winchester, VA were gathered from the Global Historical Climatology Network. We calculated accumulated growing degree days (GDD) from February 1st, March 1st, March 15th, and April 1st until full bloom using 4 degrees Celsius as the minimum temperature that apple trees begin to grow. Linear regression was used to analyze relationships between growing degree days and full bloom. We also plotted the day of full bloom for each year and location. We found that there is a moderate relationship between growing degree days and the day of full bloom, but there is still a lot of variation that is not explained by the linear regressions. Hudson Valley and Rock Springs have similar slopes, but the slopes of the Winchester line depend more on the date of accumulated growing degree days. Winchester on average had earlier bloom dates, most likely due to its more southerly location. From these plots, we cannot accurately predict bloom dates. In the future, we plan to study other variables that may affect bloom dates, such as the number of days/hours above or below threshold temperatures, maximum and minimum temperatures or growing degree days from the previous year, and fruit yield from the previous year. Previous research on carbohydrate accumulation shows that this variable may also influence bloom date.</p>
-<p><img src="images/apple_map.png" class="img-fluid" width="700"></p>
-<p>Locations of the temperature data and orchard study sites. Top right blue marks Hudson Valley NY; Center black marks Rock Springs, PA; Bottom orange marks Winchester, VA.</p>
-<p><img src="images/apple_linreg.png" class="img-fluid" width="700"></p>
-
-
-</section>
-
-</details></details></main> <!-- /main -->
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Sam Muir, Co-author
+</div>
+<div class="listing-date">
+Oct 23, 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

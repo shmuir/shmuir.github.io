@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "First blog post\n\n\nabout this post\n\n\n\nSam Muir, Co-author\n\n\nOct 23, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   },
   {
     "objectID": "about.html",
@@ -58,9 +58,9 @@
   {
     "objectID": "projects.html",
     "href": "projects.html",
-    "title": "Projects and Research",
+    "title": "Projects",
     "section": "",
-    "text": "Here are some of the projects and research I’ve done in reverse chronological order."
+    "text": "First blog post\n\n\nabout this post\n\n\n\nSam Muir, Co-author\n\n\nOct 23, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects.html#seawater-intrusion-and-phytophthora-abundance-in-southern-maryland-coastal-soils",
@@ -114,6 +114,34 @@
   {
     "objectID": "blog/2023-10-23-first-post/index.html#footnotes",
     "href": "blog/2023-10-23-first-post/index.html#footnotes",
+    "title": "First blog post",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nthis is a footnote!↩︎\na different kind of footnote↩︎"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html",
+    "href": "projects/2023-10-23-first-post/index.html",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html#first-section",
+    "href": "projects/2023-10-23-first-post/index.html#first-section",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html#another-section",
+    "href": "projects/2023-10-23-first-post/index.html#another-section",
+    "title": "First blog post",
+    "section": "Another Section",
+    "text": "Another Section\nBlogging is cool2\nThis blog workshop was taught by Sam Csik (Csik 2022).\nI’m citing another resource here from Zotero (Rychlik, Johannesson, and Leadbetter 1997).\nAnother citation added by DOI (Stroo and Alexander 1985)"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html#footnotes",
+    "href": "projects/2023-10-23-first-post/index.html#footnotes",
     "title": "First blog post",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nthis is a footnote!↩︎\na different kind of footnote↩︎"
