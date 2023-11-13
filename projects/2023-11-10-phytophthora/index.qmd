@@ -51,7 +51,7 @@ Soil sampling was performed by Jordan Manns and Mel Byrne for their research in 
 #| label: fig-main-margin-cap
 #| fig-cap: "Map of soil collection locations in Southern Maryland and the salinity."
 #| cap-location: margin
-soil <- read_csv(here::here("projects", "2023-11-10-phytophthora/soil_collection.csv")) %>%
+soil <- read_csv(here::here("projects", "2023-11-10-phytophthora", "data", "soil_collection.csv")) %>%
   rename(lon = long) 
   
 
@@ -101,14 +101,14 @@ The abundance of *Phytophthora spp.* varied by site depending on the season that
 #| fig-cap: "Mean cfu/ml across sites and seasons."
 #| cap-location: margin
 
-salinity <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"soil_collection.csv")) %>%
+salinity <- read_csv(here::here("projects", "2023-11-10-phytophthora", "data", "soil_collection.csv")) %>%
   mutate(site = case_when(site == "chapman" ~ "Chapman",
                           site == "chapel" ~ "Chapel Point",
                           site == "point_lookout" ~ "Point Lookout",
                           site == "newtowne" ~ "Newtowne Neck")) %>%
   rename(location = site)
 
-phyto_join <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"plate_counts.csv")) %>%
+phyto_join <- read_csv(here::here("projects", "2023-11-10-phytophthora", "data", "plate_counts.csv")) %>%
   mutate(location = case_when(location == "CM" ~ "Chapman",
                           location == "CP" ~ "Chapel Point",
                           location == "PL" ~ "Point Lookout",
@@ -123,7 +123,7 @@ phyto_join <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"plate_
          date_counted == "2022-11-22") %>%
   mutate(cfu_ml = cfu_ml/10)
 
-phyto_mel <- read_csv(here::here("projects", "2023-11-10-phytophthora" ,"platecount.csv")) %>%
+phyto_mel <- read_csv(here::here("projects", "2023-11-10-phytophthora", "data", "platecount.csv")) %>%
   mutate(season = "Summer") %>%
   rename(location = Site)
 
