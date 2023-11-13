@@ -1,0 +1,142 @@
+---
+title: "Apple bloom dates in the Mid-Atlantic region in a changing climate"
+subtitle: "Analyzing growing degree days over a 50 year period"
+description: "I spent the summer of 2021 as an [NSF REU](https://www.nsf.gov/crssprgm/reu/) student at Penn State University researching climate and apple bloom changes with Dr. Rich Marini."
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+    orcid: 
+    affiliation: Penn State University Meteorology and Atmospheric Science
+    affiliation-url: http://www.met.psu.edu/
+date: 11-13-2023
+categories: [Agriculture, Climate, Data Science]
+bibliography: references.bib
+citation:
+  url: https://shmuir.github.io/projects/2023-11-13-apple-bloom/
+image: apple-poster.png
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(viridis)
+library(patchwork)
+library(knitr)
+library(ggpubr)
+```
+
+```{r}
+temp_locations <- read_csv(here::here("projects", "2023-11-13-apple-bloom", "data", "all_locations_temp.csv"))
+bloom_temp <- read_csv(here::here("projects", "2023-11-13-apple-bloom", "data", "bloom_temps.csv"))
+gdd <- read_csv(here::here("projects", "2023-11-13-apple-bloom", "data", "apple_sum_gdds.csv"))
+```
+
+## Project Overview
+
+Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms [@hoffmann2013].
+
+We have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost [@chapman1976]. In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds [@higgins2019]. The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well [@wolfe2018].
+
+In this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days[^1], and full bloom[^2] dates for the Golden Delicious apple.
+
+[^1]: Growing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) /2 ) - minimum temperature that apple trees start to grow
+
+[^2]: The date at which the maximum number of buds have opened before petals begin to fall off the flowers.
+
+## Study Area
+
+```{r}
+## map
+```
+
+```{r}
+## Historical Temperature Trends
+temp_max <- ggplot(bloom_temp, aes(x = year, y = temp_max, color = location)) +
+  geom_point() +
+  geom_line() +
+  theme_linedraw() +
+  labs(x = "", y = "Maximum Temperature (ºC)") +
+  scale_color_viridis_d()
+
+temp_min <- ggplot(bloom_temp, aes(x = year, y = temp_min, color = location)) +
+  geom_point() +
+  geom_line() +
+  theme_linedraw() +
+  labs(x = "", y = "Minimum Temperature (ºC)") +
+  scale_color_viridis_d()
+
+temp_max / temp_min + plot_layout(guides = "collect")
+```
+
+## Data Curation and Preperation
+
+Data was gathered from... - 4 vs 7.22 vs 9 degrees
+
+## Linear Regression Analysis
+
+## Closing Thoughts
+
+```{r}
+## Day of Full Bloom
+ggplot(bloom_temp, aes(x = year, y = doy_bloom, color = location)) +
+  geom_point() +
+  geom_line() +
+  labs(x = "", y = "Day of Fullbloom (Out of 365 days)") +
+  theme_linedraw() +
+  scale_color_viridis_d()
+```
+
+```{r}
+## Linear models
+summary(lm(low_temp_4 ~ year + location, data = gdd))
+
+summary(lm(mid_temp_7.22 ~ year + location, data = gdd))
+
+summary(lm(high_temp_9 ~ year + location, data = gdd))
+```
+
+```{r}
+## Growing Degree Days 
+# Using 4ºC
+
+ggplot(gdd, aes(x = year, y = low_temp_4, color = location)) +
+  geom_point() +
+  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) +
+  labs(x = "", y = "Growing Degree Days") +
+  theme_linedraw() +
+  scale_color_viridis_d()
+```
+
+```{r}
+# Using 7.22ºC
+
+ggplot(gdd, aes(x = year, y = mid_temp_7.22, color = location)) +
+  geom_point() +
+  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) + 
+  labs(x = "", y = "Growing Degree Days") +
+  theme_linedraw() +
+  scale_color_viridis_d()
+```
+
+# Using 9ºC
+
+```{r}
+# Using 9ºC
+
+ggplot(gdd, aes(x = year, y = high_temp_9, color = location)) +
+  geom_point() +
+  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) +
+  labs(x = "", y = "Growing Degree Days") +
+  theme_linedraw() +
+  scale_color_viridis_d()
+```
