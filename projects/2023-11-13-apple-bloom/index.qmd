@@ -27,6 +27,8 @@ library(viridis)
 library(patchwork)
 library(knitr)
 library(ggpubr)
+library(usmap)
+library(sf)
 ```
 
 ```{r}
@@ -50,7 +52,29 @@ In this project, I aimed to investigate temperature patterns over the past 36 ye
 ## Study Area
 
 ```{r}
-## map
+
+locations <- c("Rock Springs", "Winchester", "Hudson Valley")
+points_lat <- c(40.7097, 39.18565, 41.9209)
+points_lon <- c(-77.94998,  -78.16333, -73.96128)
+locations_df <- data.frame(locations, points_lat, points_lon)
+
+
+locations_trans <- usmap_transform(locations_df, input_names = c("points_lon", "points_lat"),
+                output_names = c("x", "y"))
+
+plot_usmap("locations_trans", fill = "lightgreen", alpha = 0.25,
+           regions ="states",
+           include = c("NY", "PA", "VA", "MD", "DE", "NJ"),
+           labels = T) +
+  geom_point(data = locations_trans, aes(x = x, y = y),
+             size = 2) +
+  labs(title = "") +
+   ggrepel::geom_label_repel(data = locations_trans,
+             aes(x = x, y = y, label = locations),
+             size = 3, alpha = 1,
+             box.padding = 0.5,
+             label.r = unit(0.15, "lines"), label.size = 0.5,
+             seed = 1002)
 ```
 
 ```{r}
