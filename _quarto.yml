@@ -20,14 +20,15 @@ website:
       - blog.qmd
       
     right:
+      - href: CV-Sam-Web.pdf
+        text: CV
       - icon: github
         href: https://github.com/shmuir
       - icon: linkedin
         href: https://www.linkedin.com/in/shmuir/
       - icon: envelope
         href: mailto:smuir@bren.ucsb.edu
-      #- href: CV/SCsik_CV.pdf
-      #  text: cv
+      
 
 format:
   html:
