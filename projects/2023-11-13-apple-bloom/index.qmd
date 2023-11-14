@@ -1,6 +1,6 @@
 ---
 title: "Apple bloom dates in the Mid-Atlantic region in a changing climate"
-subtitle: "Analyzing growing degree days over a 50 year period"
+subtitle: "A historical analysis of growing degree days"
 description: "I spent the summer of 2021 as an [NSF REU](https://www.nsf.gov/crssprgm/reu/) student at Penn State University researching climate and apple bloom changes with Dr. Rich Marini."
 author:
   - name: Sam Muir
@@ -45,13 +45,18 @@ We have already seen early bloom affect crop yields, which greatly impacts growe
 
 In this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days[^1], and full bloom[^2] dates for the Golden Delicious apple.
 
-[^1]: Growing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) /2 ) - minimum temperature that apple trees start to grow
+[^1]: Growing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) / 2 ) - minimum temperature that apple trees start to grow
 
 [^2]: The date at which the maximum number of buds have opened before petals begin to fall off the flowers.
 
 ## Study Area
 
+I used bloom date data from three different Golden Delicious apple-growing sites in the Mid-Atlantic region of the United States: Hudson Valley, NY, Rock Springs, PA, and Winchester, VA. All of these sites have characteristics that make them desirable apple-growing locations with minimal probability of frost during bloom. The Hudson Valley has the Hudson River running through the valley, providing irrigation for the trees, and allowing cooler air to settle at the bottom of the valley (United States Department of Agriculture). In Winchester, orchards are located on slopes in the Shenandoah Valley, again allowing the cooler air to settle at lower elevations, keeping the trees warmer and safe from cold damage (Brackett 1910). Rock Springs is a research farm that has been able to use overhead irrigation in the past which can help prevent frost damage (United States Department of Agriculture).
+
 ```{r}
+#| label: fig-study-sites
+#| fig-cap: "Locations of studied apple orchards."
+#| cap-location: margin
 
 locations <- c("Rock Springs", "Winchester", "Hudson Valley")
 points_lat <- c(40.7097, 39.18565, 41.9209)
@@ -77,39 +82,54 @@ plot_usmap("locations_trans", fill = "lightgreen", alpha = 0.25,
              seed = 1002)
 ```
 
-```{r}
+## Data Curration and Preparation
+
+Golden Delicious bloom date data from 1983 to 2019 were obtained from each site. Bloom dates in month/day/year format were converted to day-of-year format, where, for example, January 1st is 1 and February 1st is 32. To analyze how the day of full bloom varies by year and location in response to temperature, I used data from the Global Historical Climatology Network (GHCN) for areas close to the study sites (Global Historical Climatology Network 2020, Menne et al. 2012). These data included daily maximum and minimum temperatures for the past 36 years for Rock Springs and Winchester, and the past 23 years for Hudson Valley.
+
+As mentioned, growing degree days were calculated as the daily mean temperature, minus the minimum temperature that apple trees start to grow, which in this case, is about 4ºC. This formula yields the growing degree days for one particular day, so GDDs were summed over the expected cold stratification period (February 1st up until the day of full bloom.
+
 ## Historical Temperature Trends
+
+Before beginning analysis on growing degree days over time, I though it would be interesting to first look at the historical trends of the minimum and maximum temperatures over the cold stratification period.
+
+```{r}
+#| label: fig-temp-trends
+#| fig-cap: "Maximum and minimum recorded temperatures for each site over the cold stratification period."
+#| cap-location: margin
+
 temp_max <- ggplot(bloom_temp, aes(x = year, y = temp_max, color = location)) +
   geom_point() +
   geom_line() +
   theme_linedraw() +
   labs(x = "", y = "Maximum Temperature (ºC)") +
-  scale_color_viridis_d()
+  scale_color_viridis_d() +
+  theme(plot.background = element_rect(color = "black"))
 
 temp_min <- ggplot(bloom_temp, aes(x = year, y = temp_min, color = location)) +
   geom_point() +
   geom_line() +
   theme_linedraw() +
   labs(x = "", y = "Minimum Temperature (ºC)") +
-  scale_color_viridis_d()
+  scale_color_viridis_d() +
+  theme(plot.background = element_rect(color = "black"))
 
 temp_max / temp_min + plot_layout(guides = "collect")
 ```
 
-## Data Curation and Preperation
-
-Data was gathered from... - 4 vs 7.22 vs 9 degrees
-
 ## Linear Regression Analysis
 
-## Closing Thoughts
-
 ```{r}
-## Day of Full Bloom
-ggplot(bloom_temp, aes(x = year, y = doy_bloom, color = location)) +
+#| label: fig-GDDs-year
+#| fig-cap: "The calculated number of growing degree days before full bloom per year at each location."
+#| cap-location: margin
+
+ggplot(gdd, aes(x = year, y = low_temp_4, color = location)) +
   geom_point() +
-  geom_line() +
-  labs(x = "", y = "Day of Fullbloom (Out of 365 days)") +
+  facet_wrap(~location) +
+  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) +
+  labs(x = "", y = "Growing Degree Days") +
   theme_linedraw() +
   scale_color_viridis_d()
 ```
@@ -117,50 +137,29 @@ ggplot(bloom_temp, aes(x = year, y = doy_bloom, color = location)) +
 ```{r}
 ## Linear models
 summary(lm(low_temp_4 ~ year + location, data = gdd))
-
-summary(lm(mid_temp_7.22 ~ year + location, data = gdd))
-
-summary(lm(high_temp_9 ~ year + location, data = gdd))
 ```
+
+Based on this analysis, models with only cumulative growing degree days are not very good for predicting bloom date. Our results do not support the idea that apples will bloom after being exposed to 100 cumulative growing degree days (DeGaetano 2017). The cumulative growing degree days required for bloom ranged from less than 70 to greater than 400, with Winchester often blooming with fewer cumulative growing degree days than the other two locations (Figure 4). This may be due to Winchester's more southerly location (Figure 2).
+
+From these plots, we cannot accurately predict bloom dates. While overall there is a relationship between growing degree days and the day of full bloom, there is a lot of variation not explained by simple linear regression, indicating that one or more variables are affecting the day of full bloom for these apple trees.
+
+## Future Steps
+
+Growing degree days is the only temperature variable I studied, and in the future, it may be valuable to include different aspects of the temperature data in the model, as well as other factors influencing climate change. We know that there is a chilling requirement for apples, but hours above or below a certain temperature range may influence bloom date (Anderson & Richardson 1986). We also do not know if negative growing degree days affect bloom since those values were converted to 0. Including those negative values in the growing degree day calculations or as an additional variable in the model would change the data for February. Rather than just looking at temperature and bloom date for a single year, temperatures from the previous year may need to be considered. Maximum and minimum temperatures or growing degree days from the previous year may indirectly influence bloom date by affecting carbohydrate levels in the tree (Sperling et al. 2019).
+
+In the future, it would also be valuable to analyze data from more southerly locations, such as North or South Carolina orchards. It would be interesting to know if the Winchester data are similar to data from locations further south since these results suggest that the response to cumulative growing degree days may depend on location.
+
+## Closing thoughts
+
+This REU project was my first dip into formal research, as well as analysis of large data sets. Looking back on my analyses now, I can pick out so many places I wish I had organized things differently, used a different function/ formula, etc. But, I am proud of this work as a first experience, plus it made me greatly interested on environmental data analysis and has set me on the path I'm on today.
 
 ```{r}
-## Growing Degree Days 
-# Using 4ºC
+#| echo: false
+#| fig-cap: "My poster, presented as the 2021 American Meteorological Society Conference!"
 
-ggplot(gdd, aes(x = year, y = low_temp_4, color = location)) +
-  geom_point() +
-  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
-  stat_regline_equation(
-    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) +
-  labs(x = "", y = "Growing Degree Days") +
-  theme_linedraw() +
-  scale_color_viridis_d()
+knitr::include_graphics(here::here("projects", "2023-11-13-apple-bloom", "apple-poster.png"))
 ```
 
-```{r}
-# Using 7.22ºC
+#### Acknowledgments
 
-ggplot(gdd, aes(x = year, y = mid_temp_7.22, color = location)) +
-  geom_point() +
-  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
-  stat_regline_equation(
-    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) + 
-  labs(x = "", y = "Growing Degree Days") +
-  theme_linedraw() +
-  scale_color_viridis_d()
-```
-
-# Using 9ºC
-
-```{r}
-# Using 9ºC
-
-ggplot(gdd, aes(x = year, y = high_temp_9, color = location)) +
-  geom_point() +
-  geom_smooth(method='lm', formula = y ~ x, se = FALSE) +
-  stat_regline_equation(
-    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"), color = location)) +
-  labs(x = "", y = "Growing Degree Days") +
-  theme_linedraw() +
-  scale_color_viridis_d()
-```
+This research project was conducted under the Pennsylvania State University Climate Science Research Experience for Undergraduates Program funded by the National Science Foundation, grant AGS-1852428.

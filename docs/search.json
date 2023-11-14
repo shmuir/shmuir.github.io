@@ -35,34 +35,6 @@
     "text": "Apple bloom dates in the Mid-Atlantic region in a changing climate\n\n\n\nAgriculture\n\n\nClimate\n\n\nData Science\n\n\n\nI spent the summer of 2021 as an NSF REU student at Penn State University researching climate and apple bloom changes with Dr. Rich…\n\n\n\nSam Muir\n\n\nNov 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhytophthora presence in Southern Maryland coastal soils\n\n\n\nPlants\n\n\nEcology\n\n\nCoastal\n\n\n\nThis was my directed research project as an undergraduate student at St. Mary’s College of Maryland in Dr. Lorena Torres-Martinez’s lab.\n\n\n\nSam Muir\n\n\nNov 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst blog post\n\n\n\nQuarto\n\n\nMEDS\n\n\nWorkshop\n\n\n\nabout this post\n\n\n\nSam Muir, Co-author\n\n\nOct 23, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/2023-10-23-first-post/index.html",
-    "href": "projects/2023-10-23-first-post/index.html",
-    "title": "First blog post",
-    "section": "",
-    "text": "Here is an exciting1 post"
-  },
-  {
-    "objectID": "projects/2023-10-23-first-post/index.html#first-section",
-    "href": "projects/2023-10-23-first-post/index.html#first-section",
-    "title": "First blog post",
-    "section": "",
-    "text": "Here is an exciting1 post"
-  },
-  {
-    "objectID": "projects/2023-10-23-first-post/index.html#another-section",
-    "href": "projects/2023-10-23-first-post/index.html#another-section",
-    "title": "First blog post",
-    "section": "Another Section",
-    "text": "Another Section\nBlogging is cool2\nThis blog workshop was taught by Sam Csik (Csik 2022).\nI’m citing another resource here from Zotero (Rychlik, Johannesson, and Leadbetter 1997).\nAnother citation added by DOI (Stroo and Alexander 1985)"
-  },
-  {
-    "objectID": "projects/2023-10-23-first-post/index.html#footnotes",
-    "href": "projects/2023-10-23-first-post/index.html#footnotes",
-    "title": "First blog post",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nthis is a footnote!↩︎\na different kind of footnote↩︎"
-  },
-  {
     "objectID": "projects/2023-11-10-phytophthora/index.html",
     "href": "projects/2023-11-10-phytophthora/index.html",
     "title": "Phytophthora presence in Southern Maryland coastal soils",
@@ -98,6 +70,97 @@
     "text": "Analysis\nThe abundance of Phytophthora spp. varied by site depending on the season that the soil was collected. In both seasons, it is hard to tell a clear relationship between salinity and Phytophthora abundance. In the spring and summer, there is the highest abundances at the sites with the lowest salinity, but we also see a relatively high abundance at some higher salinity. These results suggest that seawater intrusion and seasonality could modify patterns of Phytophthora spp abundances in coastal soils of Southern Maryland, but further analyses should be done to make any definite conclusions. One possible approach would be to sample soil from a wider salinity range and in colder months as well.\n\n\n\n\n\nFigure 2: Mean cfu/ml across sites and seasons."
   },
   {
+    "objectID": "projects/2023-10-23-first-post/index.html",
+    "href": "projects/2023-10-23-first-post/index.html",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html#first-section",
+    "href": "projects/2023-10-23-first-post/index.html#first-section",
+    "title": "First blog post",
+    "section": "",
+    "text": "Here is an exciting1 post"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html#another-section",
+    "href": "projects/2023-10-23-first-post/index.html#another-section",
+    "title": "First blog post",
+    "section": "Another Section",
+    "text": "Another Section\nBlogging is cool2\nThis blog workshop was taught by Sam Csik (Csik 2022).\nI’m citing another resource here from Zotero (Rychlik, Johannesson, and Leadbetter 1997).\nAnother citation added by DOI (Stroo and Alexander 1985)"
+  },
+  {
+    "objectID": "projects/2023-10-23-first-post/index.html#footnotes",
+    "href": "projects/2023-10-23-first-post/index.html#footnotes",
+    "title": "First blog post",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nthis is a footnote!↩︎\na different kind of footnote↩︎"
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html",
+    "href": "projects/2023-11-13-apple-bloom/index.html",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "",
+    "text": "Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms (Hoffmann and Rath 2013).\nWe have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost (Chapman and Catlin 1976). In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds (Higgins 2019). The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well (Wolfe et al. 2018).\nIn this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days1, and full bloom2 dates for the Golden Delicious apple."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#project-overview",
+    "href": "projects/2023-11-13-apple-bloom/index.html#project-overview",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "",
+    "text": "Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms (Hoffmann and Rath 2013).\nWe have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost (Chapman and Catlin 1976). In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds (Higgins 2019). The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well (Wolfe et al. 2018).\nIn this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days1, and full bloom2 dates for the Golden Delicious apple."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#study-area",
+    "href": "projects/2023-11-13-apple-bloom/index.html#study-area",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Study Area",
+    "text": "Study Area\nI used bloom date data from three different Golden Delicious apple-growing sites in the Mid-Atlantic region of the United States: Hudson Valley, NY, Rock Springs, PA, and Winchester, VA. All of these sites have characteristics that make them desirable apple-growing locations with minimal probability of frost during bloom. The Hudson Valley has the Hudson River running through the valley, providing irrigation for the trees, and allowing cooler air to settle at the bottom of the valley (United States Department of Agriculture). In Winchester, orchards are located on slopes in the Shenandoah Valley, again allowing the cooler air to settle at lower elevations, keeping the trees warmer and safe from cold damage (Brackett 1910). Rock Springs is a research farm that has been able to use overhead irrigation in the past which can help prevent frost damage (United States Department of Agriculture).\n\n\n\n\n\nFigure 1: Locations of studied apple orchards."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#data-curration-and-preparation",
+    "href": "projects/2023-11-13-apple-bloom/index.html#data-curration-and-preparation",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Data Curration and Preparation",
+    "text": "Data Curration and Preparation\nGolden Delicious bloom date data from 1983 to 2019 were obtained from each site. Bloom dates in month/day/year format were converted to day-of-year format, where, for example, January 1st is 1 and February 1st is 32. To analyze how the day of full bloom varies by year and location in response to temperature, I used data from the Global Historical Climatology Network (GHCN) for areas close to the study sites (Global Historical Climatology Network 2020, Menne et al. 2012). These data included daily maximum and minimum temperatures for the past 36 years for Rock Springs and Winchester, and the past 23 years for Hudson Valley.\nAs mentioned, growing degree days were calculated as the daily mean temperature, minus the minimum temperature that apple trees start to grow, which in this case, is about 4ºC. This formula yields the growing degree days for one particular day, so GDDs were summed over the expected cold stratification period (February 1st up until the day of full bloom."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#historical-temperature-trends",
+    "href": "projects/2023-11-13-apple-bloom/index.html#historical-temperature-trends",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Historical Temperature Trends",
+    "text": "Historical Temperature Trends\nBefore beginning analysis on growing degree days over time, I though it would be interesting to first look at the historical trends of the minimum and maximum temperatures over the cold stratification period.\n\n\n\n\n\nFigure 2: Maximum and minimum recorded temperatures for each site over the cold stratification period."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#linear-regression-analysis",
+    "href": "projects/2023-11-13-apple-bloom/index.html#linear-regression-analysis",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Linear Regression Analysis",
+    "text": "Linear Regression Analysis\n\n\n\n\n\nFigure 3: The calculated number of growing degree days before full bloom per year at each location.\n\n\n\n\n\n\n\nCall:\nlm(formula = low_temp_4 ~ year + location, data = gdd)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-179.510  -45.375    4.411   29.912  205.628 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1482.1305  1419.4101  -1.044   0.2992    \nyear                     0.8527     0.7074   1.205   0.2312    \nlocationRock Springs    35.9128    18.7935   1.911   0.0592 .  \nlocationWinchester      88.1639    18.8645   4.674 1.02e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 70.25 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.2041,    Adjusted R-squared:  0.1779 \nF-statistic: 7.778 on 3 and 91 DF,  p-value: 0.0001113\n\n\nBased on this analysis, models with only cumulative growing degree days are not very good for predicting bloom date. Our results do not support the idea that apples will bloom after being exposed to 100 cumulative growing degree days (DeGaetano 2017). The cumulative growing degree days required for bloom ranged from less than 70 to greater than 400, with Winchester often blooming with fewer cumulative growing degree days than the other two locations (Figure 4). This may be due to Winchester’s more southerly location (Figure 2).\nFrom these plots, we cannot accurately predict bloom dates. While overall there is a relationship between growing degree days and the day of full bloom, there is a lot of variation not explained by simple linear regression, indicating that one or more variables are affecting the day of full bloom for these apple trees."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#future-steps",
+    "href": "projects/2023-11-13-apple-bloom/index.html#future-steps",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Future Steps",
+    "text": "Future Steps\nGrowing degree days is the only temperature variable I studied, and in the future, it may be valuable to include different aspects of the temperature data in the model, as well as other factors influencing climate change. We know that there is a chilling requirement for apples, but hours above or below a certain temperature range may influence bloom date (Anderson & Richardson 1986). We also do not know if negative growing degree days affect bloom since those values were converted to 0. Including those negative values in the growing degree day calculations or as an additional variable in the model would change the data for February. Rather than just looking at temperature and bloom date for a single year, temperatures from the previous year may need to be considered. Maximum and minimum temperatures or growing degree days from the previous year may indirectly influence bloom date by affecting carbohydrate levels in the tree (Sperling et al. 2019).\nIn the future, it would also be valuable to analyze data from more southerly locations, such as North or South Carolina orchards. It would be interesting to know if the Winchester data are similar to data from locations further south since these results suggest that the response to cumulative growing degree days may depend on location."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#closing-thoughts",
+    "href": "projects/2023-11-13-apple-bloom/index.html#closing-thoughts",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Closing thoughts",
+    "text": "Closing thoughts\nThis REU project was my first dip into formal research, as well as analysis of large data sets. Looking back on my analyses now, I can pick out so many places I wish I had organized things differently, used a different function/ formula, etc. But, I am proud of this work as a first experience, plus it made me greatly interested on environmental data analysis and has set me on the path I’m on today.\n\n\n\n\n\nMy poster, presented as the 2021 American Meteorological Society Conference!\n\n\n\n\n\nAcknowledgments\nThis research project was conducted under the Pennsylvania State University Climate Science Research Experience for Undergraduates Program funded by the National Science Foundation, grant AGS-1852428."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#footnotes",
+    "href": "projects/2023-11-13-apple-bloom/index.html#footnotes",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nGrowing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) / 2 ) - minimum temperature that apple trees start to grow↩︎\nThe date at which the maximum number of buds have opened before petals begin to fall off the flowers.↩︎"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Sam Muir",
@@ -124,89 +187,5 @@
     "title": "Sam Muir",
     "section": "Education",
     "text": "Education\nMaster of Environmental Data Science (MEDS); University of California Santa Barbara (Expected 2024)\nB.S. Biology and B.A. Environmental Studies, Minor in French; St. Mary’s College of Maryland (2023)"
-  },
-  {
-    "objectID": "projects/2023-10-13-apple-bloom/index.html",
-    "href": "projects/2023-10-13-apple-bloom/index.html",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "",
-    "text": "CitationBibTeX citation:@online{muir2023,\n  author = {Muir, Sam},\n  title = {Apple Bloom Dates in the {Mid-Atlantic} Region in a Changing\n    Climate},\n  date = {2023-11-10},\n  url = {https://shmuir.github.io/projects/2023-11-10-phytophthora/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nMuir, Sam. 2023. “Apple Bloom Dates in the Mid-Atlantic Region in\na Changing Climate.” November 10, 2023. https://shmuir.github.io/projects/2023-11-10-phytophthora/."
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html",
-    "href": "projects/2023-11-13-apple-bloom/index.html",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "",
-    "text": "Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms (Hoffmann and Rath 2013).\nWe have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost (Chapman and Catlin 1976). In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds (Higgins 2019). The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well (Wolfe et al. 2018).\nIn this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days1, and full bloom2 dates for the Golden Delicious apple."
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#day-of-full-bloom",
-    "href": "projects/2023-11-13-apple-bloom/index.html#day-of-full-bloom",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Day of Full Bloom",
-    "text": "Day of Full Bloom"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#linear-models",
-    "href": "projects/2023-11-13-apple-bloom/index.html#linear-models",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Linear models",
-    "text": "Linear models\n\n\n\nCall:\nlm(formula = low_temp_4 ~ year + location, data = gdd)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-179.510  -45.375    4.411   29.912  205.628 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1482.1305  1419.4101  -1.044   0.2992    \nyear                     0.8527     0.7074   1.205   0.2312    \nlocationRock Springs    35.9128    18.7935   1.911   0.0592 .  \nlocationWinchester      88.1639    18.8645   4.674 1.02e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 70.25 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.2041,    Adjusted R-squared:  0.1779 \nF-statistic: 7.778 on 3 and 91 DF,  p-value: 0.0001113\n\n\n\nCall:\nlm(formula = mid_temp_7.22 ~ year + location, data = gdd)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-109.727  -34.439   -1.833   21.922  177.936 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1532.4974   979.0297  -1.565   0.1210    \nyear                     0.8237     0.4879   1.688   0.0948 .  \nlocationRock Springs    29.7022    12.9627   2.291   0.0243 *  \nlocationWinchester      60.3516    13.0117   4.638 1.17e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 48.46 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.1998,    Adjusted R-squared:  0.1734 \nF-statistic: 7.575 on 3 and 91 DF,  p-value: 0.0001406\n\n\n\nCall:\nlm(formula = high_temp_9 ~ year + location, data = gdd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-76.860 -23.857  -1.434  18.555 152.295 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1304.3854   758.7745  -1.719   0.0890 .  \nyear                     0.6895     0.3782   1.823   0.0715 .  \nlocationRock Springs    25.0119    10.0464   2.490   0.0146 *  \nlocationWinchester      46.4481    10.0844   4.606 1.33e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 37.55 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.1973,    Adjusted R-squared:  0.1708 \nF-statistic: 7.454 on 3 and 91 DF,  p-value: 0.0001616"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#growing-degree-days",
-    "href": "projects/2023-11-13-apple-bloom/index.html#growing-degree-days",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Growing Degree Days",
-    "text": "Growing Degree Days"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#data-curation-and-preperation",
-    "href": "projects/2023-11-13-apple-bloom/index.html#data-curation-and-preperation",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Data Curation and Preperation",
-    "text": "Data Curation and Preperation\nData was gathered from… - 4 vs 7.22 vs 9 degrees"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#linear-regression-analysis",
-    "href": "projects/2023-11-13-apple-bloom/index.html#linear-regression-analysis",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Linear Regression Analysis",
-    "text": "Linear Regression Analysis"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#historical-temperature-trends",
-    "href": "projects/2023-11-13-apple-bloom/index.html#historical-temperature-trends",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Historical Temperature Trends",
-    "text": "Historical Temperature Trends"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#closing-thoughts",
-    "href": "projects/2023-11-13-apple-bloom/index.html#closing-thoughts",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Closing Thoughts",
-    "text": "Closing Thoughts\n\n\n\n\n\n\n\n\nCall:\nlm(formula = low_temp_4 ~ year + location, data = gdd)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-179.510  -45.375    4.411   29.912  205.628 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1482.1305  1419.4101  -1.044   0.2992    \nyear                     0.8527     0.7074   1.205   0.2312    \nlocationRock Springs    35.9128    18.7935   1.911   0.0592 .  \nlocationWinchester      88.1639    18.8645   4.674 1.02e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 70.25 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.2041,    Adjusted R-squared:  0.1779 \nF-statistic: 7.778 on 3 and 91 DF,  p-value: 0.0001113\n\n\n\nCall:\nlm(formula = mid_temp_7.22 ~ year + location, data = gdd)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-109.727  -34.439   -1.833   21.922  177.936 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1532.4974   979.0297  -1.565   0.1210    \nyear                     0.8237     0.4879   1.688   0.0948 .  \nlocationRock Springs    29.7022    12.9627   2.291   0.0243 *  \nlocationWinchester      60.3516    13.0117   4.638 1.17e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 48.46 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.1998,    Adjusted R-squared:  0.1734 \nF-statistic: 7.575 on 3 and 91 DF,  p-value: 0.0001406\n\n\n\nCall:\nlm(formula = high_temp_9 ~ year + location, data = gdd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-76.860 -23.857  -1.434  18.555 152.295 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1304.3854   758.7745  -1.719   0.0890 .  \nyear                     0.6895     0.3782   1.823   0.0715 .  \nlocationRock Springs    25.0119    10.0464   2.490   0.0146 *  \nlocationWinchester      46.4481    10.0844   4.606 1.33e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 37.55 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.1973,    Adjusted R-squared:  0.1708 \nF-statistic: 7.454 on 3 and 91 DF,  p-value: 0.0001616"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#study-area",
-    "href": "projects/2023-11-13-apple-bloom/index.html#study-area",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Study Area",
-    "text": "Study Area"
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#project-overview",
-    "href": "projects/2023-11-13-apple-bloom/index.html#project-overview",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "",
-    "text": "Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms (Hoffmann and Rath 2013).\nWe have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost (Chapman and Catlin 1976). In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds (Higgins 2019). The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well (Wolfe et al. 2018).\nIn this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days1, and full bloom2 dates for the Golden Delicious apple."
-  },
-  {
-    "objectID": "projects/2023-11-13-apple-bloom/index.html#footnotes",
-    "href": "projects/2023-11-13-apple-bloom/index.html#footnotes",
-    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nGrowing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) /2 ) - minimum temperature that apple trees start to grow↩︎\nThe date at which the maximum number of buds have opened before petals begin to fall off the flowers.↩︎"
   }
 ]
