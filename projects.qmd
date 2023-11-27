@@ -1,6 +1,6 @@
 ---
 title: "Projects"
-subtitle: "some of the cool science I've worked on" 
+subtitle: "some science and thoughts" 
 listing:
   contents: projects
   feed: true

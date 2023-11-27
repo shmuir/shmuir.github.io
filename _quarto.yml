@@ -20,7 +20,7 @@ website:
       - blog.qmd
       
     right:
-      - href: CV-Sam-Web.pdf
+      - href: CV-Sam_Web.pdf
         text: CV
       - icon: github
         href: https://github.com/shmuir

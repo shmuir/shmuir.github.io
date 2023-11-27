@@ -15,7 +15,7 @@ bibliography: references.bib
 citation:
   url: https://shmuir.github.io/blog/2023-10-23-first-post/
 image: preview-image.jpeg
-draft: false
+draft: true
 ---
 
 ## First Section
