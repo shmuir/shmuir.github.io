@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Identifying power outages in Houston, TX from February 2021 storms\n\n\n\nGIS\n\n\nMEDS\n\n\n\nThis was an assignment for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApple bloom dates in the Mid-Atlantic region in a changing climate\n\n\n\nAgriculture\n\n\nClimate\n\n\nData Science\n\n\n\nI spent the summer of 2021 as an NSF REU student at Penn State University researching climate and apple bloom changes with Dr. Rich…\n\n\n\nSam Muir\n\n\nNov 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhytophthora presence in Southern Maryland coastal soils\n\n\n\nPlants\n\n\nEcology\n\n\nCoastal\n\n\n\nThis was my directed research project as an undergraduate student at St. Mary’s College of Maryland in Dr. Lorena Torres-Martinez’s lab.\n\n\n\nSam Muir\n\n\nNov 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "Blog",
@@ -33,6 +26,111 @@
     "title": "A bit about me professionally and personally",
     "section": " Personally",
     "text": "Personally\nA big part of my life has been devoted to dinghy sailing, especially during undergrad. I was on the SMCM varsity sailing team and was a captain for two years. During this time, I competed all over the country, ending my sailing career with multiple conference championship victories, a team top-ten national ranking, two All-America titles, and wonderful memories with amazing teammates who became another family.\n\n\n\n\n\n\n\n\nSometimes music is best enjoyed (and played) outside :)\n\nNow that I’m not sailing as much, I have been able to devote more time to other hobbies including running, playing cello, and transcribing/ arranging music. During 2020, I began arranging music for me and my dad (a flautist) to play together. I mainly use the MuseScore4 engraving software and am working on uploading my transcriptions and arrangements to my MuseScore profile - check it out!"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Identifying power outages in Houston, TX from February 2021 storms\n\n\n\nGIS\n\n\nMEDS\n\n\n\nThis was an assignment for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApple bloom dates in the Mid-Atlantic region in a changing climate\n\n\n\nAgriculture\n\n\nClimate\n\n\nData Science\n\n\n\nI spent the summer of 2021 as an NSF REU student at Penn State University researching climate and apple bloom changes with Dr. Rich…\n\n\n\nSam Muir\n\n\nNov 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhytophthora presence in Southern Maryland coastal soils\n\n\n\nPlants\n\n\nEcology\n\n\nCoastal\n\n\n\nThis was my directed research project as an undergraduate student at St. Mary’s College of Maryland in Dr. Lorena Torres-Martinez’s lab.\n\n\n\nSam Muir\n\n\nNov 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html",
+    "href": "projects/2023-11-13-apple-bloom/index.html",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "",
+    "text": "Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms (Hoffmann and Rath 2013).\nWe have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost (Chapman and Catlin 1976). In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds (Higgins 2019). The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well (Wolfe et al. 2018).\nIn this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days1, and full bloom2 dates for the Golden Delicious apple."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#project-overview",
+    "href": "projects/2023-11-13-apple-bloom/index.html#project-overview",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "",
+    "text": "Deciduous trees, including apple, have been blooming earlier, and it is suspected that this is due to increasing late winter and early spring temperatures. When trees bloom in April rather than early to mid-May, they are at increased risk for late spring frost killing the blooms (Hoffmann and Rath 2013).\nWe have already seen early bloom affect crop yields, which greatly impacts growers, consumers, and the food industry at large. Tart cherries, which go through a similar growing cycle as apples, are an example of the risk of early bloom and late spring frost (Chapman and Catlin 1976). In 2012, Michigan tart cherry growers harvested under 12 million pounds of fruit, compared to the usual 158 million pounds (Higgins 2019). The trees broke dormancy 5 weeks early and suffered a harsh frost. With this severe decrease in yield, many growers are dealing with the financial impact, and soon, consumers will feel the loss of these important foods as well (Wolfe et al. 2018).\nIn this project, I aimed to investigate temperature patterns over the past 36 years in the Mid-Atlantic region and analyze the relationships between temperature averages, growing degree days1, and full bloom2 dates for the Golden Delicious apple."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#study-area",
+    "href": "projects/2023-11-13-apple-bloom/index.html#study-area",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Study Area",
+    "text": "Study Area\nI used bloom date data from three different Golden Delicious apple-growing sites in the Mid-Atlantic region of the United States: Hudson Valley, NY, Rock Springs, PA, and Winchester, VA. All of these sites have characteristics that make them desirable apple-growing locations with minimal probability of frost during bloom. The Hudson Valley has the Hudson River running through the valley, providing irrigation for the trees, and allowing cooler air to settle at the bottom of the valley (United States Department of Agriculture). In Winchester, orchards are located on slopes in the Shenandoah Valley, again allowing the cooler air to settle at lower elevations, keeping the trees warmer and safe from cold damage (Brackett 1910). Rock Springs is a research farm that has been able to use overhead irrigation in the past which can help prevent frost damage (United States Department of Agriculture).\n\n\n\n\n\nFigure 1: Locations of studied apple orchards."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#data-curration-and-preparation",
+    "href": "projects/2023-11-13-apple-bloom/index.html#data-curration-and-preparation",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Data Curration and Preparation",
+    "text": "Data Curration and Preparation\nGolden Delicious bloom date data from 1983 to 2019 were obtained from each site. Bloom dates in month/day/year format were converted to day-of-year format, where, for example, January 1st is 1 and February 1st is 32. To analyze how the day of full bloom varies by year and location in response to temperature, I used data from the Global Historical Climatology Network (GHCN) for areas close to the study sites (Global Historical Climatology Network 2020, Menne et al. 2012). These data included daily maximum and minimum temperatures for the past 36 years for Rock Springs and Winchester, and the past 23 years for Hudson Valley.\nAs mentioned, growing degree days were calculated as the daily mean temperature, minus the minimum temperature that apple trees start to grow, which in this case, is about 4ºC. This formula yields the growing degree days for one particular day, so GDDs were summed over the expected cold stratification period (February 1st up until the day of full bloom."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#historical-temperature-trends",
+    "href": "projects/2023-11-13-apple-bloom/index.html#historical-temperature-trends",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Historical Temperature Trends",
+    "text": "Historical Temperature Trends\nBefore beginning analysis on growing degree days over time, I though it would be interesting to first look at the historical trends of the minimum and maximum temperatures over the cold stratification period.\n\n\n\n\n\nFigure 2: Maximum and minimum recorded temperatures for each site over the cold stratification period."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#linear-regression-analysis",
+    "href": "projects/2023-11-13-apple-bloom/index.html#linear-regression-analysis",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Linear Regression Analysis",
+    "text": "Linear Regression Analysis\n\n\n\n\n\nFigure 3: The calculated number of growing degree days before full bloom per year at each location.\n\n\n\n\n\n\n\nCall:\nlm(formula = low_temp_4 ~ year + location, data = gdd)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-179.510  -45.375    4.411   29.912  205.628 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -1482.1305  1419.4101  -1.044   0.2992    \nyear                     0.8527     0.7074   1.205   0.2312    \nlocationRock Springs    35.9128    18.7935   1.911   0.0592 .  \nlocationWinchester      88.1639    18.8645   4.674 1.02e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 70.25 on 91 degrees of freedom\n  (6 observations deleted due to missingness)\nMultiple R-squared:  0.2041,    Adjusted R-squared:  0.1779 \nF-statistic: 7.778 on 3 and 91 DF,  p-value: 0.0001113\n\n\nBased on this analysis, models with only cumulative growing degree days are not very good for predicting bloom date. Our results do not support the idea that apples will bloom after being exposed to 100 cumulative growing degree days (DeGaetano 2017). The cumulative growing degree days required for bloom ranged from less than 70 to greater than 400, with Winchester often blooming with fewer cumulative growing degree days than the other two locations (Figure 4). This may be due to Winchester’s more southerly location (Figure 2).\nFrom these plots, we cannot accurately predict bloom dates. While overall there is a relationship between growing degree days and the day of full bloom, there is a lot of variation not explained by simple linear regression, indicating that one or more variables are affecting the day of full bloom for these apple trees."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#future-steps",
+    "href": "projects/2023-11-13-apple-bloom/index.html#future-steps",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Future Steps",
+    "text": "Future Steps\nGrowing degree days is the only temperature variable I studied, and in the future, it may be valuable to include different aspects of the temperature data in the model, as well as other factors influencing climate change. We know that there is a chilling requirement for apples, but hours above or below a certain temperature range may influence bloom date (Anderson & Richardson 1986). We also do not know if negative growing degree days affect bloom since those values were converted to 0. Including those negative values in the growing degree day calculations or as an additional variable in the model would change the data for February. Rather than just looking at temperature and bloom date for a single year, temperatures from the previous year may need to be considered. Maximum and minimum temperatures or growing degree days from the previous year may indirectly influence bloom date by affecting carbohydrate levels in the tree (Sperling et al. 2019).\nIn the future, it would also be valuable to analyze data from more southerly locations, such as North or South Carolina orchards. It would be interesting to know if the Winchester data are similar to data from locations further south since these results suggest that the response to cumulative growing degree days may depend on location."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#closing-thoughts",
+    "href": "projects/2023-11-13-apple-bloom/index.html#closing-thoughts",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Closing thoughts",
+    "text": "Closing thoughts\nThis REU project was my first dip into formal research, as well as analysis of large data sets. Looking back on my analyses now, I can pick out so many places I wish I had organized things differently, used a different function/ formula, etc. But, I am proud of this work as a first experience, plus it made me greatly interested on environmental data analysis and has set me on the path I’m on today.\n\n\n\n\n\nMy poster, presented as the 2021 American Meteorological Society Conference!\n\n\n\n\n\nAcknowledgments\nThis research project was conducted under the Pennsylvania State University Climate Science Research Experience for Undergraduates Program funded by the National Science Foundation, grant AGS-1852428."
+  },
+  {
+    "objectID": "projects/2023-11-13-apple-bloom/index.html#footnotes",
+    "href": "projects/2023-11-13-apple-bloom/index.html#footnotes",
+    "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nGrowing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) / 2 ) - minimum temperature that apple trees start to grow↩︎\nThe date at which the maximum number of buds have opened before petals begin to fall off the flowers.↩︎"
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html",
+    "href": "projects/2023-11-10-phytophthora/index.html",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "",
+    "text": "Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete Phytophthora spp. is responsible for many plant diseases that have had significant environmental and economic consequences (Klinkowski 1970). Recently, invasive P. ramorum has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change (Maryland Department of Agriculture 2017).\n\n\n\n\n\n\nPipetting PARPH media onto petri dishes to prepare for oomycete plating.\n\n\n\nIncreased salinity in soil imposes similar physiological stress as drought does in native plants (Sanogo 2004). Therefore, I explored whether seawater intrusion would promote higher abundances of Phytophthora spp. in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#project-overview",
+    "href": "projects/2023-11-10-phytophthora/index.html#project-overview",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "",
+    "text": "Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete Phytophthora spp. is responsible for many plant diseases that have had significant environmental and economic consequences (Klinkowski 1970). Recently, invasive P. ramorum has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change (Maryland Department of Agriculture 2017).\n\n\n\n\n\n\nPipetting PARPH media onto petri dishes to prepare for oomycete plating.\n\n\n\nIncreased salinity in soil imposes similar physiological stress as drought does in native plants (Sanogo 2004). Therefore, I explored whether seawater intrusion would promote higher abundances of Phytophthora spp. in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#soil-collection",
+    "href": "projects/2023-11-10-phytophthora/index.html#soil-collection",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "Soil Collection",
+    "text": "Soil Collection\nSoil sampling was performed by Jordan Manns and Mel Byrne for their research in Dr. Torres-Martínez's lab. The samples were collected from four different sites across a natural salinity gradient on the Potomac River at two different times of the year. One collection was performed in spring when Phytophthora spp. is likely to be more active, and at the end of summer when hurricane season starts on the Atlantic coast and there is likely to be increased seawater intrusion.\n\n\n\n\n\nFigure 1: Map of soil collection locations in Southern Maryland and the salinity."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#culturing",
+    "href": "projects/2023-11-10-phytophthora/index.html#culturing",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "Culturing",
+    "text": "Culturing\n\n\n\n\n\n\nAgar plug culture of Phytophthora!\n\n\n\nThe abundance of Phytophthora spp. was determined by performing serial dilutions of soil samples, plating them on the highly selective PARPH media, and incubating them at 25ºC. Colonies were counted after 4 days of incubation."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#analysis",
+    "href": "projects/2023-11-10-phytophthora/index.html#analysis",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "Analysis",
+    "text": "Analysis\nThe abundance of Phytophthora spp. varied by site depending on the season that the soil was collected. In both seasons, it is hard to tell a clear relationship between salinity and Phytophthora abundance. In the spring and summer, there is the highest abundances at the sites with the lowest salinity, but we also see a relatively high abundance at some higher salinity. These results suggest that seawater intrusion and seasonality could modify patterns of Phytophthora spp abundances in coastal soils of Southern Maryland, but further analyses should be done to make any definite conclusions. One possible approach would be to sample soil from a wider salinity range and in colder months as well.\n\n\n\n\n\nFigure 2: Mean cfu/ml across sites and seasons."
   },
   {
     "objectID": "projects/2023-11-26-houston-power-outage/index.html",
@@ -75,5 +173,33 @@
     "title": "Identifying power outages in Houston, TX from February 2021 storms",
     "section": "Analyzing backouts by census tract and their median income",
     "text": "Analyzing backouts by census tract and their median income\nWith all of this data, I can now determine which census tracts experiences power outages and look at them in relation to median income for the census tract.\n\n\nCode\n# joining census geometries and median income data\ncensus_data &lt;- left_join(census_geom, \n                         income_median, by = \"GEOID_Data\")\n\n# filtering the census data based on buildings to add a column indicating that these census tracts were part of a blackout\ncensus_outage &lt;- st_filter(census_data, outage_houses) %&gt;%\n mutate(blackout = 'had a blackout')\n#head(census_outage)\n\n## preparing data for mapping ## \nhouston_border_sf &lt;- st_transform(houston_border_sf, crs = \"EPSG:3083\")\n\n#creating a full df of Houston geometries\ncensus_houston &lt;- census_data[houston_border_sf, ,] \n\n# making centroids to indicate which tracts had a blackout\ncensus_outage_map &lt;- census_outage %&gt;%\n  st_centroid()\n\n# map of Houston census blocks colored by median income\np &lt;- ggplot(census_houston) +\n  geom_sf(aes(fill = median_income, text = paste0(\"$\", median_income))) + # color by median income\n  geom_sf(data = census_outage_map, size = 0.5, aes(color = blackout)) + # plotting centroids that indicate a blackout\n  scale_color_manual(values = c(\"black\")) +\n  scale_fill_viridis_c(option = \"G\", direction = -1, na.value=\"grey\") + # color option\n  annotation_scale() + # scale bar\n  annotation_north_arrow(style = north_arrow_fancy_orienteering, location = \"br\") +\n  labs(fill = \"Median Income (USD)\", color = \"\") +\n  theme_classic()\n\nggplotly(p, tooltip = \"text\") %&gt;% # put plot into plotly\n  style(hoverlabel = list(bgcolor = \"white\"), hoveron = \"fill\") %&gt;% \n  layout(legend = list(x = 0.8, y = 1))\n\n\n\n\n\n\n\n\nCode\n# convert census_outage to df to be able to join\ncensus_outage_df &lt;- as.data.frame(census_outage)\n\n# joining census outage data and census data for all of Houston\ncensus_map_data &lt;- left_join(census_houston, \n                             census_outage_df) %&gt;% \n  mutate(blackout = replace(blackout, is.na(blackout), \"did not have a blackout\")) # indicating which homes did not have a blackout based on the values being NA\n\n# census tracts that did and did not experience a blackout\nggplot(census_map_data, aes(x = median_income)) +\n  geom_histogram(fill = \"#3d5c50\", color = \"white\") +\n  facet_wrap(~ blackout) + # facet to have separate plots for blackout and no blackout\n  labs(title = \"Median income for homes in Houston, TX\",\n       x = \"Median Income (USD)\",\n       y = \"Count\") +\n  theme_linedraw()\n\n\n\n\n\nCode\nsummary(census_map_data$median_income)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  13886   43482   59330   70023   86683  250001      10"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sam Muir",
+    "section": "",
+    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. I have experience in plant sciences & coastal ecology and am excited to continue my environmental education focusing on data science. I also have a passion for accessible data communication and environmental justice."
+  },
+  {
+    "objectID": "index.html#hello",
+    "href": "index.html#hello",
+    "title": "Sam Muir",
+    "section": "",
+    "text": "Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. I have experience in plant sciences & coastal ecology and am excited to continue my environmental education focusing on data science. I also have a passion for accessible data communication and environmental justice."
+  },
+  {
+    "objectID": "index.html#skills-interests",
+    "href": "index.html#skills-interests",
+    "title": "Sam Muir",
+    "section": "Skills & Interests",
+    "text": "Skills & Interests\n Plants –  Coding –  Ecology –  Music/ Cello –  Sailing"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Sam Muir",
+    "section": "Education",
+    "text": "Education\nMaster of Environmental Data Science (MEDS); University of California Santa Barbara (Expected 2024)\nB.S. Biology and B.A. Environmental Studies, Minor in French; St. Mary’s College of Maryland (2023)"
   }
 ]
