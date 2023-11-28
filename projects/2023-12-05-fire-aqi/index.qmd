@@ -1,0 +1,38 @@
+---
+title: "Identifying power outages in Houston, TX from February 2021 storms"
+#subtitle: ""
+description: "This was an assignment for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB"
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+    orcid: 
+    affiliation: Bren School of Environmental Science & Management at University of California Santa Barbara
+    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
+date: 11-26-2023
+categories: [GIS, MEDS, Python]
+bibliography: references.bib
+citation:
+  url: https://shmuir.github.io/projects/2023-12-05-fire-aqi/
+#image: map.png
+format:
+  html:
+    code-fold: true
+draft: true
+---
+
+```{python}
+# import libraries
+import os
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches # for creating legends
+import matplotlib.lines as mlines
+
+import xarray as xr
+import rioxarray as rioxr
+from shapely.geometry import box
+from shapely.geometry import Point
+```
+

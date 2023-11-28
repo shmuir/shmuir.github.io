@@ -9,7 +9,7 @@ author:
     affiliation: Bren School of Environmental Science & Management at University of California Santa Barbara
     affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
 date: 11-26-2023
-categories: [GIS, MEDS]
+categories: [GIS, MEDS, R]
 bibliography: references.bib
 citation:
   url: https://shmuir.github.io/projects/2023-11-26-houston-power-outage/
