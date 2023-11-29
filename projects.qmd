@@ -1,5 +1,5 @@
 ---
-title: "Projects"
+title: "Projects & Blog"
 subtitle: "some science and thoughts" 
 listing:
   contents: projects

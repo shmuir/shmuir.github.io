@@ -4,7 +4,7 @@
 $dark-grey: #474747;
 $sage: #94a699;
 $light-grey: #a9aba9;
-$lighter-grey: #d4d4d4;
+$lighter-grey: #EDF0F0;
 $dark-sage: #505e54;
 $light-green: #dff2e4;
 
@@ -28,7 +28,7 @@ $code-bg: $lighter-grey;
 $code-color: $dark-green; 
 
 // Code blocks
-$code-block-bg: $cream;
+$code-block-bg: $lighter-grey;
 
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Bitter&family=Montserrat&display=swap');

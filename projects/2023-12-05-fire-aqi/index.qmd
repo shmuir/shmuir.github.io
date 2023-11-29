@@ -1,6 +1,6 @@
 ---
-title: "Identifying power outages in Houston, TX from February 2021 storms"
-#subtitle: ""
+title: "The Thomas Fire in Santa Barbara County 2017-2018"
+subtitle: "Visualizing the burn area and change in air quality index"
 description: "This was an assignment for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB"
 author:
   - name: Sam Muir
@@ -8,17 +8,55 @@ author:
     orcid: 
     affiliation: Bren School of Environmental Science & Management at University of California Santa Barbara
     affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
-date: 11-26-2023
+date: 12-05-2023
 categories: [GIS, MEDS, Python]
 bibliography: references.bib
 citation:
   url: https://shmuir.github.io/projects/2023-12-05-fire-aqi/
 #image: map.png
-format:
-  html:
-    code-fold: true
-draft: true
+draft: false
+jupyter: python3
 ---
+
+Link to project repository: <https://github.com/shmuir/california-fire-AQI>
+
+# Project Overview
+
+In December of 2017 the Thomas Fire spread across Santa Barbara and Ventura counties in California, burning nearly 282,000 acres [@oakley2018]. It damaged many natural and developed areas and was spread rapidly by strong winds. Air quality during the time of the fire was quite bad and many schools cancelled classes due to the air quality concerns, along with the power outages.
+
+![](fire_haze.jpg){width="500"}
+
+A photo taken along highway 101 showing burned palm trees and a hazy sky from fire smoke. This picture was taken December 13th, 2017 by me.
+
+## Highlights of Analysis
+
+In this blog post I will be:
+
+-   Fetching and cleaning raster and tabular data
+
+-   Visualizing the extent of the burn areas from the Thomas Fire in Santa Barbara County in 2017
+
+-   Analyzing the change in air quality in Santa Barbara County across 2017-2018.
+
+# About the Data
+
+`ca_fires`: shapefile of fire perimeters in California for 2017
+
+`landsat`: simplified collection of bands (red, green, blue, near-infrared and shortwave infrared)
+
+`aqi_2017`: air quality index data from 2017
+
+`aqi_2018`: air quality index data from 2018
+
+## Data Sources
+
+The Thomas fire shapefile was obtained from [California State Geoportal](https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-fire-perimeters-all-1/about).
+
+Santa Barbara landsat data was accessed and pre-processed in the Microsoft Planetary Computer to remove data outside land and coarsen the spatial resolution [(Landsat Collection in MPC)](https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2).
+
+The [Air Quality Index (AQI)](https://www.airnow.gov/aqi/aqi-basics/) was obtained from the [US Environmental Protection Agency](https://www.epa.gov/).
+
+# Reading in the Data
 
 ```{python}
 # import libraries
@@ -36,3 +74,94 @@ from shapely.geometry import box
 from shapely.geometry import Point
 ```
 
+```{python}
+# california fires data
+ca_fires = gpd.read_file(os.path.join(os.getcwd(), 'data', 'California_Fire_Perimeters_2017', 'California_Fire_Perimeters_2017.shp'))
+# landsat data
+landsat = rioxr.open_rasterio(os.path.join(os.getcwd(),'data','landsat8-2018-01-26-sb-simplified.nc'))
+
+# air quality data
+aqi_2017 = pd.read_csv("https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2017.zip")
+aqi_2018 = pd.read_csv("https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2018.zip")
+```
+
+# Visualizing Thomas Fire Burn Area
+
+We want to look at the extent of the Thomas Fire in Santa Barbara County. We will do this by plotting the false color imagery from the landsat data and adding the fire borders from the California fires data.
+
+First, we will need to prepare our data a bit more by
+
+-   dropping a dimension from the landsat data
+
+-   updating the coordinate references systems to match
+
+-   selecting data for only the Thomas Fire
+
+```{python}
+# drop 'band' from landsat data
+landsat = landsat.squeeze()
+landsat = landsat.drop('band')
+# update CRS of ca_fires to match the CRS of landsat
+ca_fires = ca_fires.to_crs(landsat.rio.crs)
+# select only the thomas fire
+thomas_fire_border = ca_fires.loc[ca_fires.FIRE_NAME == "THOMAS"]
+```
+
+Now it's time to plot!
+
+```{python}
+fig, ax = plt.subplots(figsize=(12,8)) # initialize plot
+
+ax.axis("off") # remove axis
+
+landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust=True, ax= ax)
+
+thomas_fire_border.plot(ax=ax, color = 'red') # plot thomas fire ontop of landsat image
+fires_patch = mpatches.Patch(color='red', # change color to red
+                          label='Thomas Fire') # update label
+
+ax.legend(handles = [fires_patch], frameon=False, loc = (0.75, 0.95), labelcolor = 'white') # add legend and update text color
+
+plt.show()
+```
+
+# Air Quality Index Time Series
+
+Now that we have visualized the extent of the Thomas Fire in Santa Barbara County, we want to look at the change in air quality from before, during, and after the fire. The air quality index data is for all of the US, so we will need to select data for only Santa Barbara County. Additionally, we will calculate a 5 day rolling averge of the air quality index.
+
+Again, we need to prepare the data before plotting. To do this, we will
+
+-   combine the 2017 and 2018 dataframes
+
+-   clean up the column names
+
+-   convert the date to a datetime object
+
+-   calculate 5 day rolling means
+
+```{python}
+# combine the two dataframes
+aqi = pd.concat([aqi_2017,aqi_2018])
+# make the column names lower snake case
+aqi.columns = aqi.columns.str.lower().str.replace(' ','_')
+# filter to only have SB county and drop other columns we don't need
+aqi_sb = aqi[aqi['county_name'] == 'Santa Barbara'].drop(columns = ['state_name', 'county_name', 'state_code', 'county_code'])
+# make the date column a datetime instead of object data type
+aqi_sb.date = pd.to_datetime(aqi_sb.date)
+# set the date to be the index
+aqi_sb = aqi_sb.set_index('date')
+# calculate rolling 5D means of the aqi as a new column in the df
+aqi_sb['five_day_average'] = aqi_sb.aqi.rolling('5D').mean()
+```
+
+Now we're ready to plot!
+
+```{python}
+# plot the results of rolling means and the raw aqi
+aqi_sb.plot(y = ['aqi', 'five_day_average'],# both on same axis
+           kind = 'line', # line plot
+           ylabel = 'Air Quality Index', # update label
+            xlabel = '', # leave x-label blank
+            color = ['pink', 'grey'], # update to more visible colors
+           title = 'Air Quality Index in Santa Barbara County 2017-2018') # add a title
+```

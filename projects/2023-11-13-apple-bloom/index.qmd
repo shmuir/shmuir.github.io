@@ -9,7 +9,7 @@ author:
     affiliation: Penn State University Meteorology and Atmospheric Science
     affiliation-url: http://www.met.psu.edu/
 date: 11-13-2023
-categories: [Agriculture, Climate, Data Science]
+categories: [Agriculture, Climate, R]
 bibliography: references.bib
 citation:
   url: https://shmuir.github.io/projects/2023-11-13-apple-bloom/
