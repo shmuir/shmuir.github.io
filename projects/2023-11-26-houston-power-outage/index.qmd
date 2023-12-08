@@ -193,7 +193,7 @@ income_median <- income %>%
   rename(median_income = B19013e1, GEOID_Data = GEOID)
 ```
 
-## Mapping backouts and median income
+# Mapping backouts and median income
 
 With all of this data, I can now determine which census tracts experiences power outages and look at them in relation to median income for the census tract. 
 
