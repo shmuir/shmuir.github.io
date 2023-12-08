@@ -26,9 +26,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # Project Overview
 
-In February 2021, the state of Texas suffered a major energy crisis as a result of three severe winter storms. This left many people without power. Power outages can disproportionately affect marginalized groups and historically lower-income areas can may be of lower priority. For more background: [engineering](https://www.youtube.com/watch?v=08mwXICY4JM&ab_channel=PracticalEngineering) and [political](https://www.youtube.com/watch?v=Zcrsgdl_hP0&ab_channel=Vox) perspectives. 
+In February 2021, the state of Texas suffered a major energy crisis as a result of three severe winter storms and left many people without power. Historically, power outages may disproportionately affect marginalized groups and lower-income areas can be of lower priority in recovery. For more background: [engineering](https://www.youtube.com/watch?v=08mwXICY4JM&ab_channel=PracticalEngineering) and [political](https://www.youtube.com/watch?v=Zcrsgdl_hP0&ab_channel=Vox) perspectives. 
 
-In this post, I am interested in estimating the number of homes in Houston that lost power as a result of the first two storm and investigating if socioeconomic factors are predictors of community loss of power. 
+In this post, I am interested in estimating the number of homes in Houston that lost power as a result of the first two storm and investigating if there is a correlation between loss of power and socioeconomic status. 
 
 # About the data
 
@@ -47,6 +47,8 @@ library(stars)
 library(terra)
 library(ggspatial)
 library(plotly)
+library(leaflet)
+library(htmltools)
 ```
 
 ## Night Lights
@@ -162,16 +164,15 @@ houses <- st_read("data/gis_osm_buildings_a_free_1.gpkg", query = query_houses)
 # transform crs
 houses <- st_transform(houses, crs = 'EPSG:3083')
 #plot(houses['type'])
-```
 
-```{r include=TRUE, message=TRUE}
 # filter houses data using the blackout mask
 outage_houses <- houses[mask_houston_highway, drop = FALSE]
 
 # check and see that filtered data has fewer houses than the original
 # nrow(houses) > nrow(outage_houses)
 ```
-There were `r nrow(outage_houses)` homes in Houstin affected by the power outage. 
+
+There were `r nrow(outage_houses)` homes in Houston affected by the power outage. 
 
 ## Median Income 
 
@@ -211,25 +212,59 @@ houston_border_sf <- st_transform(houston_border_sf, crs = "EPSG:3083")
 
 #creating a full df of Houston geometries
 census_houston <- census_data[houston_border_sf, ,] 
+census_houston2 <- st_transform(census_houston, "+init=epsg:4326")
 
 # making centroids to indicate which tracts had a blackout
 census_outage_map <- census_outage %>%
-  st_centroid()
+  st_centroid() %>%
+  st_transform("+init=epsg:4326")
 
-# map of Houston census blocks colored by median income
-p <- ggplot(census_houston) +
-  geom_sf(aes(fill = median_income, text = paste0("$", median_income))) + # color by median income
-  geom_sf(data = census_outage_map, size = 0.5, aes(color = blackout)) + # plotting centroids that indicate a blackout
-  scale_color_manual(values = c("black")) +
-  scale_fill_viridis_c(option = "G", direction = -1, na.value="grey") + # color option
-  annotation_scale() + # scale bar
-  annotation_north_arrow(style = north_arrow_fancy_orienteering, location = "br") +
-  labs(fill = "Median Income (USD)", color = "") +
-  theme_classic()
+# color paletted
+pal <- colorBin("viridis", domain = census_houston2$median_income, reverse = TRUE) # define color palette
+pal2 <- colorFactor("black", domain = census_outage_map$blackout, reverse = TRUE) # define color palette
+# map labels
+labels <- sprintf("$%g",
+  round(census_houston2$median_income, 2)) %>% 
+  lapply(htmltools::HTML)
 
-ggplotly(p, tooltip = "text") %>% # put plot into plotly
-  style(hoverlabel = list(bgcolor = "white"), hoveron = "fill") %>% 
-  layout(legend = list(x = 0.8, y = 1))
+# mapping
+leaflet() %>%
+  addPolygons(data = census_houston2,
+    fillColor = ~pal(census_houston2$median_income), # color region by median income
+    weight = 1,
+    opacity = 1,
+    color = "black",
+    dashArray = "3",
+    fillOpacity = 1,
+   # popup = p_popup,
+    highlightOptions = highlightOptions( # when you hover over there will be pop up text
+    weight = 5,
+    color = "#666",
+    dashArray = "",
+    fillOpacity = 1,
+    bringToFront = TRUE),
+  label = labels, # label by previously defined
+  labelOptions = labelOptions(
+    style = list("font-weight" = "normal", padding = "3px 8px"),
+    textsize = "15px",
+    direction = "auto")) %>%
+  addLegend(pal = pal, # legend based on color palette
+            values = census_houston2$median_income,
+            opacity = 0.7,
+            labFormat = labelFormat(prefix = "$"), # add units
+            title = paste("Median Income ($)"), # updates with species input
+            position = "bottomright") %>%
+  addCircleMarkers(data = census_outage_map, # add centroids to map
+             color = "black",
+             radius = 0.25,
+             opacity = 1) %>%
+  addLegend(pal = pal2, # legend for centroids
+            values = census_outage_map$blackout,
+            opacity = 1,
+            position = "bottomright") %>%
+  addScaleBar() %>%
+  addTiles() # basemap
+
 ```
 
 ```{r message=FALSE, warning=FALSE}

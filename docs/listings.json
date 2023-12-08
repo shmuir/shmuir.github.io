@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/blog.html",
-    "items": []
-  },
-  {
     "listing": "/projects.html",
     "items": [
       "/projects/2023-12-05-fire-aqi/index.html",
