@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sam Muir">
 <meta name="dcterms.date" content="2023-12-05">
-<meta name="description" content="This was an assignment for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB">
+<meta name="description" content="Created for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB">
 
 <title>Sam Muir - The Thomas Fire in Santa Barbara County 2017-2018</title>
 <style>
@@ -186,7 +186,7 @@ div.csl-indent {
             <p class="subtitle lead">Visualizing the burn area and change in air quality index</p>
                   <div>
         <div class="description">
-          This was an assignment for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB
+          Created for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB
         </div>
       </div>
                           <div class="quarto-categories">
@@ -349,13 +349,14 @@ div.csl-indent {
 <p><img src="index_files/figure-html/cell-5-output-1.png" width="723" height="631"></p>
 </div>
 </div>
+<p>Here we can see the large are that the Thomas Fire burned in the spatial context of Santa Barbara County.</p>
 </section>
 <section id="air-quality-index-time-series" class="level1">
 <h1>Air Quality Index Time Series</h1>
 <p>Now that we have visualized the extent of the Thomas Fire in Santa Barbara County, we want to look at the change in air quality from before, during, and after the fire. The air quality index data is for all of the US, so we will need to select data for only Santa Barbara County. Additionally, we will calculate a 5 day rolling averge of the air quality index.</p>
 <p>Again, we need to prepare the data before plotting. To do this, we will</p>
 <ul>
-<li><p>combine the 2017 and 2018 dataframes</p></li>
+<li><p>combine the 2017 and 2018 data frames</p></li>
 <li><p>clean up the column names</p></li>
 <li><p>convert the date to a datetime object</p></li>
 <li><p>calculate 5 day rolling means</p></li>
@@ -390,6 +391,7 @@ div.csl-indent {
 <p><img src="index_files/figure-html/cell-7-output-2.png" width="593" height="446"></p>
 </div>
 </div>
+<p>This plot shows a clear spike in AQI (indicating a worse air quality) during the Thomas Fire.</p>
 
 
 

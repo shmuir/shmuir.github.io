@@ -1,7 +1,7 @@
 ---
 title: "The Thomas Fire in Santa Barbara County 2017-2018"
 subtitle: "Visualizing the burn area and change in air quality index"
-description: "This was an assignment for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB"
+description: "Created for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
@@ -125,13 +125,15 @@ ax.legend(handles = [fires_patch], frameon=False, loc = (0.75, 0.95), labelcolor
 plt.show()
 ```
 
+Here we can see the large are that the Thomas Fire burned in the spatial context of Santa Barbara County.
+
 # Air Quality Index Time Series
 
 Now that we have visualized the extent of the Thomas Fire in Santa Barbara County, we want to look at the change in air quality from before, during, and after the fire. The air quality index data is for all of the US, so we will need to select data for only Santa Barbara County. Additionally, we will calculate a 5 day rolling averge of the air quality index.
 
 Again, we need to prepare the data before plotting. To do this, we will
 
--   combine the 2017 and 2018 dataframes
+-   combine the 2017 and 2018 data frames
 
 -   clean up the column names
 
@@ -165,3 +167,5 @@ aqi_sb.plot(y = ['aqi', 'five_day_average'],# both on same axis
             color = ['pink', 'grey'], # update to more visible colors
            title = 'Air Quality Index in Santa Barbara County 2017-2018') # add a title
 ```
+
+This plot shows a clear spike in AQI (indicating a worse air quality) during the Thomas Fire. 
