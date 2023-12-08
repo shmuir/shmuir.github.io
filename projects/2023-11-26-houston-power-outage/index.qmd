@@ -1,7 +1,7 @@
 ---
 title: "Identifying power outages in Houston, TX from February 2021 storms"
 #subtitle: ""
-description: "This was an assignment for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB"
+description: "Created for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
