@@ -116,7 +116,7 @@ ax.axis("off") # remove axis
 
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust=True, ax= ax)
 
-thomas_fire_border.plot(ax=ax, color = 'red') # plot thomas fire ontop of landsat image
+thomas_fire_border.plot(ax=ax, fc = 'none', edgecolor = "red", linewidth = 1.5) # plot thomas fire ontop of landsat image
 fires_patch = mpatches.Patch(color='red', # change color to red
                           label='Thomas Fire') # update label
 
@@ -125,7 +125,7 @@ ax.legend(handles = [fires_patch], frameon=False, loc = (0.75, 0.95), labelcolor
 plt.show()
 ```
 
-Here we can see the large are that the Thomas Fire burned in the spatial context of Santa Barbara County.
+Here we can see the large are that the Thomas Fire burned in the spatial context of Santa Barbara County. The red border shows the extent of the fire, and from the Landsat imagery, we can see the burn scar on the land. 
 
 # Air Quality Index Time Series
 

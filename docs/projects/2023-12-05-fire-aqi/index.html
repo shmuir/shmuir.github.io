@@ -338,7 +338,7 @@ div.csl-indent {
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>landsat[[<span class="st">'swir22'</span>, <span class="st">'nir08'</span>, <span class="st">'red'</span>]].to_array().plot.imshow(robust<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span> ax)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>thomas_fire_border.plot(ax<span class="op">=</span>ax, color <span class="op">=</span> <span class="st">'red'</span>) <span class="co"># plot thomas fire ontop of landsat image</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>thomas_fire_border.plot(ax<span class="op">=</span>ax, fc <span class="op">=</span> <span class="st">'none'</span>, edgecolor <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span>) <span class="co"># plot thomas fire ontop of landsat image</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>fires_patch <span class="op">=</span> mpatches.Patch(color<span class="op">=</span><span class="st">'red'</span>, <span class="co"># change color to red</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                          label<span class="op">=</span><span class="st">'Thomas Fire'</span>) <span class="co"># update label</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -349,7 +349,7 @@ div.csl-indent {
 <p><img src="index_files/figure-html/cell-5-output-1.png" width="723" height="631"></p>
 </div>
 </div>
-<p>Here we can see the large are that the Thomas Fire burned in the spatial context of Santa Barbara County.</p>
+<p>Here we can see the large are that the Thomas Fire burned in the spatial context of Santa Barbara County. The red border shows the extent of the fire, and from the Landsat imagery, we can see the burn scar on the land.</p>
 </section>
 <section id="air-quality-index-time-series" class="level1">
 <h1>Air Quality Index Time Series</h1>
@@ -384,7 +384,7 @@ div.csl-indent {
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            xlabel <span class="op">=</span> <span class="st">''</span>, <span class="co"># leave x-label blank</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            color <span class="op">=</span> [<span class="st">'pink'</span>, <span class="st">'grey'</span>], <span class="co"># update to more visible colors</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>           title <span class="op">=</span> <span class="st">'Air Quality Index in Santa Barbara County 2017-2018'</span>) <span class="co"># add a title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>&lt;Axes: title={'center': 'Air Quality Index in Santa Barbara County 2017-2018'}, ylabel='Air Quality Index'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
