@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sam Muir">
+<meta name="dcterms.date" content="2023-12-10">
+<meta name="description" content="Created for EDS242: Ethics and Bias in Environmental Data Science for the Masters of Environmental Data Science program at UCSB">
+
+<title>Sam Muir - Ethical Challenges in Investigating Human-Elephant Conflict</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/logo_tab.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/logos.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html" rel="" target="">
+ <span class="menu-text">Projects &amp; Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../CV-Sam_Web.pdf" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shmuir" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/shmuir/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:smuir@bren.ucsb.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Ethical Challenges in Investigating Human-Elephant Conflict</h1>
+            <p class="subtitle lead">Considerations of Research in KAZA with Insights from AI Blindspot</p>
+                  <div>
+        <div class="description">
+          Created for EDS242: Ethics and Bias in Environmental Data Science for the Masters of Environmental Data Science program at UCSB
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">MEDS</div>
+                <div class="quarto-category">EJ</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://shmuir.github.io/">Sam Muir</a> </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://bren.ucsb.edu/masters-programs/master-environmental-data-science">
+              Bren School of Environmental Science &amp; Management at University of California Santa Barbara
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 10, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#post-overview" id="toc-post-overview" class="nav-link active" data-scroll-target="#post-overview">Post Overview</a></li>
+  <li><a href="#implementing-the-framework-of-ai-blindspot" id="toc-implementing-the-framework-of-ai-blindspot" class="nav-link" data-scroll-target="#implementing-the-framework-of-ai-blindspot">Implementing the framework of <em>AI Blindspot</em></a>
+  <ul class="collapse">
+  <li><a href="#fa-ruler-combined-planning" id="toc-fa-ruler-combined-planning" class="nav-link" data-scroll-target="#fa-ruler-combined-planning"><i class="fa-solid fa-ruler-combined" aria-label="ruler-combined"></i> <strong>Planning</strong></a>
+  <ul class="collapse">
+  <li><a href="#clearly-articulate-the-problem-and-outcome-you-are-optimizing-for." id="toc-clearly-articulate-the-problem-and-outcome-you-are-optimizing-for." class="nav-link" data-scroll-target="#clearly-articulate-the-problem-and-outcome-you-are-optimizing-for.">Clearly articulate the problem and outcome you are optimizing for.</a></li>
+  <li><a href="#have-you-engaged-with-affected-communities-subject-matter-experts" id="toc-have-you-engaged-with-affected-communities-subject-matter-experts" class="nav-link" data-scroll-target="#have-you-engaged-with-affected-communities-subject-matter-experts">Have you engaged with affected communities? Subject matter experts?</a></li>
+  <li><a href="#abusability" id="toc-abusability" class="nav-link" data-scroll-target="#abusability">Abusability</a></li>
+  <li><a href="#privacy" id="toc-privacy" class="nav-link" data-scroll-target="#privacy">Privacy</a></li>
+  </ul></li>
+  <li><a href="#fa-compass-drafting-building" id="toc-fa-compass-drafting-building" class="nav-link" data-scroll-target="#fa-compass-drafting-building"><i class="fa-solid fa-compass-drafting" aria-label="compass-drafting"></i> <strong>Building</strong></a>
+  <ul class="collapse">
+  <li><a href="#is-this-research-accessible-to-those-who-are-the-most-affected-by-it-do-they-trust-it" id="toc-is-this-research-accessible-to-those-who-are-the-most-affected-by-it-do-they-trust-it" class="nav-link" data-scroll-target="#is-this-research-accessible-to-those-who-are-the-most-affected-by-it-do-they-trust-it">Is this research accessible to those who are the most affected by it? Do they trust it?</a></li>
+  <li><a href="#how-rigid-should-we-be-when-developing-our-future-projections-of-human-elephant-conflict" id="toc-how-rigid-should-we-be-when-developing-our-future-projections-of-human-elephant-conflict" class="nav-link" data-scroll-target="#how-rigid-should-we-be-when-developing-our-future-projections-of-human-elephant-conflict">How rigid should we be when developing our future projections of human-elephant conflict?</a></li>
+  </ul></li>
+  <li><a href="#fa-network-wired-deploying" id="toc-fa-network-wired-deploying" class="nav-link" data-scroll-target="#fa-network-wired-deploying"><i class="fa-solid fa-network-wired" aria-label="network-wired"></i> <strong>Deploying</strong></a>
+  <ul class="collapse">
+  <li><a href="#how-might-our-model-not-accurately-reflect-peoples-local-knowledge-and-personal-experiences-with-changes-in-human-elephant-conflict" id="toc-how-might-our-model-not-accurately-reflect-peoples-local-knowledge-and-personal-experiences-with-changes-in-human-elephant-conflict" class="nav-link" data-scroll-target="#how-might-our-model-not-accurately-reflect-peoples-local-knowledge-and-personal-experiences-with-changes-in-human-elephant-conflict">How might our model not accurately reflect people’s local knowledge and personal experiences with changes in human-elephant conflict?</a></li>
+  </ul></li>
+  <li><a href="#fa-magnifying-glass-oversight" id="toc-fa-magnifying-glass-oversight" class="nav-link" data-scroll-target="#fa-magnifying-glass-oversight"><i class="fa-solid fa-magnifying-glass" aria-label="magnifying-glass"></i> <strong>Oversight</strong></a>
+  <ul class="collapse">
+  <li><a href="#in-what-ways-can-we-improve-our-communication-with-those-in-affected-communities-and-those-who-have-more-expertise-in-the-area" id="toc-in-what-ways-can-we-improve-our-communication-with-those-in-affected-communities-and-those-who-have-more-expertise-in-the-area" class="nav-link" data-scroll-target="#in-what-ways-can-we-improve-our-communication-with-those-in-affected-communities-and-those-who-have-more-expertise-in-the-area">In what ways can we improve our communication with those in affected communities and those who have more expertise in the area?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<section id="post-overview" class="level1">
+<h1>Post Overview</h1>
+<p>Earlier this year I started as a Graduate Research Fellow in collaboration with the <a href="https://emlab.ucsb.edu/">emLab</a> at UCSB and <a href="https://www.sparc-website.org/">Conservation International SPARC</a>. During my interview and subsequent on boarding process, I learned that the research would be focused on areas of Southern Africa, mainly the KAZA region. For those unfamiliar with the term KAZA TFCA (as I was initially), it stands for Kavango–Zambezi Transfrontier Conservation Area, which is one of the largest landscape conservation areas in the world, spanning Angola, Zambia, Zimbabwe, Botswana, and Namibia <span class="citation" data-cites="WWF">(<a href="#ref-WWF" role="doc-biblioref">WWF 2016</a>)</span>. It’s a beautiful, diverse area that, focuses on sustainably managing the ecosystem, attracts many tourists, and serves as a hub for various research initiatives.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="kaza_map.jpeg" class="img-fluid figure-img" width="425"></p>
+</figure>
+</div>
+<p><span style="color:grey;">Map of the KAZA TCFA <span class="citation" data-cites="WWF_Namibia">(<a href="#ref-WWF_Namibia" role="doc-biblioref">WWFNamibia 2015</a>)</span>.</span></p>
+<p>So, what is the focus of our research in KAZA? Broadly, our questions revolve around the effects of climate change on wildlife corridors, human intrusion into these corridors, and the subsequent impacts on human-elephant conflict. Throughout my data analysis and literature review this quarter, I’ve been contemplating the following questions: In what ways can we ensure that our research is relevant and beneficial for the communities we’re studying and using data from? What factors should we keep in mind when conducting and reporting research on communities that we have no personal connections to?</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="kaza-elephants.jpeg" class="img-fluid figure-img" width="425"></p>
+</figure>
+</div>
+<p><span style="color:grey;">Elephants in KAZA <span class="citation" data-cites="WWF">(<a href="#ref-WWF" role="doc-biblioref">WWF 2016</a>)</span>.</span></p>
+<p>To dive into these questions, I am drawing inspiration from <em>AI Blindspot</em> <span class="citation" data-cites="Calderon_Taber_Qu_Wen_2019">(<a href="#ref-Calderon_Taber_Qu_Wen_2019" role="doc-biblioref">Calderon et al. 2019</a>)</span>, which was developed during the Berkman Klein Center and MIT Media Lab’s 2019 Assembly program. This guide was developed with AI data and models in mind, but many of the questions and concepts apply to data and research ethics in general. The authors lay out the potential sources of bias &amp; oversight, or “blind spots”, in four sections: Planning, Building, Deploying, and Monitoring.</p>
+</section>
+<section id="implementing-the-framework-of-ai-blindspot" class="level1">
+<h1>Implementing the framework of <em>AI Blindspot</em></h1>
+<section id="fa-ruler-combined-planning" class="level2">
+<h2 class="anchored" data-anchor-id="fa-ruler-combined-planning"><i class="fa-solid fa-ruler-combined" aria-label="ruler-combined"></i> <strong>Planning</strong></h2>
+<p>This initial section guides us to assess the alignment of our research methods with expected outcomes and also addresses potential vulnerabilities and issues related to the safety of data.</p>
+<section id="clearly-articulate-the-problem-and-outcome-you-are-optimizing-for." class="level3">
+<h3 class="anchored" data-anchor-id="clearly-articulate-the-problem-and-outcome-you-are-optimizing-for.">Clearly articulate the problem and outcome you are optimizing for.</h3>
+<p>The rise in human-elephant conflict in KAZA is believed to stem from the impacts of climate change on habitat suitability and human encroachment on wildlife corridors <span class="citation" data-cites="kamwi2015">(<a href="#ref-kamwi2015" role="doc-biblioref">Kamwi et al. 2015</a>)</span>. In this project, we aim to analyze how human activity has altered land cover in wildlife corridors over time and how human presence in relation to the corridors is predicted to change in the future based on current trends. Additionally, we are exploring how the locations of human-elephant conflicts relate to the location of corridors, and what seasonal or climactic variables have the most influence on conflict rates. Results from this research can help inform local communities about potential future dangers to them from elephants, and how their activities are influencing these conflicts.</p>
+</section>
+<section id="have-you-engaged-with-affected-communities-subject-matter-experts" class="level3">
+<h3 class="anchored" data-anchor-id="have-you-engaged-with-affected-communities-subject-matter-experts">Have you engaged with affected communities? Subject matter experts?</h3>
+<p>Yes, we have collaborators at the University of Namibia who have been engaging in this field of research for a while. They have conducted village interviews to collect data on human-wildlife conflicts.</p>
+</section>
+<section id="abusability" class="level3">
+<h3 class="anchored" data-anchor-id="abusability">Abusability</h3>
+<p>While this research can help further our understanding of human-elephant conflicts and their developments, it’s critical to acknowledge the dual-edged nature of reporting this information. It is possible that government officials could use these findings to implement changes in community activities, potentially restricting access to essential resources. This raises concerns about the responsible use of this data and research outcomes.</p>
+</section>
+<section id="privacy" class="level3">
+<h3 class="anchored" data-anchor-id="privacy">Privacy</h3>
+<p>Personal information from the conflict interviews has not been recorded, so people can retain anonymity. When it comes to publishing wildlife research, a major concern revolves around determining who has access to the data due to the potential for malicious use. A majority of elephant data cannot be made publicly available since there are poachers who will use the data for ill intentions.</p>
+</section>
+</section>
+<section id="fa-compass-drafting-building" class="level2">
+<h2 class="anchored" data-anchor-id="fa-compass-drafting-building"><i class="fa-solid fa-compass-drafting" aria-label="compass-drafting"></i> <strong>Building</strong></h2>
+<p>This second section asks questions that expand on how local communities are impacted by our research.</p>
+<section id="is-this-research-accessible-to-those-who-are-the-most-affected-by-it-do-they-trust-it" class="level3">
+<h3 class="anchored" data-anchor-id="is-this-research-accessible-to-those-who-are-the-most-affected-by-it-do-they-trust-it">Is this research accessible to those who are the most affected by it? Do they trust it?</h3>
+<p>While we do have conflict surveys, I think it would be beneficial to consider conducting a follow-up survey in the same villages once the project results are available. This additional survey aims to gauge the level of trust in our analyses—assessing whether the community understands the analysis process, cares about the results, and finds them consistent with their personal observations of human-elephant conflicts. This iterative approach adds a valuable layer of community engagement and ensures that our research is not only informative but resonates with the experiences of those directly impacted.</p>
+</section>
+<section id="how-rigid-should-we-be-when-developing-our-future-projections-of-human-elephant-conflict" class="level3">
+<h3 class="anchored" data-anchor-id="how-rigid-should-we-be-when-developing-our-future-projections-of-human-elephant-conflict">How rigid should we be when developing our future projections of human-elephant conflict?</h3>
+<p>Various model developments may yield projections that are either lower than actual future impacts, potentially providing a false sense of comfort, or significantly higher than actual future impacts, leading to unnecessary anxiety or harsher regulations.</p>
+</section>
+</section>
+<section id="fa-network-wired-deploying" class="level2">
+<h2 class="anchored" data-anchor-id="fa-network-wired-deploying"><i class="fa-solid fa-network-wired" aria-label="network-wired"></i> <strong>Deploying</strong></h2>
+<p>The third section focuses on the actual performance of AI models and how changes in data might not be accounted for. I have modified and compiled their questions in this section to think about indigenous data and what we might consider to be “non-traditional” data.</p>
+<section id="how-might-our-model-not-accurately-reflect-peoples-local-knowledge-and-personal-experiences-with-changes-in-human-elephant-conflict" class="level3">
+<h3 class="anchored" data-anchor-id="how-might-our-model-not-accurately-reflect-peoples-local-knowledge-and-personal-experiences-with-changes-in-human-elephant-conflict">How might our model not accurately reflect people’s local knowledge and personal experiences with changes in human-elephant conflict?</h3>
+<p>We are assuming that increased rates of conflict are due to human encroachment on corridors, but what is not considered in our data is the specific ways and reasons that people’s movement is changing. We have reports of human-elephant conflict, but not the specific information on how the conflict came about. Have increases in reports of conflict occurred because there has been an actual increase in conflict events, or has conflict reporting and recording become common? Are changes in human activity influenced by factors of climate change as much as elephant activity is? We cannot reliably integrate lived experiences into spatial suitability and resistance modeling, but this data can and should be considered when making conclusions from the modeling.</p>
+</section>
+</section>
+<section id="fa-magnifying-glass-oversight" class="level2">
+<h2 class="anchored" data-anchor-id="fa-magnifying-glass-oversight"><i class="fa-solid fa-magnifying-glass" aria-label="magnifying-glass"></i> <strong>Oversight</strong></h2>
+<p>Finally, we must continue to address oversights in our modeling. Continuing from the ideas in the previous section, it is imperative that we work closely with our local collaborators and gain further insight into how our research can benefit the local communities.</p>
+<section id="in-what-ways-can-we-improve-our-communication-with-those-in-affected-communities-and-those-who-have-more-expertise-in-the-area" class="level3">
+<h3 class="anchored" data-anchor-id="in-what-ways-can-we-improve-our-communication-with-those-in-affected-communities-and-those-who-have-more-expertise-in-the-area">In what ways can we improve our communication with those in affected communities and those who have more expertise in the area?</h3>
+<p>Currently, we are meeting with our collaborators in Namibia less often than we should be, but this is more of an issue of conflicting schedules and time differences. We are also still figuring out how to best integrate our research interests with theirs, but we have made it clear to them that if any of our research directions do not align with their priorities, we will not continue to pursue them. A significant portion of the data necessary for our research comes directly from our collaborators. We are grateful that they trust us with this data and we will only be using the data how they see fit.</p>
+</section>
+</section>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<p>Reflecting on the considerations discussed, here are the key takeaways that will guide our ongoing research developments:</p>
+<section id="potential-community-impact" class="level4">
+<h4 class="anchored" data-anchor-id="potential-community-impact">Potential Community Impact</h4>
+<p>This research holds the potential to influence the daily lives of people within their community.</p>
+</section>
+<section id="local-knowledge" class="level4">
+<h4 class="anchored" data-anchor-id="local-knowledge">Local Knowledge</h4>
+<p>As external researchers, our goal is to draw conclusions about how climate change and human movement are altering wildlife corridors in KAZA. However, we cannot make conclusions without inside perspectives. All analyses and conclusions will undergo approval by our collaborators.</p>
+</section>
+<section id="relevance" class="level4">
+<h4 class="anchored" data-anchor-id="relevance">Relevance</h4>
+<p>It is essential that this research continues to be relevant to the people it directly affects. We must explore ways in which this research can be beneficial to KAZA communities.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Calderon_Taber_Qu_Wen_2019" class="csl-entry" role="listitem">
+Calderon, Ania, Dan Taber, Hong Qu, and Jeff Wen. 2019. <span>“Ai Blindspot: A Discovery Process for Preventing, Detecting, and Mitigating Bias in AI Systems.”</span> <em>AI Blindspot: A Discovery Process for Preventing, Detecting, and Mitigating Bias in AI Systems</em>. <a href="https://aiblindspot.media.mit.edu/">https://aiblindspot.media.mit.edu/</a>.
+</div>
+<div id="ref-kamwi2015" class="csl-entry" role="listitem">
+Kamwi, Jonathan M., Paxie W. C. Chirwa, Samuel O. M. Manda, Patric F. Graz, and Christoph Kätsch. 2015. <span>“Livelihoods, Land Use and Land Cover Change in the Zambezi Region, Namibia.”</span> <em>Population and Environment</em> 37 (2): 207–30. <a href="https://doi.org/10.1007/s11111-015-0239-2">https://doi.org/10.1007/s11111-015-0239-2</a>.
+</div>
+<div id="ref-WWF" class="csl-entry" role="listitem">
+WWF. 2016. <span>“What Kind of Animals Live in KAZA? And Four Other KAZA Facts.”</span> <em>Stories</em>. <a href="https://www.worldwildlife.org/stories/what-kind-of-animals-live-in-kaza-and-four-other-kaza-facts">https://www.worldwildlife.org/stories/what-kind-of-animals-live-in-kaza-and-four-other-kaza-facts</a>.
+</div>
+<div id="ref-WWF_Namibia" class="csl-entry" role="listitem">
+WWFNamibia. 2015. <span>“WWF in Kaza.”</span> <em>Programmes</em>. <a href="https://www.wwfnamibia.org/programmes/wwf_in_kaza/">https://www.wwfnamibia.org/programmes/wwf_in_kaza/</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{muir2023,
+  author = {Muir, Sam},
+  title = {Ethical {Challenges} in {Investigating} {Human-Elephant}
+    {Conflict}},
+  date = {2023-12-10},
+  url = {https://shmuir.github.io/projects/2023-12-10-research-ethics-kaza/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-muir2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Muir, Sam. 2023. <span>“Ethical Challenges in Investigating
+Human-Elephant Conflict.”</span> December 10, 2023. <a href="https://shmuir.github.io/projects/2023-12-10-research-ethics-kaza/">https://shmuir.github.io/projects/2023-12-10-research-ethics-kaza/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

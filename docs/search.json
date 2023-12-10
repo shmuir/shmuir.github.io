@@ -60,7 +60,7 @@
     "href": "projects.html",
     "title": "Projects & Blog",
     "section": "",
-    "text": "The Thomas Fire in Santa Barbara County 2017-2018\n\n\n\nGIS\n\n\nMEDS\n\n\nPython\n\n\n\nCreated for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nDec 5, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying power outages in Houston, TX from February 2021 storms\n\n\n\nGIS\n\n\nMEDS\n\n\nR\n\n\n\nCreated for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApple bloom dates in the Mid-Atlantic region in a changing climate\n\n\n\nAgriculture\n\n\nClimate\n\n\nR\n\n\n\nI spent the summer of 2021 as an NSF REU student at Penn State University researching climate and apple bloom changes with Dr. Rich…\n\n\n\nSam Muir\n\n\nNov 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhytophthora presence in Southern Maryland coastal soils\n\n\n\nPlants\n\n\nEcology\n\n\nCoastal\n\n\n\nThis was my directed research project as an undergraduate student at St. Mary’s College of Maryland in Dr. Lorena Torres-Martinez’s lab.\n\n\n\nSam Muir\n\n\nNov 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Ethical Challenges in Investigating Human-Elephant Conflict\n\n\n\nMEDS\n\n\nEJ\n\n\n\nCreated for EDS242: Ethics and Bias in Environmental Data Science for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nDec 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe Thomas Fire in Santa Barbara County 2017-2018\n\n\n\nGIS\n\n\nMEDS\n\n\nPython\n\n\n\nCreated for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nDec 5, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying power outages in Houston, TX from February 2021 storms\n\n\n\nGIS\n\n\nMEDS\n\n\nR\n\n\n\nCreated for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB\n\n\n\nSam Muir\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApple bloom dates in the Mid-Atlantic region in a changing climate\n\n\n\nAgriculture\n\n\nClimate\n\n\nR\n\n\n\nI spent the summer of 2021 as an NSF REU student at Penn State University researching climate and apple bloom changes with Dr. Rich…\n\n\n\nSam Muir\n\n\nNov 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhytophthora presence in Southern Maryland coastal soils\n\n\n\nPlants\n\n\nEcology\n\n\nCoastal\n\n\n\nThis was my directed research project as an undergraduate student at St. Mary’s College of Maryland in Dr. Lorena Torres-Martinez’s lab.\n\n\n\nSam Muir\n\n\nNov 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/2023-12-05-fire-aqi/index.html",
@@ -82,41 +82,6 @@
     "title": "The Thomas Fire in Santa Barbara County 2017-2018",
     "section": "Data Sources",
     "text": "Data Sources\nThe Thomas fire shapefile was obtained from California State Geoportal.\nSanta Barbara landsat data was accessed and pre-processed in the Microsoft Planetary Computer to remove data outside land and coarsen the spatial resolution (Landsat Collection in MPC).\nThe Air Quality Index (AQI) was obtained from the US Environmental Protection Agency."
-  },
-  {
-    "objectID": "projects/2023-11-10-phytophthora/index.html",
-    "href": "projects/2023-11-10-phytophthora/index.html",
-    "title": "Phytophthora presence in Southern Maryland coastal soils",
-    "section": "",
-    "text": "Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete Phytophthora spp. is responsible for many plant diseases that have had significant environmental and economic consequences (Klinkowski 1970). Recently, invasive P. ramorum has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change (Maryland Department of Agriculture 2017).\n\n\n\n\n\n\nPipetting PARPH media onto petri dishes to prepare for oomycete plating.\n\n\n\nIncreased salinity in soil imposes similar physiological stress as drought does in native plants (Sanogo 2004). Therefore, I explored whether seawater intrusion would promote higher abundances of Phytophthora spp. in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress."
-  },
-  {
-    "objectID": "projects/2023-11-10-phytophthora/index.html#project-overview",
-    "href": "projects/2023-11-10-phytophthora/index.html#project-overview",
-    "title": "Phytophthora presence in Southern Maryland coastal soils",
-    "section": "",
-    "text": "Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete Phytophthora spp. is responsible for many plant diseases that have had significant environmental and economic consequences (Klinkowski 1970). Recently, invasive P. ramorum has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change (Maryland Department of Agriculture 2017).\n\n\n\n\n\n\nPipetting PARPH media onto petri dishes to prepare for oomycete plating.\n\n\n\nIncreased salinity in soil imposes similar physiological stress as drought does in native plants (Sanogo 2004). Therefore, I explored whether seawater intrusion would promote higher abundances of Phytophthora spp. in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress."
-  },
-  {
-    "objectID": "projects/2023-11-10-phytophthora/index.html#soil-collection",
-    "href": "projects/2023-11-10-phytophthora/index.html#soil-collection",
-    "title": "Phytophthora presence in Southern Maryland coastal soils",
-    "section": "Soil Collection",
-    "text": "Soil Collection\nSoil sampling was performed by Jordan Manns and Mel Byrne for their research in Dr. Torres-Martínez's lab. The samples were collected from four different sites across a natural salinity gradient on the Potomac River at two different times of the year. One collection was performed in spring when Phytophthora spp. is likely to be more active, and at the end of summer when hurricane season starts on the Atlantic coast and there is likely to be increased seawater intrusion.\n\n\n\n\n\nFigure 1: Map of soil collection locations in Southern Maryland and the salinity."
-  },
-  {
-    "objectID": "projects/2023-11-10-phytophthora/index.html#culturing",
-    "href": "projects/2023-11-10-phytophthora/index.html#culturing",
-    "title": "Phytophthora presence in Southern Maryland coastal soils",
-    "section": "Culturing",
-    "text": "Culturing\n\n\n\n\n\n\nAgar plug culture of Phytophthora!\n\n\n\nThe abundance of Phytophthora spp. was determined by performing serial dilutions of soil samples, plating them on the highly selective PARPH media, and incubating them at 25ºC. Colonies were counted after 4 days of incubation."
-  },
-  {
-    "objectID": "projects/2023-11-10-phytophthora/index.html#analysis",
-    "href": "projects/2023-11-10-phytophthora/index.html#analysis",
-    "title": "Phytophthora presence in Southern Maryland coastal soils",
-    "section": "Analysis",
-    "text": "Analysis\nThe abundance of Phytophthora spp. varied by site depending on the season that the soil was collected. In both seasons, it is hard to tell a clear relationship between salinity and Phytophthora abundance. In the spring and summer, there is the highest abundances at the sites with the lowest salinity, but we also see a relatively high abundance at some higher salinity. These results suggest that seawater intrusion and seasonality could modify patterns of Phytophthora spp abundances in coastal soils of Southern Maryland, but further analyses should be done to make any definite conclusions. One possible approach would be to sample soil from a wider salinity range and in colder months as well.\n\n\n\n\n\nFigure 2: Mean cfu/ml across sites and seasons."
   },
   {
     "objectID": "projects/2023-11-13-apple-bloom/index.html",
@@ -180,6 +145,76 @@
     "title": "Apple bloom dates in the Mid-Atlantic region in a changing climate",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nGrowing degree days are a measure of temperature accumulation. Growing Degree Days = ((Maximum Daily Temp + Minimum Daily Temp) / 2 ) - minimum temperature that apple trees start to grow↩︎\nThe date at which the maximum number of buds have opened before petals begin to fall off the flowers.↩︎"
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html",
+    "href": "projects/2023-11-10-phytophthora/index.html",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "",
+    "text": "Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete Phytophthora spp. is responsible for many plant diseases that have had significant environmental and economic consequences (Klinkowski 1970). Recently, invasive P. ramorum has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change (Maryland Department of Agriculture 2017).\n\n\n\n\n\n\nPipetting PARPH media onto petri dishes to prepare for oomycete plating.\n\n\n\nIncreased salinity in soil imposes similar physiological stress as drought does in native plants (Sanogo 2004). Therefore, I explored whether seawater intrusion would promote higher abundances of Phytophthora spp. in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#project-overview",
+    "href": "projects/2023-11-10-phytophthora/index.html#project-overview",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "",
+    "text": "Sea level rise is changing the ecology and disease dynamics in coastal forests due to frequent flooding and the increased presence of salinity in the soil. The oomycete Phytophthora spp. is responsible for many plant diseases that have had significant environmental and economic consequences (Klinkowski 1970). Recently, invasive P. ramorum has been detected in Maryland, raising concerns about the health of native coastal flora, particularly under climate change (Maryland Department of Agriculture 2017).\n\n\n\n\n\n\nPipetting PARPH media onto petri dishes to prepare for oomycete plating.\n\n\n\nIncreased salinity in soil imposes similar physiological stress as drought does in native plants (Sanogo 2004). Therefore, I explored whether seawater intrusion would promote higher abundances of Phytophthora spp. in coastal soils of Southern Maryland due to potentially having higher plant infections caused by salinity stress."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#soil-collection",
+    "href": "projects/2023-11-10-phytophthora/index.html#soil-collection",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "Soil Collection",
+    "text": "Soil Collection\nSoil sampling was performed by Jordan Manns and Mel Byrne for their research in Dr. Torres-Martínez's lab. The samples were collected from four different sites across a natural salinity gradient on the Potomac River at two different times of the year. One collection was performed in spring when Phytophthora spp. is likely to be more active, and at the end of summer when hurricane season starts on the Atlantic coast and there is likely to be increased seawater intrusion.\n\n\n\n\n\nFigure 1: Map of soil collection locations in Southern Maryland and the salinity."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#culturing",
+    "href": "projects/2023-11-10-phytophthora/index.html#culturing",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "Culturing",
+    "text": "Culturing\n\n\n\n\n\n\nAgar plug culture of Phytophthora!\n\n\n\nThe abundance of Phytophthora spp. was determined by performing serial dilutions of soil samples, plating them on the highly selective PARPH media, and incubating them at 25ºC. Colonies were counted after 4 days of incubation."
+  },
+  {
+    "objectID": "projects/2023-11-10-phytophthora/index.html#analysis",
+    "href": "projects/2023-11-10-phytophthora/index.html#analysis",
+    "title": "Phytophthora presence in Southern Maryland coastal soils",
+    "section": "Analysis",
+    "text": "Analysis\nThe abundance of Phytophthora spp. varied by site depending on the season that the soil was collected. In both seasons, it is hard to tell a clear relationship between salinity and Phytophthora abundance. In the spring and summer, there is the highest abundances at the sites with the lowest salinity, but we also see a relatively high abundance at some higher salinity. These results suggest that seawater intrusion and seasonality could modify patterns of Phytophthora spp abundances in coastal soils of Southern Maryland, but further analyses should be done to make any definite conclusions. One possible approach would be to sample soil from a wider salinity range and in colder months as well.\n\n\n\n\n\nFigure 2: Mean cfu/ml across sites and seasons."
+  },
+  {
+    "objectID": "projects/2023-12-10-research-ethics-kaza/index.html",
+    "href": "projects/2023-12-10-research-ethics-kaza/index.html",
+    "title": "Ethical Challenges in Investigating Human-Elephant Conflict",
+    "section": "",
+    "text": "Earlier this year I started as a Graduate Research Fellow in collaboration with the emLab at UCSB and Conservation International SPARC. During my interview and subsequent on boarding process, I learned that the research would be focused on areas of Southern Africa, mainly the KAZA region. For those unfamiliar with the term KAZA TFCA (as I was initially), it stands for Kavango–Zambezi Transfrontier Conservation Area, which is one of the largest landscape conservation areas in the world, spanning Angola, Zambia, Zimbabwe, Botswana, and Namibia (WWF 2016). It’s a beautiful, diverse area that, focuses on sustainably managing the ecosystem, attracts many tourists, and serves as a hub for various research initiatives.\n\n\n\n\n\nMap of the KAZA TCFA (WWFNamibia 2015).\nSo, what is the focus of our research in KAZA? Broadly, our questions revolve around the effects of climate change on wildlife corridors, human intrusion into these corridors, and the subsequent impacts on human-elephant conflict. Throughout my data analysis and literature review this quarter, I’ve been contemplating the following questions: In what ways can we ensure that our research is relevant and beneficial for the communities we’re studying and using data from? What factors should we keep in mind when conducting and reporting research on communities that we have no personal connections to?\n\n\n\n\n\nElephants in KAZA (WWF 2016).\nTo dive into these questions, I am drawing inspiration from AI Blindspot (Calderon et al. 2019), which was developed during the Berkman Klein Center and MIT Media Lab’s 2019 Assembly program. This guide was developed with AI data and models in mind, but many of the questions and concepts apply to data and research ethics in general. The authors lay out the potential sources of bias & oversight, or “blind spots”, in four sections: Planning, Building, Deploying, and Monitoring."
+  },
+  {
+    "objectID": "projects/2023-12-10-research-ethics-kaza/index.html#fa-ruler-combined-planning",
+    "href": "projects/2023-12-10-research-ethics-kaza/index.html#fa-ruler-combined-planning",
+    "title": "Ethical Challenges in Investigating Human-Elephant Conflict",
+    "section": " Planning",
+    "text": "Planning\nThis initial section guides us to assess the alignment of our research methods with expected outcomes and also addresses potential vulnerabilities and issues related to the safety of data.\n\nClearly articulate the problem and outcome you are optimizing for.\nThe rise in human-elephant conflict in KAZA is believed to stem from the impacts of climate change on habitat suitability and human encroachment on wildlife corridors (Kamwi et al. 2015). In this project, we aim to analyze how human activity has altered land cover in wildlife corridors over time and how human presence in relation to the corridors is predicted to change in the future based on current trends. Additionally, we are exploring how the locations of human-elephant conflicts relate to the location of corridors, and what seasonal or climactic variables have the most influence on conflict rates. Results from this research can help inform local communities about potential future dangers to them from elephants, and how their activities are influencing these conflicts.\n\n\nHave you engaged with affected communities? Subject matter experts?\nYes, we have collaborators at the University of Namibia who have been engaging in this field of research for a while. They have conducted village interviews to collect data on human-wildlife conflicts.\n\n\nAbusability\nWhile this research can help further our understanding of human-elephant conflicts and their developments, it’s critical to acknowledge the dual-edged nature of reporting this information. It is possible that government officials could use these findings to implement changes in community activities, potentially restricting access to essential resources. This raises concerns about the responsible use of this data and research outcomes.\n\n\nPrivacy\nPersonal information from the conflict interviews has not been recorded, so people can retain anonymity. When it comes to publishing wildlife research, a major concern revolves around determining who has access to the data due to the potential for malicious use. A majority of elephant data cannot be made publicly available since there are poachers who will use the data for ill intentions."
+  },
+  {
+    "objectID": "projects/2023-12-10-research-ethics-kaza/index.html#fa-compass-drafting-building",
+    "href": "projects/2023-12-10-research-ethics-kaza/index.html#fa-compass-drafting-building",
+    "title": "Ethical Challenges in Investigating Human-Elephant Conflict",
+    "section": " Building",
+    "text": "Building\nThis second section asks questions that expand on how local communities are impacted by our research.\n\nIs this research accessible to those who are the most affected by it? Do they trust it?\nWhile we do have conflict surveys, I think it would be beneficial to consider conducting a follow-up survey in the same villages once the project results are available. This additional survey aims to gauge the level of trust in our analyses—assessing whether the community understands the analysis process, cares about the results, and finds them consistent with their personal observations of human-elephant conflicts. This iterative approach adds a valuable layer of community engagement and ensures that our research is not only informative but resonates with the experiences of those directly impacted.\n\n\nHow rigid should we be when developing our future projections of human-elephant conflict?\nVarious model developments may yield projections that are either lower than actual future impacts, potentially providing a false sense of comfort, or significantly higher than actual future impacts, leading to unnecessary anxiety or harsher regulations."
+  },
+  {
+    "objectID": "projects/2023-12-10-research-ethics-kaza/index.html#fa-network-wired-deploying",
+    "href": "projects/2023-12-10-research-ethics-kaza/index.html#fa-network-wired-deploying",
+    "title": "Ethical Challenges in Investigating Human-Elephant Conflict",
+    "section": " Deploying",
+    "text": "Deploying\nThe third section focuses on the actual performance of AI models and how changes in data might not be accounted for. I have modified and compiled their questions in this section to think about indigenous data and what we might consider to be “non-traditional” data.\n\nHow might our model not accurately reflect people’s local knowledge and personal experiences with changes in human-elephant conflict?\nWe are assuming that increased rates of conflict are due to human encroachment on corridors, but what is not considered in our data is the specific ways and reasons that people’s movement is changing. We have reports of human-elephant conflict, but not the specific information on how the conflict came about. Have increases in reports of conflict occurred because there has been an actual increase in conflict events, or has conflict reporting and recording become common? Are changes in human activity influenced by factors of climate change as much as elephant activity is? We cannot reliably integrate lived experiences into spatial suitability and resistance modeling, but this data can and should be considered when making conclusions from the modeling."
+  },
+  {
+    "objectID": "projects/2023-12-10-research-ethics-kaza/index.html#fa-magnifying-glass-oversight",
+    "href": "projects/2023-12-10-research-ethics-kaza/index.html#fa-magnifying-glass-oversight",
+    "title": "Ethical Challenges in Investigating Human-Elephant Conflict",
+    "section": " Oversight",
+    "text": "Oversight\nFinally, we must continue to address oversights in our modeling. Continuing from the ideas in the previous section, it is imperative that we work closely with our local collaborators and gain further insight into how our research can benefit the local communities.\n\nIn what ways can we improve our communication with those in affected communities and those who have more expertise in the area?\nCurrently, we are meeting with our collaborators in Namibia less often than we should be, but this is more of an issue of conflicting schedules and time differences. We are also still figuring out how to best integrate our research interests with theirs, but we have made it clear to them that if any of our research directions do not align with their priorities, we will not continue to pursue them. A significant portion of the data necessary for our research comes directly from our collaborators. We are grateful that they trust us with this data and we will only be using the data how they see fit."
   },
   {
     "objectID": "projects/2023-11-26-houston-power-outage/index.html",
