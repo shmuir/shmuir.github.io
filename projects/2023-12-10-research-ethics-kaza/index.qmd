@@ -61,7 +61,7 @@ This second section asks questions that expand on how local communities are impa
 
 ### Is this research accessible to those who are the most affected by it? Do they trust it?
 
-While we do have conflict surveys, I think it would be beneficial to consider conducting a follow-up survey in the same villages once the project results are available. This additional survey aims to gauge the level of trust in our analyses---assessing whether the community understands the analysis process, cares about the results, and finds them consistent with their personal observations of human-elephant conflicts. This iterative approach adds a valuable layer of community engagement and ensures that our research is not only informative but resonates with the experiences of those directly impacted.
+While we do have conflict surveys, I think it would be beneficial to consider conducting a follow-up survey in the same villages once the project results are available. This additional survey would help to gauge the level of trust in our analyses---assessing whether the community understands the analysis process, cares about the results, and finds them consistent with their personal observations of human-elephant conflicts. This approach adds an additional layer of community engagement and ensures that our research is not only informative but incorperates the experiences of those directly impacted.
 
 ### How rigid should we be when developing our future projections of human-elephant conflict?
 
@@ -89,7 +89,7 @@ Reflecting on the considerations discussed, here are the key takeaways that will
 
 #### Potential Community Impact
 
-This research holds the potential to influence the daily lives of people within their community.
+This research pertains to the daily lives of people within their community. We need to be contingent that while we are the ones conducting the research, these results do not have a personal impact on us.
 
 #### Local Knowledge
 
