@@ -1,0 +1,26 @@
+---
+title: "Identifying power outages in Houston, TX from February 2021 storms"
+#subtitle: ""
+description: "Created for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB"
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+    orcid: 
+    affiliation: Bren School of Environmental Science & Management at University of California Santa Barbara
+    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
+date: 12-15-2023
+categories: [Plants, Climate, R]
+bibliography: references.bib
+citation:
+  url: https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/
+#image: map.png
+format:
+  html:
+    code-fold: true
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+

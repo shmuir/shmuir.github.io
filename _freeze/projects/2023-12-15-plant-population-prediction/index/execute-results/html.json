@@ -1,0 +1,14 @@
+{
+  "hash": "4fd13c51ba200bfc3f4c8ce9be2cddc4",
+  "result": {
+    "markdown": "---\ntitle: \"Identifying power outages in Houston, TX from February 2021 storms\"\n#subtitle: \"\"\ndescription: \"Created for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB\"\nauthor:\n  - name: Sam Muir\n    url: https://shmuir.github.io/\n    orcid: \n    affiliation: Bren School of Environmental Science & Management at University of California Santa Barbara\n    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science\ndate: 12-15-2023\ncategories: [Plants, Climate, R]\nbibliography: references.bib\ncitation:\n  url: https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/\n#image: map.png\nformat:\n  html:\n    code-fold: true\ndraft: false\n---\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
