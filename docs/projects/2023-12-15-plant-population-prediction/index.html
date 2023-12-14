@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sam Muir">
 <meta name="dcterms.date" content="2023-12-15">
-<meta name="description" content="Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB">
+<meta name="description" content="Predicting population trends for those with an unknown status">
 
 <title>Sam Muir - The influence of photosynthetic rate and ecological threats on plant species population trends</title>
 <style>
@@ -190,10 +190,9 @@ div.csl-indent {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
       <h1 class="title">The influence of photosynthetic rate and ecological threats on plant species population trends</h1>
-            <p class="subtitle lead">Predicting population trends for those with an unknown status</p>
                   <div>
         <div class="description">
-          Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB
+          Predicting population trends for those with an unknown status
         </div>
       </div>
                           <div class="quarto-categories">
@@ -246,6 +245,7 @@ div.csl-indent {
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a>
   <ul class="collapse">
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question</a></li>
   </ul></li>
   <li><a href="#data-methods" id="toc-data-methods" class="nav-link" data-scroll-target="#data-methods">Data &amp; Methods</a>
   <ul class="collapse">
@@ -260,7 +260,8 @@ div.csl-indent {
   </ul></li>
   <li><a href="#full-logistic-model" id="toc-full-logistic-model" class="nav-link" data-scroll-target="#full-logistic-model">Full Logistic Model</a></li>
   </ul></li>
-  <li><a href="#making-probalistic-predictions" id="toc-making-probalistic-predictions" class="nav-link" data-scroll-target="#making-probalistic-predictions">Making Probalistic Predictions</a></li>
+  <li><a href="#assessing-model-performance" id="toc-assessing-model-performance" class="nav-link" data-scroll-target="#assessing-model-performance">Assessing Model Performance</a></li>
+  <li><a href="#making-probabilistic-predictions" id="toc-making-probabilistic-predictions" class="nav-link" data-scroll-target="#making-probabilistic-predictions">Making Probabilistic Predictions</a></li>
   <li><a href="#thoughts-and-conclusions" id="toc-thoughts-and-conclusions" class="nav-link" data-scroll-target="#thoughts-and-conclusions">Thoughts and Conclusions</a></li>
   </ul>
 </nav>
@@ -275,21 +276,25 @@ div.csl-indent {
 <h1>Project Overview</h1>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>Climate change and human activity are significant threats to plant species populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue <span class="citation" data-cites="IUCN2023">(<a href="#ref-IUCN2023" role="doc-biblioref">IUCN 2023</a>)</span>. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation.</p>
-<p>C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes <span class="citation" data-cites="nobel1991">(<a href="#ref-nobel1991" role="doc-biblioref">Nobel 1991</a>)</span>. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments <span class="citation" data-cites="simkin2019">(<a href="#ref-simkin2019" role="doc-biblioref">Simkin, López-Calcagno, and Raines 2019</a>)</span>.</p>
+<p>Climate change and human activity are significant contributors to habitat loss, and therefore threaten many plant populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue <span class="citation" data-cites="IUCN2023">(<a href="#ref-IUCN2023" role="doc-biblioref">IUCN 2023</a>)</span>. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation or drought tolerance <span class="citation" data-cites="bhadra2022a">(<a href="#ref-bhadra2022a" role="doc-biblioref">Bhadra et al. 2022</a>)</span>.</p>
+<p>C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes <span class="citation" data-cites="nobel1991">(<a href="#ref-nobel1991" role="doc-biblioref">Nobel 1991</a>)</span>. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments due to their energy conservation <span class="citation" data-cites="simkin2019">(<a href="#ref-simkin2019" role="doc-biblioref">Simkin, López-Calcagno, and Raines 2019</a>)</span>.</p>
 <p><img src="photosynth.png" class="img-fluid" data-fig-align="left" width="500" alt="Made with BioRender.com"> <img src="space.png" width="85" height="50"><img src="climate-threats.jpg" class="img-fluid" data-fig-align="right" width="194" alt="Bhadra et al.&nbsp;2022"></p>
 <p><span style="color: grey;">Made with BioRender</span>                            <span class="citation" data-cites="bhadra2022a">(<a href="#ref-bhadra2022a" role="doc-biblioref">Bhadra et al. 2022</a>)</span></p>
-<p>There are many other factors that affect a species’ population trend, but in this project, I am interested in analyzing how a plant species photosynthetic rate and ecological threats influence its odds of having a decreasing population.</p>
+<p>Understanding the drivers of plant population decline by specie can help inform on conservation priority, though it is good to keep in mind that not all plants with a decreasing population trend are classified as threatened. Some may have a decreasing population due to effective management of invasive and destructive species <span class="citation" data-cites="byun2017">(<a href="#ref-byun2017" role="doc-biblioref">Byun, Blois, and Brisson 2017</a>)</span>.</p>
+</section>
+<section id="question" class="level2">
+<h2 class="anchored" data-anchor-id="question">Question</h2>
+<p>There are many other factors that affect a species’ population trend, but in this project, I am interested in analyzing how a plant species photosynthetic rate and ecological threats influence a species’ odds of having a decreasing population. Additionally, can I use this model to find the log-odds of a plant with an unknown status having a decreasing population trend?</p>
 </section>
 </section>
 <section id="data-methods" class="level1">
 <h1>Data &amp; Methods</h1>
-<p>Photosynthetic rate data was obtained from the <code>BIEN</code> R package. The <a href="https://bien.nceas.ucsb.edu/bien/">Botanical Information and Ecology Network (BIEN)</a> was developed by collaborating ecologists at the National Center for Ecological Analysis and Synthesis (NCEAS). The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the <a href="https://www.iucnredlist.org/">International Union for Conservation Nature (IUCN) Red List</a>. Climate threats include habitat shifts, droughts, temperature extremes, storms &amp; flooding, and “other impacts” that are not defined by the IUCN. Human threats include housing &amp; urban areas, commercial &amp; industrial areas, tourism &amp; recreation areas, recreational activities, war &amp; civil unrest, and work &amp; other activities.</p>
+<p>Photosynthetic rate data was obtained from the <code>BIEN</code> R package <span class="citation" data-cites="BIEN">(<a href="#ref-BIEN" role="doc-biblioref">Maitner 2023</a>)</span>. The <a href="https://bien.nceas.ucsb.edu/bien/">Botanical Information and Ecology Network (BIEN)</a> was developed by collaborating ecologists at the <a href="https://www.nceas.ucsb.edu/">National Center for Ecological Analysis and Synthesis (NCEAS)</a>. The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the <a href="https://www.iucnredlist.org/">International Union for Conservation Nature (IUCN) Red List</a>. Climate threats include habitat shifts, droughts, temperature extremes, storms &amp; flooding, and “other impacts” that are not defined by the IUCN. Human threats include housing &amp; urban areas, commercial &amp; industrial areas, tourism &amp; recreation areas, recreational activities, war &amp; civil unrest, and work &amp; other activities <span class="citation" data-cites="rredlist">(<a href="#ref-rredlist" role="doc-biblioref">Gearty and Chamberlain 2022</a>)</span>.</p>
 <p>To analyze my data I ran a logistic regression model. I used Increasing/Stable (0) and Decreasing (1) as the categorical binary response variable on average photosynthetic rate per leaf area, climate threatened (yes/no), and human threatened (yes/no).</p>
 <section id="data-preparation" class="level2">
 <h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
 <p>Data was prepared in a separate <code>data_fetch.R</code> script. Data from <code>BIEN</code> was cleaned and joined with data from the IUCN Red List entries for species in the kingdom <em>Plantae</em>. Species that had an increasing or stable population trend were assigned a binary variable of 0 and those who had a decreasing population trend were assigned a binary variable of 1.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"data_fetch.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"data_fetch.R"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="data-exploration" class="level2">
 <h2 class="anchored" data-anchor-id="data-exploration">Data Exploration</h2>
@@ -564,24 +569,89 @@ div.csl-indent {
 </div>
 </div>
 <p>From this model we can conclude that plants threatened by climate factors have their odds of having a decreasing population increase by a factor of 4.29, while those threatened by human factors have their odds increase by a factor of 2.52.</p>
-<p>We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 10% for each unit increase in photosynthetic rate.</p>
-<p>But, we can also see that the p-value for Human Threatened is &gt;0.05, so it is not a significant factor in determining is a plant has a decreasing population. For this reason, it will not be included in the next section.</p>
+<p>We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 11% for each unit increase in photosynthetic rate.</p>
 </section>
 </section>
-<section id="making-probalistic-predictions" class="level1">
-<h1>Making Probalistic Predictions</h1>
+<section id="assessing-model-performance" class="level1">
+<h1>Assessing Model Performance</h1>
+<p>Now that we have this model, I am interested in assessing the accuracy of it, which can be done by creating a confusion matrix. This is a very simple version of a confusion matrix where I have set log-odds values of ≥0.5 to classify the species as 1 (has a decreasing population) and values &lt;0.5 to 0 (has a non-decreasing population). I can then compare these predicted values to the actual population trend for the species and calculate the false-positive and false-negative rates.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>photo_plus <span class="ot">&lt;-</span> <span class="fu">augment</span>(mod, <span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_hat =</span> <span class="fu">round</span>(.fitted)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pop_trend_binary, avg_photo, .fitted, y_hat)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>con_matrix <span class="ot">&lt;-</span> photo_plus <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pop_trend_binary, y_hat) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>rownames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Actually has Non-Decreasing Pop."</span>, <span class="st">"Actually has Decreasing Pop."</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>colnames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Predicted Non-Decreasing Pop."</span>, <span class="st">"Predicted Decreasing Pop."</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>con_matrix <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(con_matrix[<span class="dv">1</span>], </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                                       con_matrix[<span class="dv">2</span>], </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                                       con_matrix[<span class="dv">3</span>], </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                                       con_matrix[<span class="dv">4</span>]), </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ncol =</span> <span class="dv">2</span>, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">nrow =</span> <span class="dv">2</span>),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                              <span class="at">row.names =</span> rownames)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(con_matrix) <span class="ot">&lt;-</span> colnames</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>where <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>style <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'color: red;'</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>           <span class="st">'color: green;'</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>           <span class="st">'color: green;'</span>,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>           <span class="st">'color: red;'</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>css.cell <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="st">''</span>, <span class="fu">nrow</span>(con_matrix), <span class="fu">ncol</span>(con_matrix))</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>css.cell[where] <span class="ot">&lt;-</span> style</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>htmlTable<span class="sc">::</span><span class="fu">htmlTable</span>(con_matrix, <span class="at">css.cell =</span> css.cell,</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>                     <span class="at">caption =</span> <span class="st">"Confusion Matrix to Assess Photosynthetic Rate Model Performance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="gmisc_table table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th colspan="3" style="text-align: left;">Confusion Matrix to Assess Photosynthetic Rate Model Performance</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 1px solid grey; border-top: 2px solid grey;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey;">Predicted Non-Decreasing Pop.</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey;">Predicted Decreasing Pop.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Actually has Non-Decreasing Pop.</td>
+<td style="text-align: center; color: green;">477</td>
+<td style="text-align: center; color: red;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; border-bottom: 2px solid grey;">Actually has Decreasing Pop.</td>
+<td style="text-align: center; color: red; border-bottom: 2px solid grey;">112</td>
+<td style="text-align: center; color: green; border-bottom: 2px solid grey;">12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>From this confusion matrix we can see True Positive/True Negative values in green and False Positive/False Negative values in red. Based on these counts, the model has an 80% accuracy. The model seems to be better at predicting if a specie has a non-decreasing population rather than if it has a decreasing population.</p>
+<p>Above 90% accuracy seems to be standard in industry <span class="citation" data-cites="towardsdatascience2020">(<a href="#ref-towardsdatascience2020" role="doc-biblioref">TowardsDataScience 2020</a>)</span>, but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.</p>
+</section>
+<section id="making-probabilistic-predictions" class="level1">
+<h1>Making Probabilistic Predictions</h1>
 <p>There are many species from the BIEN data that are not present on the IUCN Red List. Here, I am using my model to make out-of-sample predictions. To do this, I’ll need to pull out the model coefficients and create a function with inputs for the coefficients, photosynthetic rate, and if the plant is threatened by climate change.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficients</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="co">#Intercept</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co">#photo</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="co">#climate</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>threat_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(b0, b1, b2, photosyntheitc_rate, climate) {</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  equation <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> photosyntheitc_rate <span class="sc">+</span> b2 <span class="sc">*</span> climate</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  prob <span class="ot">&lt;-</span> (<span class="fu">exp</span>(equation)) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(equation))</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(prob)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficients</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="co">#Intercept</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co">#photo</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="co">#climate</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">4</span>] <span class="co">#human</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>threat_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(b0, b1, b2, b3, photosyntheitc_rate, climate, human) {</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  equation <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> photosyntheitc_rate <span class="sc">+</span> b2 <span class="sc">*</span> climate <span class="sc">+</span> b3 <span class="sc">*</span> human</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  prob <span class="ot">&lt;-</span> (<span class="fu">exp</span>(equation)) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(equation))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(prob)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-condensed table-sm small" data-quarto-postprocess="true">
@@ -591,6 +661,7 @@ div.csl-indent {
 <th style="text-align: left;" data-quarto-table-cell-role="th">Speices</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Photosynthetic Rate</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Climate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Human</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">ˆy</th>
 </tr>
 </thead>
@@ -599,11 +670,13 @@ div.csl-indent {
 <td style="text-align: left;">Psammochloa villosa</td>
 <td style="text-align: right;">65.05000</td>
 <td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0.0004961</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Helianthus neglectus</td>
 <td style="text-align: right;">48.72300</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0.0029764</td>
 </tr>
@@ -611,17 +684,20 @@ div.csl-indent {
 <td style="text-align: left;">Helianthus niveus</td>
 <td style="text-align: right;">46.74867</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0.0156898</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Glaux maritima</td>
 <td style="text-align: right;">43.00000</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.0235000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0572868</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Helianthus cusickii</td>
 <td style="text-align: right;">42.24100</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0.0060494</td>
 </tr>
@@ -629,29 +705,34 @@ div.csl-indent {
 <td style="text-align: left;">Gouania lupuloides</td>
 <td style="text-align: right;">0.70820</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0.7151743</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Serjania mexicana</td>
 <td style="text-align: right;">0.68560</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.3693444</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5965838</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Clematis florida</td>
 <td style="text-align: right;">0.61000</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0.7173674</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Passiflora vitifolia</td>
 <td style="text-align: right;">0.51340</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.7195148</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.8662658</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Cissus erosa</td>
 <td style="text-align: right;">0.43180</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0.3758644</td>
 </tr>
@@ -667,9 +748,10 @@ div.csl-indent {
 </section>
 <section id="thoughts-and-conclusions" class="level1">
 <h1>Thoughts and Conclusions</h1>
-<p>Overall, this model suggests that photosynthetic rate per leaf area has a strong effect on if a plant will have a decreasing population trend, and those threatened by climate change are also more likely to have a decreasing population trend.</p>
-<p>The results of this logistic model and odds ratio generally align with what I expected to see. Though, I did think that human impacts would have more of a significant effect. There are also many other factors that this model is not including, but another big impact on habitat is agriculture, which would be interesting to incorporate in the model.</p>
-<p>This model may also be biased due to the relatively small sample size of plant species. There were many observations that were filtered out during data preparation since each species needed to be present in the BIEN and IUCN data sets. Given a larger sample, the model would be more accurate.</p>
+<p>Overall, this model suggests that photosynthetic rate per leaf area has a strong effect on if a plant will have a decreasing population trend. Those threatened by climate change and human factors are also more likely to have a decreasing population trend. The results of this logistic model and odds ratio generally align with what I expected to see. Though, I did think that human factors would have more of a significant impact There are also many other factors that this model is not including, but another big contribution to habitat loss is agriculture, which would be interesting to incorporate in the model.</p>
+<p>This model may also be biased due to the relatively small sample size of plant species. There were many observations that were filtered out during data preparation since each species needed to be present in the BIEN and IUCN data sets. Given a larger sample, the model could be more accurate. Additionally, I would like to construct a more sophisticated confusion matrix using the <code>caret</code> package and split my data into training and testing sets.</p>
+<p>With a more comprehensive data set and controlling for more variables (additional threats), this model could be useful in flagging species that have high odds of having a decreasing population trend, if they currently have an unknown status. As I mentioned in the motivation for this project, not all plants with a decreasing population trend are threatened, so it would also be interested to create a similar model using photosynthetic rate and conservation status.</p>
+<p>To see the full code and data preparation, check out the <a href="https://github.com/shmuir/plant-pop-pred">Github repository</a>.</p>
 
 
 
@@ -679,14 +761,26 @@ div.csl-indent {
 <div id="ref-bhadra2022a" class="csl-entry" role="listitem">
 Bhadra, Preetha, Sagar Maitra, Tanmoy Shankar, Akbar Hossain, Subhashisa Praharaj, and Tariq Aftab. 2022. <span>“Climate Change Impact on Plants: Plant Responses and Adaptations.”</span> In, 1–24. Elsevier. <a href="https://doi.org/10.1016/b978-0-323-85665-2.00004-2">https://doi.org/10.1016/b978-0-323-85665-2.00004-2</a>.
 </div>
+<div id="ref-byun2017" class="csl-entry" role="listitem">
+Byun, Chaeho, Sylvie de Blois, and Jacques Brisson. 2017. <span>“Management of Invasive Plants Through Ecological Resistance.”</span> <em>Biological Invasions</em> 20 (1): 13–27. <a href="https://doi.org/10.1007/s10530-017-1529-7">https://doi.org/10.1007/s10530-017-1529-7</a>.
+</div>
+<div id="ref-rredlist" class="csl-entry" role="listitem">
+Gearty, William, and Scott Chamberlain. 2022. <span>“Rredlist: ’IUCN’ Red List Client.”</span> <a href="https://CRAN.R-project.org/package=rredlist">https://CRAN.R-project.org/package=rredlist</a>.
+</div>
 <div id="ref-IUCN2023" class="csl-entry" role="listitem">
 IUCN. 2023. <span>“Summary Statistics.”</span> <em>Red List</em>. <a href="https://www.iucnredlist.org/resources/summary-statistics">https://www.iucnredlist.org/resources/summary-statistics</a>.
+</div>
+<div id="ref-BIEN" class="csl-entry" role="listitem">
+Maitner, Brian. 2023. <span>“BIEN: Tools for Accessing the Botanical Information and Ecology Network Database.”</span> <a href="https://CRAN.R-project.org/package=BIEN">https://CRAN.R-project.org/package=BIEN</a>.
 </div>
 <div id="ref-nobel1991" class="csl-entry" role="listitem">
 Nobel, Park S. 1991. <span>“Achievable Productivities of Certain CAM Plants: Basis for High Values Compared with C<span><sub>3</sub></span> and C<span><sub>4</sub></span> Plants.”</span> <em>New Phytologist</em> 119 (2): 183–205. <a href="https://doi.org/10.1111/j.1469-8137.1991.tb01022.x">https://doi.org/10.1111/j.1469-8137.1991.tb01022.x</a>.
 </div>
 <div id="ref-simkin2019" class="csl-entry" role="listitem">
 Simkin, Andrew J, Patricia E López-Calcagno, and Christine A Raines. 2019. <span>“Feeding the World: Improving Photosynthetic Efficiency for Sustainable Crop Production.”</span> <em>Journal of Experimental Botany</em> 70 (4): 1119–40. <a href="https://doi.org/10.1093/jxb/ery445">https://doi.org/10.1093/jxb/ery445</a>.
+</div>
+<div id="ref-towardsdatascience2020" class="csl-entry" role="listitem">
+TowardsDataScience. 2020. <span>“How i Consistently Improve My Machine Learning Models from 80.”</span> <em>Data Science</em>. <a href="https://towardsdatascience.com/how-i-consistently-improve-my-machine-learning-models-from-80-to-over-90-accuracy-6097063e1c9a#:~:text=Introduction,)%20of%20at%20least%2090%25.">https://towardsdatascience.com/how-i-consistently-improve-my-machine-learning-models-from-80-to-over-90-accuracy-6097063e1c9a#:~:text=Introduction,)%20of%20at%20least%2090%25.</a>
 </div>
 </div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{muir2023,
   author = {Muir, Sam},

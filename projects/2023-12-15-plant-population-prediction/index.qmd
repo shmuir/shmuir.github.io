@@ -1,7 +1,7 @@
 ---
 title: "The influence of photosynthetic rate and ecological threats on plant species population trends"
-subtitle: "Predicting population trends for those with an unknown status"
-description: "Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB"
+subtitle: ""
+description: "Predicting population trends for those with an unknown status"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
@@ -38,19 +38,23 @@ library(janitor)
 
 ## Motivation
 
-Climate change and human activity are significant threats to plant species populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue [@IUCN2023]. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation.
+Climate change and human activity are significant contributors to habitat loss, and therefore threaten many plant populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue [@IUCN2023]. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation or drought tolerance [@bhadra2022a].
 
-C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes [@nobel1991]. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments [@simkin2019].
+C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes [@nobel1991]. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments due to their energy conservation [@simkin2019].
 
 ![Made with BioRender.com](photosynth.png){fig-align="left" width="500"} ![](space.png){width="85" height="50"}![Bhadra et al. 2022](climate-threats.jpg){fig-align="right" width="194"}
 
 [Made with BioRender]{style="color: grey;"}                            [@bhadra2022a]
 
-There are many other factors that affect a species' population trend, but in this project, I am interested in analyzing how a plant species photosynthetic rate and ecological threats influence its odds of having a decreasing population.
+Understanding the drivers of plant population decline by specie can help inform on conservation priority, though it is good to keep in mind that not all plants with a decreasing population trend are classified as threatened. Some may have a decreasing population due to effective management of invasive and destructive species [@byun2017].
+
+## Question
+
+There are many other factors that affect a species' population trend, but in this project, I am interested in analyzing how a plant species photosynthetic rate and ecological threats influence a species' odds of having a decreasing population. Additionally, can I use this model to find the log-odds of a plant with an unknown status having a decreasing population trend?
 
 # Data & Methods
 
-Photosynthetic rate data was obtained from the `BIEN` R package. The [Botanical Information and Ecology Network (BIEN)](https://bien.nceas.ucsb.edu/bien/) was developed by collaborating ecologists at the National Center for Ecological Analysis and Synthesis (NCEAS). The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the [International Union for Conservation Nature (IUCN) Red List](https://www.iucnredlist.org/). Climate threats include habitat shifts, droughts, temperature extremes, storms & flooding, and "other impacts" that are not defined by the IUCN. Human threats include housing & urban areas, commercial & industrial areas, tourism & recreation areas, recreational activities, war & civil unrest, and work & other activities.
+Photosynthetic rate data was obtained from the `BIEN` R package [@BIEN]. The [Botanical Information and Ecology Network (BIEN)](https://bien.nceas.ucsb.edu/bien/) was developed by collaborating ecologists at the [National Center for Ecological Analysis and Synthesis (NCEAS)](https://www.nceas.ucsb.edu/). The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the [International Union for Conservation Nature (IUCN) Red List](https://www.iucnredlist.org/). Climate threats include habitat shifts, droughts, temperature extremes, storms & flooding, and "other impacts" that are not defined by the IUCN. Human threats include housing & urban areas, commercial & industrial areas, tourism & recreation areas, recreational activities, war & civil unrest, and work & other activities [@rredlist].
 
 To analyze my data I ran a logistic regression model. I used Increasing/Stable (0) and Decreasing (1) as the categorical binary response variable on average photosynthetic rate per leaf area, climate threatened (yes/no), and human threatened (yes/no).
 
@@ -59,7 +63,7 @@ To analyze my data I ran a logistic regression model. I used Increasing/Stable (
 Data was prepared in a separate `data_fetch.R` script. Data from `BIEN` was cleaned and joined with data from the IUCN Red List entries for species in the kingdom *Plantae*. Species that had an increasing or stable population trend were assigned a binary variable of 0 and those who had a decreasing population trend were assigned a binary variable of 1.
 
 ``` r
-source(file.path("data_fetch.R"))
+source(file.path("data_fetch.R")) 
 ```
 
 ```{r echo=FALSE}
@@ -239,11 +243,48 @@ tab_model(mod,
 
 From this model we can conclude that plants threatened by climate factors have their odds of having a decreasing population increase by a factor of 4.29, while those threatened by human factors have their odds increase by a factor of 2.52.
 
-We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 10% for each unit increase in photosynthetic rate.
+We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 11% for each unit increase in photosynthetic rate.
 
-But, we can also see that the p-value for Human Threatened is \>0.05, so it is not a significant factor in determining is a plant has a decreasing population. For this reason, it will not be included in the next section.
+# Assessing Model Performance
 
-# Making Probalistic Predictions
+Now that we have this model, I am interested in assessing the accuracy of it, which can be done by creating a confusion matrix. This is a very simple version of a confusion matrix where I have set log-odds values of ≥0.5 to classify the species as 1 (has a decreasing population) and values \<0.5 to 0 (has a non-decreasing population). I can then compare these predicted values to the actual population trend for the species and calculate the false-positive and false-negative rates.
+
+```{r}
+photo_plus <- augment(mod, type.predict = "response") %>%
+  mutate(y_hat = round(.fitted)) %>%
+  select(pop_trend_binary, avg_photo, .fitted, y_hat)
+con_matrix <- photo_plus %>%
+  select(pop_trend_binary, y_hat) %>%
+  table()
+rownames <- c("Actually has Non-Decreasing Pop.", "Actually has Decreasing Pop.")
+colnames <- c("Predicted Non-Decreasing Pop.", "Predicted Decreasing Pop.")
+con_matrix <- as.data.frame(matrix(c(con_matrix[1], 
+                                       con_matrix[2], 
+                                       con_matrix[3], 
+                                       con_matrix[4]), 
+                                     ncol = 2, 
+                                     nrow = 2),
+                              row.names = rownames)
+colnames(con_matrix) <- colnames
+
+where <- rbind(c(2,1), c(2,2), c(1,1), c(1,2))
+style <- c('color: red;',
+           'color: green;',
+           'color: green;',
+           'color: red;')
+
+css.cell <- matrix('', nrow(con_matrix), ncol(con_matrix))
+css.cell[where] <- style
+
+htmlTable::htmlTable(con_matrix, css.cell = css.cell,
+                     caption = "Confusion Matrix to Assess Photosynthetic Rate Model Performance")
+```
+
+From this confusion matrix we can see True Positive/True Negative values in green and False Positive/False Negative values in red. Based on these counts, the model has an `r round(((477+12)/nrow(photo_plus)),2)*100`% accuracy. The model seems to be better at predicting if a specie has a non-decreasing population rather than if it has a decreasing population.
+
+Above 90% accuracy seems to be standard in industry [@towardsdatascience2020], but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.
+
+# Making Probabilistic Predictions
 
 There are many species from the BIEN data that are not present on the IUCN Red List. Here, I am using my model to make out-of-sample predictions. To do this, I'll need to pull out the model coefficients and create a function with inputs for the coefficients, photosynthetic rate, and if the plant is threatened by climate change.
 
@@ -252,10 +293,11 @@ There are many species from the BIEN data that are not present on the IUCN Red L
 b0 <- mod$coefficients[1] #Intercept
 b1 <- mod$coefficients[2] #photo
 b2 <- mod$coefficients[3] #climate
+b3 <- mod$coefficients[4] #human
 
 # function
-threat_prob <- function(b0, b1, b2, photosyntheitc_rate, climate) {
-  equation <- b0 + b1 * photosyntheitc_rate + b2 * climate
+threat_prob <- function(b0, b1, b2, b3, photosyntheitc_rate, climate, human) {
+  equation <- b0 + b1 * photosyntheitc_rate + b2 * climate + b3 * human
   prob <- (exp(equation)) / (1 + exp(equation))
   print(prob)
 }
@@ -266,17 +308,18 @@ threat_prob <- function(b0, b1, b2, photosyntheitc_rate, climate) {
 b0 <- mod$coefficients[1] #Intercept
 b1 <- mod$coefficients[2] #photo
 b2 <- mod$coefficients[3] #climate
+b3 <- mod$coefficients[4] #human
 
 # Function for testing probabilities
-threat_prob <- function(b0, b1, b2, photo, climate) {
-  equation <- b0 + b1 * photo + b2 * climate
+threat_prob <- function(b0, b1, b2, b3, photo, climate, human) {
+  equation <- b0 + b1 * photo + b2 * climate + b3 * human
   prob <- (exp(equation)) / (1 + exp(equation))
   print(prob)
 }
 
 # Testing probabilities for species with the highest and lowest photosynthetic rates
-#threat_prob(b0, b1, b2, 47.06767, 0) # for highest photosynthetic rate in data
-#threat_prob(b0, b1, b2, 0.34, 1) # for lowest photosynthetic rate in data
+#threat_prob(b0, b1, b2, 47.06767, 0, 0) # for highest photosynthetic rate in data
+#threat_prob(b0, b1, b2, 0.34, 1, 0) # for lowest photosynthetic rate in data
 ```
 
 ```{r results='hide', echo=FALSE}
@@ -293,21 +336,23 @@ lpr_pred <- anti_join(lpr_summary, redlist) %>%
   rbind(lpr_pred_low)
 
 # binary climate and human values come from literature search
-pred_cols <- data.frame(climate_threatened = c(0,0,1,1,0,1,0,1,1,0)) 
+pred_cols <- data.frame(climate_threatened = c(0,0,1,1,0,1,0,1,1,0),
+                        human_threatened = c(0,0,0,1,0,0,1,0,1,0)) 
 
 lpr_pred <- cbind(lpr_pred, pred_cols)
 
 for (i in seq_along(lpr_pred$scientific_name)) {
-  lpr_pred$y_hat[i] <- threat_prob(b0, b1, b2, 
+  lpr_pred$y_hat[i] <- threat_prob(b0, b1, b2, b3,
                                        lpr_pred$avg_photo[i],
-                                       lpr_pred$climate_threatened[i])
+                                       lpr_pred$climate_threatened[i],
+                                       lpr_pred$human_threatened[i])
 }
 ```
 
 ```{r echo=FALSE}
 lpr_pred %>% 
   arrange(desc(avg_photo)) %>%
-  kbl(linesep = "", booktabs = TRUE, col.names = c("Speices", "Photosynthetic Rate", "Climate", "ˆy"),
+  kbl(linesep = "", booktabs = TRUE, col.names = c("Speices", "Photosynthetic Rate", "Climate", "Human", "ˆy"),
       caption = "Predicted log-odds of being threatened (ˆy) for species with an unknown population trend") %>%
   kable_styling(bootstrap_options = c("striped", "condensed"),
                 latex_options = c("striped", "hold_position"), full_width = TRUE)
@@ -321,8 +366,10 @@ These are the log-odds predictions for the species with the 5 highest and 5 lowe
 
 # Thoughts and Conclusions
 
-Overall, this model suggests that photosynthetic rate per leaf area has a strong effect on if a plant will have a decreasing population trend, and those threatened by climate change are also more likely to have a decreasing population trend.
+Overall, this model suggests that photosynthetic rate per leaf area has a strong effect on if a plant will have a decreasing population trend. Those threatened by climate change and human factors are also more likely to have a decreasing population trend. The results of this logistic model and odds ratio generally align with what I expected to see. Though, I did think that human factors would have more of a significant impact There are also many other factors that this model is not including, but another big contribution to habitat loss is agriculture, which would be interesting to incorporate in the model.
 
-The results of this logistic model and odds ratio generally align with what I expected to see. Though, I did think that human impacts would have more of a significant effect. There are also many other factors that this model is not including, but another big impact on habitat is agriculture, which would be interesting to incorporate in the model.
+This model may also be biased due to the relatively small sample size of plant species. There were many observations that were filtered out during data preparation since each species needed to be present in the BIEN and IUCN data sets. Given a larger sample, the model could be more accurate. Additionally, I would like to construct a more sophisticated confusion matrix using the `caret` package and split my data into training and testing sets.
 
-This model may also be biased due to the relatively small sample size of plant species. There were many observations that were filtered out during data preparation since each species needed to be present in the BIEN and IUCN data sets. Given a larger sample, the model would be more accurate.
+With a more comprehensive data set and controlling for more variables (additional threats), this model could be useful in flagging species that have high odds of having a decreasing population trend, if they currently have an unknown status. As I mentioned in the motivation for this project, not all plants with a decreasing population trend are threatened, so it would also be interested to create a similar model using photosynthetic rate and conservation status.
+
+To see the full code and data preparation, check out the [Github repository](https://github.com/shmuir/plant-pop-pred).

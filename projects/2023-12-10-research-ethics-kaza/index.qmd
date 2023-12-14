@@ -1,7 +1,7 @@
 ---
 title: "Ethical Challenges in Investigating Human-Elephant Conflict"
-subtitle: "Considerations of Research in KAZA with Insights from AI Blindspot"
-description: "Created for EDS242: Ethics and Bias in Environmental Data Science for the Masters of Environmental Data Science program at UCSB"
+subtitle: ""
+description: "Considerations of Research in KAZA with Insights from AI Blindspot"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/

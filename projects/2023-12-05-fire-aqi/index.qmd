@@ -1,7 +1,7 @@
 ---
 title: "The Thomas Fire in Santa Barbara County 2017-2018"
-subtitle: "Visualizing the burn area and change in air quality index"
-description: "Created for EDS220: Working with Environmental Datasets for the Masters of Environmental Data Science program at UCSB"
+subtitle: ""
+description: "Visualizing the burn area and change in air quality index"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
