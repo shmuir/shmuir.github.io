@@ -448,7 +448,7 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="odds-ratio">Odds Ratio</h3>
 <p>By how much does the model predict that the odds of having a decreasing population will change with each additional unit in photosynthetic rate?</p>
 <p><span class="math display">\[
-\operatorname{odds}(\hat{p})=\frac{\hat{p}}{1-\hat{p}}=\exp \left(\hat{\beta}_0+\hat{\beta}_1 \cdot x\right)
+\operatorname{odds}(\hat{p})=\frac{\hat{p}}{1-\hat{p}}=\exp \left(\hat{\beta}_0+\hat{\beta}_1 \cdot Photosynthetic Rate\right)
 \]</span></p>
 <div class="cell">
 <details>
@@ -635,7 +635,7 @@ div.csl-indent {
 </div>
 </div>
 <p>From this confusion matrix we can see True Positive/True Negative values in green and False Positive/False Negative values in red. Based on these counts, the model has an 80% accuracy. The model seems to be better at predicting if a specie has a non-decreasing population rather than if it has a decreasing population.</p>
-<p>Above 90% accuracy seems to be standard in industry <span class="citation" data-cites="towardsdatascience2020">(<a href="#ref-towardsdatascience2020" role="doc-biblioref">TowardsDataScience 2020</a>)</span>, but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.</p>
+<p>Above 90% accuracy seems to be standard for industry implementation <span class="citation" data-cites="towardsdatascience2020">(<a href="#ref-towardsdatascience2020" role="doc-biblioref">Towards Data Science 2020</a>)</span>, but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.</p>
 </section>
 <section id="making-probabilistic-predictions" class="level1">
 <h1>Making Probabilistic Predictions</h1>
@@ -780,7 +780,7 @@ Nobel, Park S. 1991. <span>“Achievable Productivities of Certain CAM Plants: B
 Simkin, Andrew J, Patricia E López-Calcagno, and Christine A Raines. 2019. <span>“Feeding the World: Improving Photosynthetic Efficiency for Sustainable Crop Production.”</span> <em>Journal of Experimental Botany</em> 70 (4): 1119–40. <a href="https://doi.org/10.1093/jxb/ery445">https://doi.org/10.1093/jxb/ery445</a>.
 </div>
 <div id="ref-towardsdatascience2020" class="csl-entry" role="listitem">
-TowardsDataScience. 2020. <span>“How i Consistently Improve My Machine Learning Models from 80.”</span> <em>Data Science</em>. <a href="https://towardsdatascience.com/how-i-consistently-improve-my-machine-learning-models-from-80-to-over-90-accuracy-6097063e1c9a#:~:text=Introduction,)%20of%20at%20least%2090%25.">https://towardsdatascience.com/how-i-consistently-improve-my-machine-learning-models-from-80-to-over-90-accuracy-6097063e1c9a#:~:text=Introduction,)%20of%20at%20least%2090%25.</a>
+Towards Data Science. 2020. <span>“How i Consistently Improve My Machine Learning Models from 80.”</span> <em>Data Science</em>. <a href="https://towardsdatascience.com/how-i-consistently-improve-my-machine-learning-models-from-80-to-over-90-accuracy-6097063e1c9a#:~:text=Introduction,)%20of%20at%20least%2090%25.">https://towardsdatascience.com/how-i-consistently-improve-my-machine-learning-models-from-80-to-over-90-accuracy-6097063e1c9a#:~:text=Introduction,)%20of%20at%20least%2090%25.</a>
 </div>
 </div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{muir2023,
   author = {Muir, Sam},

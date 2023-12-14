@@ -179,7 +179,7 @@ $$
 By how much does the model predict that the odds of having a decreasing population will change with each additional unit in photosynthetic rate?
 
 $$
-\operatorname{odds}(\hat{p})=\frac{\hat{p}}{1-\hat{p}}=\exp \left(\hat{\beta}_0+\hat{\beta}_1 \cdot x\right)
+\operatorname{odds}(\hat{p})=\frac{\hat{p}}{1-\hat{p}}=\exp \left(\hat{\beta}_0+\hat{\beta}_1 \cdot Photosynthetic Rate\right)
 $$
 
 ```{r}
@@ -281,7 +281,7 @@ htmlTable::htmlTable(con_matrix, css.cell = css.cell,
 
 From this confusion matrix we can see True Positive/True Negative values in green and False Positive/False Negative values in red. Based on these counts, the model has an `r round(((477+12)/nrow(photo_plus)),2)*100`% accuracy. The model seems to be better at predicting if a specie has a non-decreasing population rather than if it has a decreasing population.
 
-Above 90% accuracy seems to be standard in industry [@towardsdatascience2020], but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.
+Above 90% accuracy seems to be standard for industry implementation [@towardsdatascience2020], but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.
 
 # Making Probabilistic Predictions
 
