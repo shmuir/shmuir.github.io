@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-12-15">
 <meta name="description" content="Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB">
 
-<title>Sam Muir - Predicting plant species population trends from photosynthetic rate and ecological threats</title>
+<title>Sam Muir - The influence of photosynthetic rate and ecological threats on plant species population trends</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,7 +57,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -170,7 +189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Predicting plant species population trends from photosynthetic rate and ecological threats</h1>
+      <h1 class="title">The influence of photosynthetic rate and ecological threats on plant species population trends</h1>
+            <p class="subtitle lead">Predicting population trends for those with an unknown status</p>
                   <div>
         <div class="description">
           Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB
@@ -255,15 +275,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Project Overview</h1>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>Climate change and human activity are significant factors that threaten species populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation.</p>
-<p>C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments. Interestingly, cacti, which usually are CAM plants, are one of the most threatened groups of plants, despite their high photosynthetic efficiency.</p>
-<p>There are many other factors that affect a species’ population trend, but in this project, I am interested in using photosynthetic rates and ecological threats to try to predict a plant’s population trend.</p>
+<p>Climate change and human activity are significant threats to plant species populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue <span class="citation" data-cites="IUCN2023">(<a href="#ref-IUCN2023" role="doc-biblioref">IUCN 2023</a>)</span>. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation.</p>
+<p>C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes <span class="citation" data-cites="nobel1991">(<a href="#ref-nobel1991" role="doc-biblioref">Nobel 1991</a>)</span>. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments <span class="citation" data-cites="simkin2019">(<a href="#ref-simkin2019" role="doc-biblioref">Simkin, López-Calcagno, and Raines 2019</a>)</span>.</p>
+<p><img src="photosynth.png" class="img-fluid" data-fig-align="left" width="500" alt="Made with BioRender.com"> <img src="space.png" width="85" height="50"><img src="climate-threats.jpg" class="img-fluid" data-fig-align="right" width="194" alt="Bhadra et al.&nbsp;2022"></p>
+<p><span style="color: grey;">Made with BioRender</span>                            <span class="citation" data-cites="bhadra2022a">(<a href="#ref-bhadra2022a" role="doc-biblioref">Bhadra et al. 2022</a>)</span></p>
+<p>There are many other factors that affect a species’ population trend, but in this project, I am interested in analyzing how a plant species photosynthetic rate and ecological threats influence its odds of having a decreasing population.</p>
 </section>
 </section>
 <section id="data-methods" class="level1">
 <h1>Data &amp; Methods</h1>
-<p>Photosynthetic rate data was obtained from the <code>BIEN</code> R package. The Botanical Information and Ecology Network (BIEN) was developed by collaborating ecologists at the National Center for Ecological Analysis and Synthesis (NCEAS). The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the IUCN Red List. Climate threats include habitat shifts, droughts, temperature extremes, storms &amp; flooding, and other impacts not defined by the IUCN. Human threats include housing &amp; urban areas, commercial &amp; industrial areas, tourism &amp; recreation areas, recreational activities, war &amp; civil unrest, and work &amp; other activities.</p>
-<p>To analyze my data I ran a logistic regression model. I used Increasing/Stable (0) and Decreasing (1) as the categorical binary response variable on average photosynthetic rare per leaf area, climate threatened (yes/no), and human threatened (yes/no).</p>
+<p>Photosynthetic rate data was obtained from the <code>BIEN</code> R package. The <a href="https://bien.nceas.ucsb.edu/bien/">Botanical Information and Ecology Network (BIEN)</a> was developed by collaborating ecologists at the National Center for Ecological Analysis and Synthesis (NCEAS). The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the <a href="https://www.iucnredlist.org/">International Union for Conservation Nature (IUCN) Red List</a>. Climate threats include habitat shifts, droughts, temperature extremes, storms &amp; flooding, and “other impacts” that are not defined by the IUCN. Human threats include housing &amp; urban areas, commercial &amp; industrial areas, tourism &amp; recreation areas, recreational activities, war &amp; civil unrest, and work &amp; other activities.</p>
+<p>To analyze my data I ran a logistic regression model. I used Increasing/Stable (0) and Decreasing (1) as the categorical binary response variable on average photosynthetic rate per leaf area, climate threatened (yes/no), and human threatened (yes/no).</p>
 <section id="data-preparation" class="level2">
 <h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
 <p>Data was prepared in a separate <code>data_fetch.R</code> script. Data from <code>BIEN</code> was cleaned and joined with data from the IUCN Red List entries for species in the kingdom <em>Plantae</em>. Species that had an increasing or stable population trend were assigned a binary variable of 0 and those who had a decreasing population trend were assigned a binary variable of 1.</p>
@@ -340,8 +362,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="logistic-regression" class="level2">
 <h2 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h2>
 <p>To begin, I want to run a logistic regression on just photosynthetic rate and population trend before incorporating any other variables.</p>
-<section id="operatornamelogitplog-leftfracp1-prightbeta_0beta_1-photosynthetic-rate-varepsilon" class="level5">
-<h5 class="anchored" data-anchor-id="operatornamelogitplog-leftfracp1-prightbeta_0beta_1-photosynthetic-rate-varepsilon"><span class="math display">\[\operatorname{logit}(p)=\log \left(\frac{p}{1-p}\right)=\beta_0+\beta_1  (Photosynthetic Rate)  +\varepsilon \]</span></h5>
+<p><span class="math display">\[
+\operatorname{logit}(p)=\log \left(\frac{p}{1-p}\right)=\beta_0+\beta_1  (Photosynthetic Rate)  +\varepsilon
+\]</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -412,11 +435,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This model tells us:</p>
-<p>A 1 unit increase in photosynthetic rate indicates a 0.089 decrease in probability of having a decreasing population trend.</p>
+<p>A 1 Âµmol m-2 s-1 increase indicates a 0.089 decrease in probability of having a decreasing population trend.</p>
 <p><span class="math display">\[
 \operatorname{logit}(\hat p)=\log \left(\frac{\hat p}{1-\hat p}\right)=-0.464-0.089 x
 \]</span></p>
-</section>
 <section id="odds-ratio" class="level3">
 <h3 class="anchored" data-anchor-id="odds-ratio">Odds Ratio</h3>
 <p>By how much does the model predict that the odds of having a decreasing population will change with each additional unit in photosynthetic rate?</p>
@@ -541,17 +563,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
-<p>From this model we can conclude that plants threatened by climate factors have their odds of having a decreasing population increase by a factor of 4.29, while those threatened by human factors have their odds increase by a factor of 2.52. We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 10% for each unit increase in photosynthetic rate. But, we can also see that the p-value for Human Threatened is &gt;0.05, so it is not a significant factor in determining is a plant has a decreasing population. For this reason, it will not be included in the next section.</p>
+<p>From this model we can conclude that plants threatened by climate factors have their odds of having a decreasing population increase by a factor of 4.29, while those threatened by human factors have their odds increase by a factor of 2.52.</p>
+<p>We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 10% for each unit increase in photosynthetic rate.</p>
+<p>But, we can also see that the p-value for Human Threatened is &gt;0.05, so it is not a significant factor in determining is a plant has a decreasing population. For this reason, it will not be included in the next section.</p>
 </section>
 </section>
 <section id="making-probalistic-predictions" class="level1">
 <h1>Making Probalistic Predictions</h1>
-<p>There are many species from the BIEN data that are not present on the IUCN Red List. Here, I am using my model to make out-of-sample predictions. To do this, I’ll need to pull of the model coefficients and create a function with inputs for the coefficients, photosynthetic rate, if it is threatened by climate change, and if it is threatened by human activities.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>threat_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(b0, b1, b2, photosyntheitc_rate, climate) {</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  equation <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> photosyntheitc_rate <span class="sc">+</span> b2 <span class="sc">*</span> climate</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  prob <span class="ot">&lt;-</span> (<span class="fu">exp</span>(equation)) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(equation))</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(prob)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are many species from the BIEN data that are not present on the IUCN Red List. Here, I am using my model to make out-of-sample predictions. To do this, I’ll need to pull out the model coefficients and create a function with inputs for the coefficients, photosynthetic rate, and if the plant is threatened by climate change.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficients</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="co">#Intercept</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co">#photo</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="co">#climate</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>threat_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(b0, b1, b2, photosyntheitc_rate, climate) {</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  equation <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> photosyntheitc_rate <span class="sc">+</span> b2 <span class="sc">*</span> climate</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  prob <span class="ot">&lt;-</span> (<span class="fu">exp</span>(equation)) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(equation))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(prob)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-condensed table-sm small" data-quarto-postprocess="true">
@@ -631,30 +661,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
+<p>These are the log-odds predictions for the species with the 5 highest and 5 lowest photosynthetic rates.</p>
+<p><img src="psammochloa.jpeg" class="img-fluid" width="200"><img src="space.png" class="img-fluid" width="380"><img src="cissus.jpeg" class="img-fluid" width="224"></p>
+<p><em>Psammochloa villosa</em>                            <em>Cissus erosa</em></p>
 </section>
 <section id="thoughts-and-conclusions" class="level1">
 <h1>Thoughts and Conclusions</h1>
-<ul>
-<li>do these results support your hypothesis, why or why not</li>
-<li>discuss uncertainty (std error)</li>
-<li>discuss limitations</li>
-</ul>
+<p>Overall, this model suggests that photosynthetic rate per leaf area has a strong effect on if a plant will have a decreasing population trend, and those threatened by climate change are also more likely to have a decreasing population trend.</p>
+<p>The results of this logistic model and odds ratio generally align with what I expected to see. Though, I did think that human impacts would have more of a significant effect. There are also many other factors that this model is not including, but another big impact on habitat is agriculture, which would be interesting to incorporate in the model.</p>
+<p>This model may also be biased due to the relatively small sample size of plant species. There were many observations that were filtered out during data preparation since each species needed to be present in the BIEN and IUCN data sets. Given a larger sample, the model would be more accurate.</p>
+
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{muir2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bhadra2022a" class="csl-entry" role="listitem">
+Bhadra, Preetha, Sagar Maitra, Tanmoy Shankar, Akbar Hossain, Subhashisa Praharaj, and Tariq Aftab. 2022. <span>“Climate Change Impact on Plants: Plant Responses and Adaptations.”</span> In, 1–24. Elsevier. <a href="https://doi.org/10.1016/b978-0-323-85665-2.00004-2">https://doi.org/10.1016/b978-0-323-85665-2.00004-2</a>.
+</div>
+<div id="ref-IUCN2023" class="csl-entry" role="listitem">
+IUCN. 2023. <span>“Summary Statistics.”</span> <em>Red List</em>. <a href="https://www.iucnredlist.org/resources/summary-statistics">https://www.iucnredlist.org/resources/summary-statistics</a>.
+</div>
+<div id="ref-nobel1991" class="csl-entry" role="listitem">
+Nobel, Park S. 1991. <span>“Achievable Productivities of Certain CAM Plants: Basis for High Values Compared with C<span><sub>3</sub></span> and C<span><sub>4</sub></span> Plants.”</span> <em>New Phytologist</em> 119 (2): 183–205. <a href="https://doi.org/10.1111/j.1469-8137.1991.tb01022.x">https://doi.org/10.1111/j.1469-8137.1991.tb01022.x</a>.
+</div>
+<div id="ref-simkin2019" class="csl-entry" role="listitem">
+Simkin, Andrew J, Patricia E López-Calcagno, and Christine A Raines. 2019. <span>“Feeding the World: Improving Photosynthetic Efficiency for Sustainable Crop Production.”</span> <em>Journal of Experimental Botany</em> 70 (4): 1119–40. <a href="https://doi.org/10.1093/jxb/ery445">https://doi.org/10.1093/jxb/ery445</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{muir2023,
   author = {Muir, Sam},
-  title = {Predicting Plant Species Population Trends from
-    Photosynthetic Rate and Ecological Threats},
+  title = {The Influence of Photosynthetic Rate and Ecological Threats
+    on Plant Species Population Trends},
   date = {2023-12-15},
   url = {https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-muir2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Muir, Sam. 2023. <span>“Predicting Plant Species Population Trends from
-Photosynthetic Rate and Ecological Threats.”</span> December 15, 2023.
-<a href="https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/">https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/</a>.
+Muir, Sam. 2023. <span>“The Influence of Photosynthetic Rate and
+Ecological Threats on Plant Species Population Trends.”</span> December
+15, 2023. <a href="https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/">https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
