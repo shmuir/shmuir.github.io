@@ -8,9 +8,9 @@
 
 <meta name="author" content="Sam Muir">
 <meta name="dcterms.date" content="2023-12-15">
-<meta name="description" content="Created for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB">
+<meta name="description" content="Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB">
 
-<title>Sam Muir - Identifying power outages in Houston, TX from February 2021 storms</title>
+<title>Sam Muir - Predicting plant species population trends from photosynthetic rate and ecological threats</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -64,6 +98,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="../../site_libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="../../site_libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -128,17 +169,18 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Identifying power outages in Houston, TX from February 2021 storms</h1>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Predicting plant species population trends from photosynthetic rate and ecological threats</h1>
                   <div>
         <div class="description">
-          Created for EDS223: Geospatial Analysis for the Masters of Environmental Data Science program at UCSB
+          Created for EDS222: Statistics for Environmental Data Science for the Masters of Environmental Data Science program at UCSB
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">Plants</div>
                 <div class="quarto-category">Climate</div>
                 <div class="quarto-category">R</div>
+                <div class="quarto-category">MEDS</div>
               </div>
                   </div>
   </div>
@@ -176,29 +218,443 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a>
+  <ul class="collapse">
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  </ul></li>
+  <li><a href="#data-methods" id="toc-data-methods" class="nav-link" data-scroll-target="#data-methods">Data &amp; Methods</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic Regression</a>
+  <ul class="collapse">
+  <li><a href="#odds-ratio" id="toc-odds-ratio" class="nav-link" data-scroll-target="#odds-ratio">Odds Ratio</a></li>
+  </ul></li>
+  <li><a href="#full-logistic-model" id="toc-full-logistic-model" class="nav-link" data-scroll-target="#full-logistic-model">Full Logistic Model</a></li>
+  </ul></li>
+  <li><a href="#making-probalistic-predictions" id="toc-making-probalistic-predictions" class="nav-link" data-scroll-target="#making-probalistic-predictions">Making Probalistic Predictions</a></li>
+  <li><a href="#thoughts-and-conclusions" id="toc-thoughts-and-conclusions" class="nav-link" data-scroll-target="#thoughts-and-conclusions">Thoughts and Conclusions</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
+<section id="project-overview" class="level1">
+<h1>Project Overview</h1>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p>Climate change and human activity are significant factors that threaten species populations. Nearly 40% of plant species are threatened worldwide, and even more are predicted to become threatened as effects of climate change and human activity continue. Many plant species that are threatened or endangered are not very resilient to conditions outside of their niche, often due to their physiological traits, such as carbon fixation.</p>
+<p>C4 and CAM plants have a more efficient carbon fixation process and are generally more photosynthetically-efficient than C3 processes. Plants with high photosynthetic efficiency are often economically important as crops and more resilient to harsh environments. Interestingly, cacti, which usually are CAM plants, are one of the most threatened groups of plants, despite their high photosynthetic efficiency.</p>
+<p>There are many other factors that affect a species’ population trend, but in this project, I am interested in using photosynthetic rates and ecological threats to try to predict a plant’s population trend.</p>
+</section>
+</section>
+<section id="data-methods" class="level1">
+<h1>Data &amp; Methods</h1>
+<p>Photosynthetic rate data was obtained from the <code>BIEN</code> R package. The Botanical Information and Ecology Network (BIEN) was developed by collaborating ecologists at the National Center for Ecological Analysis and Synthesis (NCEAS). The BIEN database contains a variety of information ranging from phylogeny data to species distribution. To determine population trend and if a species is threatened by climate change or human activity I obtained data from the IUCN Red List. Climate threats include habitat shifts, droughts, temperature extremes, storms &amp; flooding, and other impacts not defined by the IUCN. Human threats include housing &amp; urban areas, commercial &amp; industrial areas, tourism &amp; recreation areas, recreational activities, war &amp; civil unrest, and work &amp; other activities.</p>
+<p>To analyze my data I ran a logistic regression model. I used Increasing/Stable (0) and Decreasing (1) as the categorical binary response variable on average photosynthetic rare per leaf area, climate threatened (yes/no), and human threatened (yes/no).</p>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+<p>Data was prepared in a separate <code>data_fetch.R</code> script. Data from <code>BIEN</code> was cleaned and joined with data from the IUCN Red List entries for species in the kingdom <em>Plantae</em>. Species that had an increasing or stable population trend were assigned a binary variable of 0 and those who had a decreasing population trend were assigned a binary variable of 1.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"data_fetch.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration">Data Exploration</h2>
+<p>Before starting any statistical analysis, we should take a look at the data.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(join, <span class="fu">aes</span>(<span class="at">x =</span> avg_photo)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"#94a699"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Avg. Photosynthetic Rate per Leaf Area (Âµmol m-2 s-1)"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribution of photosynthetic rate"</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FDFBF7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> join, <span class="fu">aes</span>(<span class="at">x =</span> avg_photo, <span class="at">y =</span> pop_trend)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">0</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#94a699"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"Stable_Inc"</span>, <span class="st">"Decreasing"</span>)) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Avg. Photosynthetic Rate per Leaf Area (Âµmol m-2 s-1)"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Population Trend"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FDFBF7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clim_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(clim_human_res, <span class="fu">aes</span>(<span class="at">x =</span> climate_threatened)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"#94a699"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Climate threatened?"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FDFBF7"</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>human_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(clim_human_res, <span class="fu">aes</span>(<span class="at">x =</span> human_threatened)) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"#94a699"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Human threatened?"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FDFBF7"</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>clim_plot <span class="sc">+</span> human_plot <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>)),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">title =</span> <span class="st">"Counts for climate threatened and human threated species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="analysis" class="level1">
+<h1>Analysis</h1>
+<section id="logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h2>
+<p>To begin, I want to run a logistic regression on just photosynthetic rate and population trend before incorporating any other variables.</p>
+<section id="operatornamelogitplog-leftfracp1-prightbeta_0beta_1-photosynthetic-rate-varepsilon" class="level5">
+<h5 class="anchored" data-anchor-id="operatornamelogitplog-leftfracp1-prightbeta_0beta_1-photosynthetic-rate-varepsilon"><span class="math display">\[\operatorname{logit}(p)=\log \left(\frac{p}{1-p}\right)=\beta_0+\beta_1  (Photosynthetic Rate)  +\varepsilon \]</span></h5>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># binary resp glm plot</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(join, <span class="fu">aes</span>(<span class="at">x =</span> avg_photo, <span class="at">y =</span> pop_trend_binary)) <span class="sc">+</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">0</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"#94a699"</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#223a2b"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">"binomial"</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Avg. Photosynthetic Rate per Leaf Area (Âµmol m-2 s-1)"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Has Decreasing Population Trend"</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FDFBF7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mod_photo <span class="ot">&lt;-</span> <span class="fu">glm</span>(pop_trend_binary <span class="sc">~</span> avg_photo, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> join, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">"binomial"</span>) <span class="co"># binomial dist; prob of 1 and 0 over many trials</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Logisitc Regression Model Results for Photosynthetic Rate</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">log Probability of Decreasing Population</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Log-Odds</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p-value</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Intercept</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.464 <sup>**</sup></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.907&nbsp;–&nbsp;-0.016</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.041</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Avg. Photosynthetic Rate (Âµmol m-2 s-1)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.089 <sup>***</sup></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.133&nbsp;–&nbsp;-0.048</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">609</td>
+</tr>
+<tr class="even">
+<td colspan="4" style="text-align: right; font-style: italic; border-top: double black;">* p&lt;0.1&nbsp;&nbsp;&nbsp;** p&lt;0.05&nbsp;&nbsp;&nbsp;*** p&lt;0.01</td>
+</tr>
+</tbody>
+</table>
 
 
+</div>
+</div>
+<p>This model tells us:</p>
+<p>A 1 unit increase in photosynthetic rate indicates a 0.089 decrease in probability of having a decreasing population trend.</p>
+<p><span class="math display">\[
+\operatorname{logit}(\hat p)=\log \left(\frac{\hat p}{1-\hat p}\right)=-0.464-0.089 x
+\]</span></p>
+</section>
+<section id="odds-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="odds-ratio">Odds Ratio</h3>
+<p>By how much does the model predict that the odds of having a decreasing population will change with each additional unit in photosynthetic rate?</p>
+<p><span class="math display">\[
+\operatorname{odds}(\hat{p})=\frac{\hat{p}}{1-\hat{p}}=\exp \left(\hat{\beta}_0+\hat{\beta}_1 \cdot x\right)
+\]</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(mod_photo<span class="sc">$</span>coefficients[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>avg_photo 
+0.9146572 </code></pre>
+</div>
+</div>
+<p>The model estimates that one additional unit in photosynthetic rate is associated with a change in the odds ratio of <span class="math inline">\(e^{-0.089} = 0.915\)</span>, or a 8.9% decrease in the odds of having a decreasing population.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute odds hat var</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>photo_fitted <span class="ot">&lt;-</span> mod_photo <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(<span class="at">type.predict =</span> <span class="st">"response"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_hat =</span> .fitted) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">odds_hat =</span> y_hat <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> y_hat)) <span class="co"># y_hat is p</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(photo_fitted, <span class="fu">aes</span>(<span class="at">x =</span> avg_photo, <span class="at">y =</span> odds_hat)) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">color =</span> <span class="st">"#94a699"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#223a2b"</span>) <span class="sc">+</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"Log-odds of having a decreasing population"</span>) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Avg. Photosynthetic Rate (Âµmol m-2 s-1)"</span>) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"#FDFBF7"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">fill =</span> <span class="st">"#FDFBF7"</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#FDFBF7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Additionally, we can visually see this relationship between the odds ratio and photosynthetic rate. As photosynthetic rate increases, the log-odds of having a decreasing population decreases.</p>
+</section>
+</section>
+<section id="full-logistic-model" class="level2">
+<h2 class="anchored" data-anchor-id="full-logistic-model">Full Logistic Model</h2>
+<p>This first logistic model only considered photosynthetic rate, but now we want to add in if the species is threatened by climate change or human activity, since both of these historically have contributed to plant species becoming threatened.</p>
+<p><span class="math display">\[\operatorname{logit}(p)=\log \left(\frac{p}{1-p}\right)=\beta_0+\beta_1  (Photosynthetic Rate) + \beta_2  (Climate) + \beta_3  (Human) +\varepsilon \]</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(pop_trend_binary <span class="sc">~</span> avg_photo <span class="sc">+</span> climate_threatened <span class="sc">+</span> human_threatened,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> clim_human_res,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(mod))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          (Intercept)             avg_photo climate_threatenedyes 
+            0.6314813             0.8959289             4.2980568 
+  human_threatenedyes 
+            2.5251016 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co"># B1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> avg_photo 
+-0.1098942 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Logisitc Regression Model Results for Photosynthetic Rate, Climate Threatened, and Human Threatened</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">log Threat Pobability</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Log-Odds</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p-value</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Intercept</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.460 <sup>*</sup></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.922&nbsp;–&nbsp;0.004</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.051</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Average Photosyntheitc Rate (Âµmol m-2 s-1)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.110 <sup>***</sup></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.158&nbsp;–&nbsp;-0.065</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Climate Threatened</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.458 <sup>***</sup></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.665&nbsp;–&nbsp;2.237</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Human Threatened</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.926 <sup></sup></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.299&nbsp;–&nbsp;2.210</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.145</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">609</td>
+</tr>
+<tr class="even">
+<td colspan="4" style="text-align: right; font-style: italic; border-top: double black;">* p&lt;0.1&nbsp;&nbsp;&nbsp;** p&lt;0.05&nbsp;&nbsp;&nbsp;*** p&lt;0.01</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>From this model we can conclude that plants threatened by climate factors have their odds of having a decreasing population increase by a factor of 4.29, while those threatened by human factors have their odds increase by a factor of 2.52. We can also see that photosynthetic rate does still have an effect on population trend. Based on this model, the odds of having a decreasing population trend fall by about 10% for each unit increase in photosynthetic rate. But, we can also see that the p-value for Human Threatened is &gt;0.05, so it is not a significant factor in determining is a plant has a decreasing population. For this reason, it will not be included in the next section.</p>
+</section>
+</section>
+<section id="making-probalistic-predictions" class="level1">
+<h1>Making Probalistic Predictions</h1>
+<p>There are many species from the BIEN data that are not present on the IUCN Red List. Here, I am using my model to make out-of-sample predictions. To do this, I’ll need to pull of the model coefficients and create a function with inputs for the coefficients, photosynthetic rate, if it is threatened by climate change, and if it is threatened by human activities.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>threat_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(b0, b1, b2, photosyntheitc_rate, climate) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  equation <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> photosyntheitc_rate <span class="sc">+</span> b2 <span class="sc">*</span> climate</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  prob <span class="ot">&lt;-</span> (<span class="fu">exp</span>(equation)) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(equation))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(prob)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-condensed table-sm small" data-quarto-postprocess="true">
+<caption>Predicted log-odds of being threatened (ˆy) for species with an unknown population trend</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Speices</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Photosynthetic Rate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Climate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ˆy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Psammochloa villosa</td>
+<td style="text-align: right;">65.05000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0004961</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Helianthus neglectus</td>
+<td style="text-align: right;">48.72300</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0029764</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Helianthus niveus</td>
+<td style="text-align: right;">46.74867</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0156898</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Glaux maritima</td>
+<td style="text-align: right;">43.00000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0235000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Helianthus cusickii</td>
+<td style="text-align: right;">42.24100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0060494</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gouania lupuloides</td>
+<td style="text-align: right;">0.70820</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7151743</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Serjania mexicana</td>
+<td style="text-align: right;">0.68560</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.3693444</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clematis florida</td>
+<td style="text-align: right;">0.61000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7173674</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Passiflora vitifolia</td>
+<td style="text-align: right;">0.51340</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7195148</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cissus erosa</td>
+<td style="text-align: right;">0.43180</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.3758644</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="thoughts-and-conclusions" class="level1">
+<h1>Thoughts and Conclusions</h1>
+<ul>
+<li>do these results support your hypothesis, why or why not</li>
+<li>discuss uncertainty (std error)</li>
+<li>discuss limitations</li>
+</ul>
+
+
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{muir2023,
   author = {Muir, Sam},
-  title = {Identifying Power Outages in {Houston,} {TX} from {February}
-    2021 Storms},
+  title = {Predicting Plant Species Population Trends from
+    Photosynthetic Rate and Ecological Threats},
   date = {2023-12-15},
   url = {https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-muir2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Muir, Sam. 2023. <span>“Identifying Power Outages in Houston, TX from
-February 2021 Storms.”</span> December 15, 2023. <a href="https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/">https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/</a>.
+Muir, Sam. 2023. <span>“Predicting Plant Species Population Trends from
+Photosynthetic Rate and Ecological Threats.”</span> December 15, 2023.
+<a href="https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/">https://shmuir.github.io/projects/2023-12-15-plant-population-prediction/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
