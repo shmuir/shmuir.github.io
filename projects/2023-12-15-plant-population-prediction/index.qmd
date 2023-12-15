@@ -49,7 +49,7 @@ Understanding the drivers of plant population decline by specie can help inform 
 
 ## Question
 
-There are many other factors that affect a species' population trend, but in this project, I am interested in analyzing how a plant species photosynthetic rate and ecological threats influence a species' odds of having a decreasing population. Additionally, can I use this model to find the log-odds of a plant with an unknown status having a decreasing population trend?
+There are many other factors that affect a species' population trend, but in this project, I am wondering how does a plant species' photosynthetic rate and ecological threats influence its odds of having a decreasing population? Additionally, can I use this model to find the log-odds of a species with an unknown status having a decreasing population trend?
 
 # Data & Methods
 
@@ -91,7 +91,7 @@ ggplot(data = join, aes(x = avg_photo, y = pop_trend)) +
   scale_y_discrete(limits = c("Stable_Inc", "Decreasing")) +
   labs(x = "Avg. Photosynthetic Rate per Leaf Area (Âµmol m-2 s-1)", 
        y = "Population Trend", 
-       title = "") +
+       title = "Photosynthetic rate by species population trend") +
   theme(plot.background = element_rect(color = "#FDFBF7",
                                        fill = "#FDFBF7"),
         panel.background = element_rect(fill = "#FDFBF7"))
@@ -138,7 +138,8 @@ ggplot(join, aes(x = avg_photo, y = pop_trend_binary)) +
               size = 1.5) +
   theme_linedraw() +
   labs(x = "Avg. Photosynthetic Rate per Leaf Area (Âµmol m-2 s-1)", 
-       y = "Has Decreasing Population Trend") +
+       y = "Has Decreasing Population Trend",
+       title = "Logistic regression for photosynthetic rate and population trend") +
   theme(plot.background = element_rect(color = "#FDFBF7",
                                        fill = "#FDFBF7"),
         panel.background = element_rect(fill = "#FDFBF7"))
@@ -199,8 +200,10 @@ photo_fitted <- mod_photo %>%
 ggplot(photo_fitted, aes(x = avg_photo, y = odds_hat)) +
   geom_point(size = 2.5, color = "#94a699", alpha = 0.7) +
   geom_line(color = "#223a2b") + 
-  scale_y_continuous("Log-odds of having a decreasing population") +
-  labs(x = "Avg. Photosynthetic Rate (Âµmol m-2 s-1)") +
+  scale_y_continuous() +
+  labs(x = "Avg. Photosynthetic Rate (Âµmol m-2 s-1)",
+       y = "Log-odds of having a decreasing population",
+       title = "Log-odds of having a decreasing population trend by photosynthetic rate") +
   theme_linedraw() +
   theme(plot.background = element_rect(color = "#FDFBF7",
                                        fill = "#FDFBF7"),
@@ -279,7 +282,7 @@ htmlTable::htmlTable(con_matrix, css.cell = css.cell,
                      caption = "Confusion Matrix to Assess Photosynthetic Rate Model Performance")
 ```
 
-From this confusion matrix we can see True Positive/True Negative values in green and False Positive/False Negative values in red. Based on these counts, the model has an `r round(((477+12)/nrow(photo_plus)),2)*100`% accuracy. The model seems to be better at predicting if a specie has a non-decreasing population rather than if it has a decreasing population.
+From this confusion matrix we can see True Positive/True Negative values in green and False Positive/False Negative values in red. Based on these counts, the model has an `r round(((477+12)/nrow(photo_plus)),2)*100`% accuracy. The model seems to be better at predicting if a species has a non-decreasing population rather than if it has a decreasing population.
 
 Above 90% accuracy seems to be standard for industry implementation [@towardsdatascience2020], but for the purpose of this project, I still want to use my model to try to make population trend predictions for other species not in my data.
 
