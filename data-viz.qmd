@@ -1,0 +1,7 @@
+---
+title: "Data Visualizations"
+---
+
+![](images/frog_plot-03.png){width="1000"}
+
+![](images/lobster_plot.png)

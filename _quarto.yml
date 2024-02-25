@@ -17,7 +17,8 @@ website:
       #- resources.qmd
       - href: projects.qmd 
         text: Projects & Blog
-     # - blog.qmd
+      - href: data-viz.qmd
+        text: Data Viz
       
     right:
       - href: CV-Sam_Web.pdf
