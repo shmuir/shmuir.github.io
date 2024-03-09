@@ -1,0 +1,233 @@
+---
+title: "Invertebrate Investigations"
+#subtitle: ""
+description: "Animal life at the Georgia Coastal Ecosystem LTER Flux Tower"
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+    orcid: 
+    affiliation: Bren School of Environmental Science & Management at University of California Santa Barbara
+    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
+date: 03-09-2024
+categories: [MEDS, Ecology, Coastal]
+bibliography: references.bib
+citation:
+  url: https://shmuir.github.io/projects/2024-03-09-georgia-marsh/
+image: infographic-final.png
+format:
+  html:
+    code-fold: true
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+```{r, libraries, message=FALSE}
+# libraries
+library(tidyverse)
+library(janitor)
+library(sf)
+library(sysfonts)
+library(scales)
+library(patchwork)
+library(ggtext)
+showtext::showtext_auto()
+```
+
+For this visualization project I am interested in investigating how the abundance of three different invertebrate animals at the Georgia Coastal Ecosystem LTER Flux Tower vary over time. Marsh Periwinkle Snails (*Littoraria irrorata*) are commonly found in coastal marshes and I want to see which months have the highest cumulative counts 2014-2022. Planthoppers (*Prokelisia sp.*) and Grasshoppers (*Caelifera sp.*) also utilize marsh grass as habitat and a food source, and I am interested in how their abundances change throughout the year and over the 2014-2022 time period.
+
+To answer my questions, I am using data from the [Georgia Coastal Ecosystem Long-Term Ecological Research Flux Tower](https://gce-lter.marsci.uga.edu/portal/flux_tower.htm) on their [monthly vegetation and invertebrate population monitoring](https://search.dataone.org/view/https%3A%2F%2Fpasta.lternet.edu%2Fpackage%2Fmetadata%2Feml%2Fknb-lter-gce%2F604%2F92).
+
+For data size and storage purposes, data was cleaned and prepared separately and I will just be reading the cleaned data. But, the code for this processing can be seen below. Data was downloaded from DataOne using the {metajam} package. This data collection includes many different data frames such as `stemheight` and `biomass`, but here I am just using `animals`. The `animals` data frame includes the following variables:
+
+-   `Date`: Survey date
+
+-   `Spartina_Zone`: *Spartina* grass height zone
+
+-   `Plot_Number`: Survey plot number
+
+-   `Latitude`: Collection latitude
+
+-   `Longitude`: Collection longitude
+
+-   `Grasshopper_Abundance_Index`: Grasshopper abundance classification
+
+-   `Prokelisia_Abundance_Index`: Planthopper abundance classification
+
+-   `Littoraria_Count`: Number of *Littoraria* snails
+
+-   `Littoraria_Quadrat_Area`: Quadrat number
+
+```{r, eval=FALSE}
+# download data from DataOne ---
+download_d1_data_pkg("https://gmn.lternet.edu/mn/v2/packages/application%2Fbagit-097/doi%3A10.6073%2Fpasta%2F9746c71b35e9f8c544ea12c601c33949", path = here::here("data"))
+
+# read in the data
+animals <- read_csv("data/animals/PLT-GCEM-1610_Animals_9_0.CSV", skip = 2)[-c(1,2),]
+
+# data cleaning 
+animals_clean <- animals %>%
+  clean_names() %>%
+  mutate_at(c("latitude", "longitude", "littoraria_count"), as.numeric) %>% # change cols to numeric
+  mutate_at(c("grasshopper_abundance_index", "prokelisia_abundance_index", "littoraria_quadrat_area", "plot_number", "spartina_zone"), as.factor) %>% # change cols to factor
+  mutate(date = lubridate::as_date(date),
+         year = as.factor(year(date)), # get year from the date
+         month = as.factor(month(date))) # change date to a date
+
+month.name.short = c("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec")
+
+# prepare grasshopper data for heatmap ----
+invert_binary <- animals_clean %>%
+  filter(year != 2013) %>% # data collection began par way through 2013
+  mutate(month_name = as.factor(month.name.short[month]), # adding the written out month name
+         month_name = factor(month_name, levels = month.name.short),
+         grasshopper_abundance_index = as.character(grasshopper_abundance_index), # convert abundance to character
+         prokelisia_abundance_index = as.character(prokelisia_abundance_index), # convert abundance to numeric
+         grasshopper_abundance_index = as.numeric(grasshopper_abundance_index), # convert abundance to character
+         prokelisia_abundance_index = as.numeric(prokelisia_abundance_index)) %>% # convert abundance to numeric
+  dplyr::select(month, month_name, year, date, grasshopper_abundance_index, prokelisia_abundance_index) %>% # select necessary columns
+  group_by(month_name, year) %>% # group to summarize counts 
+  summarise(Grasshopper = max(grasshopper_abundance_index), # find the max for each month of each year
+            Planthopper = max(prokelisia_abundance_index), # find the max for each month of each year
+            Grasshopper = as.factor(Grasshopper), # re-factor the max values
+            Planthopper = as.factor(Planthopper)) # re-factor
+
+# add missing months to the data to NAs rather than blank observations
+additional_data2 <- data.frame(
+  month_name = factor(c("Feb", "June", "Sept", "Oct", "Oct", "Nov", "Nov"),
+                      levels = month.name.short), year = factor(c(2020, 2019, 2017, 2018, 2019, 2016, 2021))
+)
+
+# join additional month data to abundance data and pivot to be able to facet
+full_heatmap_data <- full_join(invert_binary, additional_data2) %>%
+  pivot_longer(cols = Grasshopper:Planthopper, names_to = "Animal",
+               values_to = "Abundance") %>%
+  mutate(Animal = case_when(Animal == "Grasshopper" ~ "**Grasshopper**<br>(*Caelifera*)",
+                            Animal == "Planthopper" ~ "**Planthopper**<br>(*Prokelisia*)"))
+
+# prepare data for bar chart by month ----
+snail_bar_month <- animals_clean %>%
+  filter(year != 2013) %>% # data collection began par way through 2013
+  mutate(month_name = as.factor(month.name[month]), # adding the written out month name
+         month_name = factor(month_name, levels = month.name)) %>%
+  dplyr::select(month, month_name, year, date, littoraria_count) %>% # select necessary cols
+  group_by(month_name) %>%
+  summarise(littoraria_count = sum(littoraria_count, na.rm = TRUE)) # find total time period counts per month
+
+# data prep for line plot ----
+snail_plotting <- animals_clean %>%
+  filter(year != 2013) %>%
+  mutate(year_month = format(date, "%y/%m")) %>% # format into year month
+  group_by(year_month) %>%
+  summarise(counts = sum(littoraria_count, na.rm = TRUE)) %>% # find the sum for each month
+  mutate(year_month = ym(year_month)) # get the year month
+
+# save cleaned data
+# write_csv(snail_bar_month, "snail_clean.csv")
+# write_csv(full_heatmap_data, "hopper_clean.csv")
+```
+
+Now I will read in the cleaned data:
+
+```{r, message=FALSE, warning=FALSE}
+# read in cleaned data
+snails <- read_csv("data/snail_clean.csv")
+hoppers <- read_csv("data/hopper_clean.csv") %>%
+  mutate(Abundance = as.factor(Abundance))
+
+# define shortened versions of month names
+month.name.short = c("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec")
+```
+
+To answer my first question about Marsh Periwinkle Snail counts from 2014-2022, I chose to make bar plots showing the cumulative counts for each month over the time period. This is a clear way to visually see the differences between the months, and it highlighted the increase in snail abundance in the summer months. These summer months are also the typical egg hatching period for the Marsh Periwinkle, so I added a light grey box behind these bars and a label indicating this season. Additionally, the plot showed that there are also high snail counts in September, and digging more in the data revealed that two years, 2018 and 2022, had unusually high counts. With some research I found that September was unusually warm for both of these years. I added an annotation with an arrow to explain this intereting trend. 
+
+```{r, eval=FALSE}
+# bar plot----
+ggplot(snails, aes(x = as.numeric(month_name), y = littoraria_count)) +
+  # add rectangle to indicate hatching season
+  geom_rect(aes(xmin = as.numeric(factor("June", levels = month.name)) - 0.5, # adjust rectangle to go over the whole month
+                xmax = as.numeric(factor("August", levels = month.name)) + 0.5, # adjust rectangle to go over the whole month
+                ymin = 0, ymax = 5200),
+            alpha = 0.1, fill = "grey", size = 0.7) + # change fill and border 
+    geom_col(fill = "#455D44") +
+  scale_x_continuous(breaks = as.numeric(factor(month.name.short, levels = month.name.short)), labels = month.name.short) + # set x-axis labels to the month names
+  theme_bw() +
+  labs(x = "**Month**",
+       y = "**Cumulative Snail Counts<br>(2014-2022)**",
+       title = "**Marsh Periwinkle Snail**",
+       subtitle = "(*Littoraria irrorata*)") +
+  theme_minimal(base_family = "fira condensed") + # set theme
+# set theme - adjust axis lines, text size
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(size = 28, color = "black"),
+        axis.text.y = element_text(size = 28, color = "black"),
+        axis.title.y = element_markdown(margin = margin(r = 15), size = 31),
+        axis.title.x = element_markdown(margin = margin(t = 15), size = 31),
+        panel.grid.major.y = element_line(color = "black", linetype = "dotted", linewidth = 1),
+        axis.line = element_line(color = "black"),
+        plot.title = element_markdown(size = 40, hjust = 0.5, family = "fira condensed"),
+        plot.subtitle = element_markdown(size = 28, hjust = 0.5)) +
+  annotate(geom = "text", # add text annotation to the rectangle indicator
+    x = 7, y = 5400, # adjust the positioning
+    label = "bold(`Snail egg hatching season`)",
+    size = 9, family = "fira condensed", parse = TRUE
+  ) 
+```
+
+```{r, eval=FALSE}
+# heat map ----
+ggplot(hoppers) +
+  geom_tile(aes(x = month_name, y = year, fill = Abundance), color = "black") +
+  scale_fill_manual(values = c("white","#DFE3CE","#BDCFA1","#455D44", "#23341E"),  # set color scale
+                    labels = c("Absent","Rare", "Common", "Abundant", "Very Abundant"), # change legend labels
+                    na.value = "grey") +
+  facet_wrap(~factor(Animal, levels=c("**Planthopper**<br>(*Prokelisia*)", '**Grasshopper**<br>(*Caelifera*)')), ncol = 1, scales = "free_x") + # one plot for each animal
+  labs(title = "", 
+       subtitle = "",
+       x = "**Month**",
+       y = "**Year**",
+       fill = "**Abundance**") +
+  theme_minimal(base_family = "fira condensed") +
+  # set theme options - adjust title, text, and grid lines
+  theme(axis.line = element_blank(),
+        panel.grid = element_blank(),
+        panel.border = element_blank(),
+        axis.text.x = element_text(size = 28, color = "black"),
+        axis.text.y = element_text(size = 28, color = "black"),
+        axis.title.y = element_markdown(margin = margin(r = 16), size = 31),
+        axis.title.x = element_markdown(margin = margin(t = 16), size = 31),
+        plot.title = element_markdown(size = 23, hjust = 0.5),  # Center the title
+        plot.subtitle = element_text(hjust = 0.5, size = 16),
+        legend.title = element_markdown(size = 33),
+        legend.text = element_text(size = 30),
+        strip.text = element_markdown(size = 40),
+        panel.spacing = unit(30, "pt"),
+        legend.key.width = unit(2.5, "cm"),
+        legend.key.height = unit(2.5, "cm"),
+        legend.background = element_rect(fill=alpha('#C8D8DE', 1),
+                                         color = "#C8D8DE"))
+```
+
+To give context to my visualizations, I want to include a map, highlighting where Gerogia is and the exact location of the flux tower.
+
+```{r}
+# get data for all US states
+all_states <- map_data("state") 
+# filter to just get Georgia
+ga <- filter(all_states, region == "georgia")
+# create data frame for the coordinate of the flux tower
+flux_tower <- data.frame(long = -81.28400, lat = 31.44986)
+```
+
+```{r, eval=FALSE}
+ggplot() +
+  geom_polygon(data = all_states, aes(x=long, y=lat, group = group), colour="white", fill="grey" ) +
+  geom_polygon(data = ga, aes(x=long, y=lat, group = group),fill="seagreen") +
+  geom_point(data = flux_tower, aes(x = long, y = lat),
+             color = "#23341E", size = 4, shape = 23, fill = "purple") +
+  theme_void()
+```
+
+![](infographic-final.png)
