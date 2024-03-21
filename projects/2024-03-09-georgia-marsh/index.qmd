@@ -17,7 +17,7 @@ image: banner.jpg
 format:
   html:
     code-fold: false
-draft: false
+draft: true
 ---
 
 ```{r setup, include=FALSE}

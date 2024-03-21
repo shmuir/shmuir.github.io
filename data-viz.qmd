@@ -2,6 +2,8 @@
 title: "Data Visualizations"
 ---
 
+![](projects/2024-03-09-georgia-marsh/final-infographic.png){width="1000}
+
 ![](images/frog_plot-03.png){width="1000"}
 
 ![](images/lobster_plot.png)
