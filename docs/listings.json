@@ -6,11 +6,11 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/2024-04-13-spotify-predictions/index.html",
       "/projects/2023-12-15-plant-population-prediction/index.html",
       "/projects/2023-12-10-research-ethics-kaza/index.html",
       "/projects/2023-12-05-fire-aqi/index.html",
       "/projects/2023-11-26-houston-power-outage/index.html",
-      "/projects/2023-11-13-apple-bloom/index.html",
       "/projects/2023-11-10-phytophthora/index.html"
     ]
   }

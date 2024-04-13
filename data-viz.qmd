@@ -2,8 +2,24 @@
 title: "Data Visualizations"
 ---
 
-![](projects/2024-03-09-georgia-marsh/final-infographic.png){width="1000}
+![](projects/2024-03-09-georgia-marsh/final-infographic.png){width="1000"}
 
-![](images/frog_plot-03.png){width="1000"}
+Created for EDS240: Data Visualization and Communication
 
-![](images/lobster_plot.png)
+<br>
+
+![](images/Muir_smp_poster.png){width="800"}
+
+The results of my undergraduate thesis, presented at the Southern Maryland Marine Science 2022
+
+<br>
+
+![](projects/2023-11-13-apple-bloom/apple-poster.png){width="1000"}
+
+The results of my NSF REU project at Penn State University, presented at the American Meteorological Society conference 2022
+
+<br>
+
+![](images/frog_plot-03.png){width="800"}
+
+![](images/lobster_plot.png){width="800"}

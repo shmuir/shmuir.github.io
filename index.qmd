@@ -19,7 +19,7 @@ about:
 ---
 ## Hello!
 
-Hi my name is Sam (he/they) and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. I have experience in plant sciences & coastal ecology and am excited to continue my environmental education focusing on data science. I also have a passion for accessible data communication and environmental justice.  
+Hi my name is Sam and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. I have experience in plant sciences & coastal ecology and am excited to continue my environmental education focusing on data science. I also have a passion for accessible data communication, remediation, and environmental justice.  
 
 ## Skills & Interests
 {{< fa seedling >}} Plants -- {{< fa code-branch >}} Coding -- {{< fa tree >}} Ecology -- {{< fa music >}} Music/ Cello -- {{< fa sailboat >}} Sailing
