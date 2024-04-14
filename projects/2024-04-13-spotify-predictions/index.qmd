@@ -1,6 +1,6 @@
 ---
 title: "Who's on AUX? Using machine learning to predict whose Spotify playlist a song belongs to"
-description: ""
+description: "Building my ML skills through a fun musical project"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
@@ -12,7 +12,7 @@ categories: [ML, R, MEDS]
 bibliography: references.bib
 citation:
   url: https://shmuir.github.io/projects/2024-04-13-spotify-predictions/
-image: trees.jpeg
+image: spotify.png
 format:
   html:
     code-fold: false
@@ -20,14 +20,14 @@ draft: false
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, eval = TRUE)
 ```
 
 ```{r packages, include=FALSE}
 library(spotifyr) #API interaction
 library(tidyverse)
 library(tidymodels)
-source(here::here("week-5","keys.R")) # API key
+source(here::here("projects/2024-04-13-spotify-predictions/keys.R")) # API key
 # Modeling packages
 library(rpart)       # direct engine for decision tree application
 library(caret)       # meta engine for decision tree application
@@ -44,17 +44,13 @@ library(patchwork)
 
 # Project Overview
 
-## Motivation
-
 In this project, I am interested in building my machine learning skills through a fun exercise with Spotify! 
-
-## Question
 
 Using my liked songs and my friends, can I build a machine learning model to predict whose playlist a song belongs to? 
 
 # Data & Methods
 
-For this project, I will be requesting data from the Spotify API using the {spotifyr} package and using the data to build k-nearest neighbor and decision tree models. 
+For this project, I will be requesting data from the Spotify API using the `{spotifyr}` package and using the data to build k-nearest neighbor and decision tree models. 
 
 ## Data Preparation
 
@@ -106,7 +102,16 @@ sam_audio <- my_tracks %>%
 
 One of my friends followed these same steps, and she sent me a .csv of her track audio features, which I will bind with my audio features dataframe.
 
-```{r}
+```{r, echo=FALSE, eval=TRUE}
+sam_audio <- read_csv(here::here("projects/2024-04-13-spotify-predictions/sam_audio.csv"))
+```
+
+```{r, eval=TRUE}
+# read in anna audio
+anna_audio <- read_csv(here::here("projects/2024-04-13-spotify-predictions/named_audio_anna.csv")) %>%
+  mutate(name = "anna")
+
+# bind mine and anna's data 
 both_audio <- rbind(sam_audio, anna_audio)
 ```
 
@@ -234,10 +239,6 @@ With my model now finalized, we can look at the accuracy of the training predict
 # report the accuracy for the training and testing ----
 accuracy(train_predict, truth = name, estimate = .pred_class) #get training accuracy
 accuracy(test_knn_predict, truth = name, estimate = .pred_class) #get accuracy of testing prediction
-# sensitivity(train_predict, truth = name, estimate = .pred_class)
-# specificity(train_predict, truth = name, estimate = .pred_class)
-# sensitivity(test_predict, truth = name, estimate = .pred_class)
-# specificity(test_predict, truth = name, estimate = .pred_class)
 ```
 
 Here is the optimized workflow for the KNN model along with the result metrics. 
@@ -259,7 +260,7 @@ final_knn_result$.metrics
 
 ### Decision Tree
 
-Let's build another model! This time I am going to be building a decision tree and tuning model hyperparameters. 
+Let's build another model! This time I am going to be building a decision tree and tuning model hyperparameters. The hyperparameters I have chosen to tune are cost complexity, tree depth, and the minimum number of data points in a node. 
 
 ```{r}
 #new spec, tell the model that we are tuning hyperparams ----
@@ -273,17 +274,23 @@ tree_spec_tune <- decision_tree(
 
 tree_grid <- grid_regular(cost_complexity(), tree_depth(), min_n(), levels = 5)
 #head(tree_grid)
+```
 
+Now I can define a new workflow and set up the k-folds
+```{r}
 # setting up the workflow ----
 wf_tree_tune <- workflow() %>%
   add_recipe(tracks_recipe) %>%
   add_model(tree_spec_tune)
 
-#set up k-fold cv. This can be used for all the algorithms ----
+# set up k-fold cv ----
 tracks_cv <- tracks_train %>%
   vfold_cv(v=10)
 #tracks_cv
+```
 
+Since the decision tree is more computationally expensive, I am going to be using parallel processing to help with grid tuning computation time. 
+```{r}
 # build trees ----
 doParallel::registerDoParallel() #build trees in parallel
 tree_rs <- tune_grid(
@@ -296,7 +303,10 @@ tree_rs <- tune_grid(
 # Use autoplot() to examine how different parameter configurations relate to accuracy ----
 autoplot(tree_rs) +
   theme_bw()
+```
 
+With the grid tuning finished I can select the best hyperparameters, finalize the workflow, fit the data, and make predictions on the testing data. 
+```{r}
 # select hyperparameter ----
 #show_best(tree_rs) # showing
 select_best(tree_rs) # what we'll input
@@ -323,15 +333,13 @@ predict_tree_data <- predict(final_tree_fit, tracks_test) %>% #get prediction pr
 final_tree_fit %>%
   vip(geom = "point") +
   theme_bw()
-
-# differences between groups
-# ggplot(predict_tree_data, aes(.pred_class, duration_ms)) +
-#   geom_boxplot()
 ```
 
 
 ## Bagged Tree
 
+
+The third model I am going to build is a bagged tree model where I tune the cost complexity and the minimum number of data points in a node. 
 ```{r}
 # set up the bagged tree model ----
 bagged_tree <- bag_tree(
@@ -340,7 +348,10 @@ bagged_tree <- bag_tree(
 ) %>%
   set_engine("rpart", times = 50) %>%
   set_mode("classification")
+```
 
+Setting up the workflow and grid tuning. 
+```{r}
 # workflow ----
 wf_bag_tune <- workflow() %>%
   add_recipe(tracks_recipe) %>%
@@ -354,8 +365,10 @@ bag_rs <- tune_grid(
   resamples = tracks_cv,
   grid = bag_grid,
   metrics = metric_set(accuracy))
+```
 
-
+Select the best hyperparameters, finalize the workflow, fit, and predict. 
+```{r}
 # select hyperparameter ----
 #show_best(bag_rs) # showing
 select_best(bag_rs) # what we'll input
@@ -383,13 +396,17 @@ final_bag_result$.metrics
 
 ## Random Forest
 
+Finally, I am going to be building a random forest model where I tune the number of trees and the number of predictors that will be randomly sampled at each split. 
 ```{r}
 # random forest ----
 rf_model <- rand_forest(mtry = tune(),
                   trees = tune()) %>%
   set_engine("ranger") %>%
   set_mode("classification")
+```
 
+Contain the model and recipe in a workflow and grid tuning. 
+```{r}
 # workflow ----
 rf_workflow <- workflow() %>%
   add_model(rf_model) %>%
@@ -405,7 +422,10 @@ rf_cv_tune <- rf_workflow %>%
 #plot cv results for parameter tuning ----
 autoplot(rf_cv_tune) + 
   theme_bw()
+```
 
+Finalize the workflow, fit, and predict. 
+```{r}
 # finalize workflow ----
 rf_best <- show_best(rf_cv_tune, n = 1, metric = "roc_auc") #get metrics for best random forest model
 rf_best
@@ -444,6 +464,7 @@ test_roc_auc_rf <- roc_curve(test_predict2_rf, name, .pred_anna)
 
 # Comparison of model performance
 
+Now that all of the models are built, we can compare their performance. Let's start by pulling out the metrics from the model results and compare the accuracy of the four models. 
 ```{r}
 # store the final result metrics
 knn_metrics <- final_knn_result$.metrics[[1]]
@@ -451,7 +472,7 @@ tree_metrics <- final_tree_result$.metrics[[1]]
 bag_metrics <- final_bag_result$.metrics[[1]]
 rf_metrics <- rf_final_result$.metrics[[1]]
 
-# combine tmetrics into df for table
+# combine metrics into df for table
 comparison_data <- data.frame(
   Model = c("KNN", "Decision Tree", "Bagged Tree", "Random Forest"),
   Accuracy = c(knn_metrics$.estimate[1], tree_metrics$.estimate[1], bag_metrics$.estimate[1], rf_metrics$.estimate[1]),
@@ -469,7 +490,10 @@ comparison_data %>%
     columns = c(Accuracy, ROC_AUC),
     decimals = 3
   )
+```
 
+Additionally, we can visualize our model comparison and look at the confusion matrices for each model. 
+```{r}
 # pivot data for plottig
 comparison_data_long <- comparison_data %>%
   pivot_longer(cols = c(Accuracy, ROC_AUC), names_to = "Metric", values_to = "Value")
@@ -483,34 +507,35 @@ ggplot(comparison_data_long, aes(x = Model, y = Value, fill = Metric)) +
   scale_fill_manual(values = c("lightblue", "seagreen"))
 
 # confusion matrix
-knn_conf <- test_knn_predict %>%
+test_knn_predict %>%
   conf_mat(truth = name, estimate = .pred_class) %>%
   autoplot(type = 'heatmap') +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1)) +
   labs(title = "KNN")
-rf_conf <- test_predict_rf %>% 
+test_predict_rf %>% 
   conf_mat(truth = name, estimate = .pred_class) %>% #create confusion matrix
   autoplot(type = "heatmap") + #plot confusion matrix with heatmap
   theme_bw() + #change theme
   theme(axis.text.x = element_text(angle = 30, hjust=1)) +
   #rotate axis labels
   labs(title = "Random Forest")
-bag_conf <- bag_data %>%
+bag_data %>%
   conf_mat(truth = name, estimate = .pred_class) %>%
   autoplot(type = 'heatmap') +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1)) +
   labs(title = "Bagged Tree")
-tree_conf <- predict_tree_data %>%
+predict_tree_data %>%
   conf_mat(truth = name, estimate = .pred_class) %>%
   autoplot(type = 'heatmap') +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1)) +
   labs(title = "Decision Tree")
 
-bag_conf + knn_conf + rf_conf + tree_conf
+# bag_conf + knn_conf + rf_conf + tree_conf
 ```
 
 # Thoughts and Conclusions
 
+This was a fun project and got me more familiar with machine learning packages in R and modeling methods. I want to explore the Spotify data more, since there are so many more functions and attributes I haven't explored. Happy listening!
