@@ -1,0 +1,40 @@
+---
+title: "Data Visualizations & Posters"
+output:
+  html_document:
+    css: styles.css  # Optional: Include custom CSS file for styling
+---
+
+**Click on any of the images to get a closer look!**
+
+<!-- Gallery with clickable images -->
+<div class="gallery">
+  <img src="projects/2024-03-09-georgia-marsh/final-infographic.png" alt="Final Infographic" onclick="openModal('projects/2024-03-09-georgia-marsh/final-infographic.png')" class="gallery-img">
+  <img src="projects/2023-11-13-apple-bloom/apple-poster.png" alt="Muir SMP Poster" onclick="openModal('projects/2023-11-13-apple-bloom/apple-poster.png')" class="gallery-img">
+  <img src="images/Muir_smp_poster.png" alt="Muir SMP Poster" onclick="openModal('images/Muir_smp_poster.png')" class="gallery-img">
+  <img src="images/frog_plot-03.png" alt="Muir SMP Poster" onclick="openModal('images/frog_plot-03.png')" class="gallery-img">
+  <img src="images/lobster_plot.png" alt="Muir SMP Poster" onclick="openModal('images/lobster_plot.png')" class="gallery-img">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<!-- JavaScript for Modal -->
+<script>
+// Function to open the modal with clicked image
+function openModal(imgSrc) {
+  var modal = document.getElementById('myModal');
+  var modalImg = document.getElementById('modalImg');
+  modal.style.display = "block";
+  modalImg.src = imgSrc;
+}
+
+// Function to close the modal
+function closeModal() {
+  var modal = document.getElementById('myModal');
+  modal.style.display = "none";
+}
+</script>

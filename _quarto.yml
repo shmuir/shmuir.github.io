@@ -17,11 +17,13 @@ website:
       #- resources.qmd
       - href: projects.qmd 
         text: Projects & Blog
-      - href: data-viz.qmd
+      # - href: data-viz.qmd
+      #   text: Data Viz
+      - href: gallery.qmd
         text: Data Viz
       
     right:
-      - href: CV-Sam_Web.pdf
+      - href: docs/CV-Web-Sam-Muir.pdf
         text: CV
       - icon: github
         href: https://github.com/shmuir
