@@ -13,7 +13,7 @@ categories: [GIS, MEDS, R]
 bibliography: references.bib
 citation:
   url: https://shmuir.github.io/projects/2023-11-26-houston-power-outage/
-image: map.png
+image: power-outage.jpeg
 format:
   html:
     code-fold: true

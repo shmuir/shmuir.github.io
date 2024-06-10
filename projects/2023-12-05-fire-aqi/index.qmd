@@ -1,5 +1,5 @@
 ---
-title: "The Thomas Fire in Santa Barbara County 2017-2018"
+title: "Environmental impact and air quality analysis of the 2017 Thomas Fire in Santa Barbara County"
 subtitle: ""
 description: "Visualizing the burn area and change in air quality index"
 author:
@@ -26,7 +26,7 @@ In December of 2017 the Thomas Fire spread across Santa Barbara and Ventura coun
 
 ![](fire_haze.jpg){width="500"}
 
-A photo taken along highway 101 showing burned palm trees and a hazy sky from fire smoke. This picture was taken December 13th, 2017 by me.
+A photo taken along highway 101 showing burned palm trees and a hazy sky from fire smoke. I took this picture was taken December 13th, 2017.
 
 ## Highlights of Analysis
 
@@ -89,7 +89,7 @@ aqi_2018 = pd.read_csv("https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2
 
 We want to look at the extent of the Thomas Fire in Santa Barbara County. We will do this by plotting the false color imagery from the landsat data and adding the fire borders from the California fires data.
 
-First, we will need to prepare our data a bit more by
+First, let's prepare the data a bit more by
 
 -   dropping a dimension from the landsat data
 

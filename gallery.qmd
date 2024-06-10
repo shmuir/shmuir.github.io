@@ -9,11 +9,11 @@ output:
 
 <!-- Gallery with clickable images -->
 <div class="gallery">
-  <img src="projects/2024-03-09-georgia-marsh/final-infographic.png" alt="Final Infographic" onclick="openModal('projects/2024-03-09-georgia-marsh/final-infographic.png')" class="gallery-img">
-  <img src="projects/2023-11-13-apple-bloom/apple-poster.png" alt="Muir SMP Poster" onclick="openModal('projects/2023-11-13-apple-bloom/apple-poster.png')" class="gallery-img">
-  <img src="images/Muir_smp_poster.png" alt="Muir SMP Poster" onclick="openModal('images/Muir_smp_poster.png')" class="gallery-img">
-  <img src="images/frog_plot-03.png" alt="Muir SMP Poster" onclick="openModal('images/frog_plot-03.png')" class="gallery-img">
-  <img src="images/lobster_plot.png" alt="Muir SMP Poster" onclick="openModal('images/lobster_plot.png')" class="gallery-img">
+  <img src="projects/2024-03-09-georgia-marsh/final-infographic.png" alt="Final Infographic" onclick="openModal('projects/2024-03-09-georgia-marsh/final-infographic.png')" class="gallery-img" data-hover-text="Look at this pic">
+  <img src="projects/2023-11-13-apple-bloom/apple-poster.png" alt="Apple Poster" onclick="openModal('projects/2023-11-13-apple-bloom/apple-poster.png')" class="gallery-img" data-hover-text="Apple Poster">
+  <img src="images/Muir_smp_poster.png" alt="Muir SMP Poster" onclick="openModal('images/Muir_smp_poster.png')" class="gallery-img" data-hover-text="Muir SMP Poster">
+  <img src="images/frog_plot-03.png" alt="Frog Plot" onclick="openModal('images/frog_plot-03.png')" class="gallery-img" data-hover-text="Frog Plot">
+  <img src="images/lobster_plot.png" alt="Lobster Plot" onclick="openModal('images/lobster_plot.png')" class="gallery-img" data-hover-text="Lobster Plot">
 </div>
 
 <!-- The Modal -->

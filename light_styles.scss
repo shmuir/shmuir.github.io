@@ -52,10 +52,47 @@ h1, h2, h3, h4, h5, h6 {
   
 
 /* Style for the gallery images */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .gallery-img {
   width: auto; /* Set a fixed width for the gallery images */
   height: 300px; /* Automatically adjust height while maintaining aspect ratio */
   cursor: pointer; /* Cursor pointer on hover */
+  position: relative; /* Ensure positioning for overlay */
+  transition: transform 0.2s; /* Smooth scaling on hover */
+}
+
+.gallery-img:hover {
+  transform: scale(1.05); /* Slightly enlarge the image on hover */
+}
+
+.gallery-img::after {
+  content: attr(data-hover-text); /* Use data-hover-text as hover text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none; /* Ensure hover text doesn't interfere with clicks */
+  transition: opacity 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.gallery-img:hover::after {
+  opacity: 1; /* Show hover text on image hover */
 }
 
 /* Style for the modal */
@@ -97,7 +134,4 @@ body.modal-open {
   overflow: hidden;
 }
 
-
-
-  
   

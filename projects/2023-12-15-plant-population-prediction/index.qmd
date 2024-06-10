@@ -1,5 +1,5 @@
 ---
-title: "The influence of photosynthetic rate and ecological threats on plant species population trends"
+title: "Modeling the influence of photosynthetic rate and ecological threats on plant species population trends"
 description: "Predicting population trends for those with an unknown status"
 author:
   - name: Sam Muir

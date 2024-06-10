@@ -19,13 +19,13 @@ draft: false
 
 # Post Overview
 
-Earlier this year I started as a Graduate Research Fellow in collaboration with the [emLab](https://emlab.ucsb.edu/) at UCSB and [Conservation International SPARC](https://www.sparc-website.org/). During my interview and subsequent on boarding process, I learned that the research would be focused on areas of Southern Africa, mainly the KAZA region. For those unfamiliar with the term KAZA TFCA (as I was initially), it stands for Kavango--Zambezi Transfrontier Conservation Area, which is one of the largest landscape conservation areas in the world, spanning Angola, Zambia, Zimbabwe, Botswana, and Namibia [@WWF]. It's a beautiful, diverse area that, focuses on sustainably managing the ecosystem, attracts many tourists, and serves as a hub for various research initiatives.
+In 2023 I started as an Arnhold Environmental Graduate Research Fellow in collaboration with the [emLab](https://emlab.ucsb.edu/) at UCSB and [Conservation International SPARC](https://www.sparc-website.org/). During my interview and subsequent on boarding process, I learned that the research would be focused on areas of Southern Africa, mainly the KAZA region. For those unfamiliar with the term KAZA TFCA (as I was initially), it stands for Kavango--Zambezi Transfrontier Conservation Area, which is one of the largest landscape conservation areas in the world, spanning Angola, Zambia, Zimbabwe, Botswana, and Namibia [@WWF]. It's a beautiful, diverse area that, focuses on sustainable ecosystem management, attracts many tourists, and serves as a hub for various research initiatives.
 
 ![](kaza_map.jpeg){fig-align="left" width="425"}
 
 [Map of the KAZA TCFA [@WWF_Namibia].]{style="color:grey;"}
 
-So, what is the focus of our research in KAZA? Broadly, our questions revolve around the effects of climate change on wildlife corridors, human intrusion into these corridors, and the subsequent impacts on human-elephant conflict. Throughout my data analysis and literature review this quarter, I've been contemplating the following questions: In what ways can we ensure that our research is relevant and beneficial for the communities we're studying and using data from? What factors should we keep in mind when conducting and reporting research on communities that we have no personal connections to?
+Broadly, our research questions revolve around the effects of climate change on wildlife corridors, human intrusion into these corridors, and the subsequent impacts on human-elephant conflict. Throughout my data analysis and literature review, I've been contemplating the following questions: In what ways can we ensure that our research is relevant and beneficial for the communities we're studying and using data from? What factors should we keep in mind when conducting and reporting research on communities that we have no personal connections to?
 
 ![](kaza-elephants.jpeg){fig-align="left" width="425"}
 

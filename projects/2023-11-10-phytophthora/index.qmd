@@ -1,7 +1,6 @@
 ---
 title: "Phytophthora presence in Southern Maryland coastal soils"
-subtitle: "Analyzing the influence of seawater intrusion on oomycete abundance"
-description: "This was my directed research project as an undergraduate student at St. Mary's College of Maryland in Dr. Lorena Torres-Martinez's lab."
+description: "Analyzing the influence of seawater intrusion on oomycete abundance"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
