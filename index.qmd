@@ -13,19 +13,18 @@ about:
       href: https://github.com/shmuir
       icon: github
     - text: Email
-      href: mailto::smuir@bren.ucsb.edu
+      href: mailto::shmuir1@gmail.com
       icon: envelope
 
 ---
 ## Hello!
 
-Hi my name is Sam and I am currently a Master of Environmental Data Science student at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. I have experience in plant sciences & coastal ecology and am excited to continue my environmental education focusing on data science. I also have a passion for accessible data communication, remediation, and environmental justice.  
-
-## Skills & Interests
-{{< fa seedling >}} Plants -- {{< fa code-branch >}} Coding -- {{< fa tree >}} Ecology -- {{< fa music >}} Music/ Cello -- {{< fa sailboat >}} Sailing
+My name is Sam and I am recent graduate from the Master of Environmental Data Science program at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. My experience encompasses a range of projects focused on land cover change, spatial modeling, and the impacts of climate change on environmental health. I'm eager to continue developing my environmental data science skills, leverage my experience to help protect our vital ecosystems, and contribute to environmental justice efforts through accessible science communication.  
 
 ## Education
 
-Master of Environmental Data Science (MEDS): University of California Santa Barbara (Expected 2024)
+**Master of Environmental Data Science (MEDS)** <br>
+University of California Santa Barbara (2024)
 
-B.S. Biology and B.A. Environmental Studies, Minor in French: St. Mary's College of Maryland (2023)
+**B.S. Biology and B.A. Environmental Studies, Minor in French** <br>
+St. Mary's College of Maryland (2023)

@@ -5,7 +5,7 @@ subtitle: ""
 
 ## {{< fa bacteria >}} Professionally
 
-I'm a Masters of Environmental Data Science student at the Bren School at the University of California, Santa Barbara. My [capstone project](https://bren.ucsb.edu/projects/species-distribution-modeling-early-season-milkweed-los-padres-national-forest) is focused on identifying high-priority survey sites for milkweed conservation in the Los Padres National Forest for the Santa Barbara Botanic Garden. I am also an Arnhold Environmental Graduate Fellow working with the [emLab](https://emlab.ucsb.edu/) and Conservation International, focusing on elephant connectivity under climate change and land cover shifts. 
+I'm a recent graduate fron the Masters of Environmental Data Science program at the Bren School at the University of California, Santa Barbara. My [masters project](https://bren.ucsb.edu/projects/identifying-priority-survey-sites-early-season-milkweed-conservation) focused on identifying high-priority survey sites for milkweed conservation in the Los Padres National Forest for the Santa Barbara Botanic Garden. I am currently an Arnhold Environmental Graduate Fellow working with the [emLab](https://emlab.ucsb.edu/) and Conservation International, focusing on elephant habitat connectivity under climate change and land cover shifts. 
 
 :::{.column-margin}
 ```{r}
@@ -17,7 +17,7 @@ Watering research *Acmispon* plants in the SMCM greenhouse!
 :::
 :::
 
-Previously, I completed my undergraduate degrees in Biology and Environmental Studies (+ French Minor) at St. Mary's College of Maryland (SMCM) where I had two main areas of focus: plant sciences and coastal ecology. I conducted research on salinity effects on plant-microbe interactions in a [plant ecology lab](https://ltorresmartinez.com/) where I was also the lab manager for my last 6 months there. My undergraduate thesis looked at wave mitigation by constructed oyster reefs using DIY wave gauges, and I continued on with submerged aquatic vegetation research with my same [thesis advisor](https://gurbisz-coastal-ecology.netlify.app/). Towards the end of my undergraduate experience, I also discovered my passion for environmental data science and GIS. 
+Previously, I completed my undergraduate degrees in Biology and Environmental Studies (+ French Minor) at St. Mary's College of Maryland (SMCM) where I had two main areas of focus: plant sciences and coastal ecology. I conducted research on salinity effects on plant-microbe interactions in a [plant ecology lab](https://ltorresmartinez.com/) where I was also the lab manager. My undergraduate thesis examined coastal wave mitigation by constructed oyster reefs using DIY wave gauges. I continued on with submerged aquatic vegetation research with my same [thesis advisor](https://gurbisz-coastal-ecology.netlify.app/). Towards the end of my undergraduate experience, I also discovered my passion for environmental data science and GIS. 
 
 :::{.column-margin}
 ```{r}

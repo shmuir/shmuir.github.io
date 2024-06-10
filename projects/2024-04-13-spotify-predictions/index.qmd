@@ -12,7 +12,7 @@ categories: [ML, R, MEDS]
 bibliography: references.bib
 citation:
   url: https://shmuir.github.io/projects/2024-04-13-spotify-predictions/
-image: spotify.png
+image: spotify.jpeg
 format:
   html:
     code-fold: false
