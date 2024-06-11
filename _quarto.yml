@@ -7,7 +7,7 @@ website:
   favicon: images/logo_tab.png
 
   navbar:
-    logo: images/logos.png
+    logo: images/logo_tab.png
     title: false
     left:
       - href: index.qmd ## name of file
@@ -31,8 +31,13 @@ website:
         href: https://www.linkedin.com/in/shmuir/
       - icon: envelope
         href: mailto:smuir@bren.ucsb.edu
-      
-
+  
+  page-footer: 
+    background: light
+    left: 
+     - Copyright 2024, Sam Muir
+    right:
+     - This website was built with Quarto
 format:
   html:
     link-external-newwindow: true
