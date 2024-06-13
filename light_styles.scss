@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer; /* Cursor pointer on hover */
   position: relative; /* Ensure positioning for overlay */
   transition: transform 0.2s; /* Smooth scaling on hover */
-  transform: scale(0.97);
+  transform: scale(0.97); /* Add image spacing */
 }
 
 .gallery-img:hover {
