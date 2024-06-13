@@ -1,0 +1,98 @@
+---
+title: "Mapping my iNaturalist species sightings data"
+description: "Come explore with me!"
+author:
+  - name: Sam Muir
+    url: https://shmuir.github.io/
+date: 06-12-2024
+categories: [GIS, R, Ecology]
+citation:
+  url: https://shmuir.github.io/projects/mapping-species-sightings/
+image: sam-mushroom.jpg
+format:
+  html:
+    code-fold: true
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, eval = TRUE)
+```
+
+```{r, echo=FALSE}
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(tidyverse)
+library(leaflet)
+library(leafem)
+library(fontawesome)
+```
+
+This year, I want to start using my Seek (iNaturalist) app more to help with species identification. I thought it would be fun to map out my observations. 
+
+Click the numbers on the map to get pulled into the specific species observations. Each taxon type is indicated by a different symbol:
+
+{{< fa seedling >}} *Plantae*  
+{{< fa mosquito >}} *Insecta*  
+{{< fa paw >}} *Mammalia*  
+{{< fa worm >}} *Reptilia*  
+{{< fa disease >}} *Mollusca*  
+{{< fa bacterium >}} *Fungi*  
+{{< fa crow >}} *Aves*  
+{{< fa shield-cat >}} *Animalia*   
+
+
+Click on a singular point to see more information on the observation!
+
+```{r, fig.height=7}
+# Specify username and observations URL
+username <- "shmuir"
+url <- paste0("https://api.inaturalist.org/v1/observations?user_id=", username)
+
+# Make the GET request
+response <- GET(url)
+
+# Parse the JSON content
+data <- content(response, as = "text", encoding = "UTF-8")
+json_data <- fromJSON(data, flatten = TRUE)
+
+# Convert json data to data frame
+observations <- as.data.frame(json_data$results)
+
+# Extract latitude and longitude from 'location' column
+observations <- observations %>%
+  mutate(lat = as.numeric(sapply(strsplit(location, ","), `[`, 1)),
+         lng = as.numeric(sapply(strsplit(location, ","), `[`, 2))) %>%
+  select(species_guess, observed_on, location, lat, lng, taxon.iconic_taxon_name, taxon.default_photo.square_url, taxon.name, taxon.preferred_common_name) %>%
+  mutate(taxon.preferred_common_name = str_to_title(taxon.preferred_common_name))
+
+# Define an awesomeIconList with icons
+icoLst <- awesomeIconList(
+  Plantae = makeAwesomeIcon(text = fa("seedling"), library = "fa", markerColor = "white"),
+  Insecta = makeAwesomeIcon(text = fa("mosquito"), library = "fa", markerColor = "white"),
+  Mammalia = makeAwesomeIcon(text = fa("paw"), library = "fa", markerColor = "white"),
+  Animalia = makeAwesomeIcon(text = fa("shield-cat"), library = "fa", markerColor = "white"),
+  Aves = makeAwesomeIcon(text = fa("crow"), library = "fa", markerColor = "white"),
+  Reptilia = makeAwesomeIcon(text = fa("worm"), library = "fa", markerColor = "white"),
+  Mollusca = makeAwesomeIcon(text = fa("disease"), library = "fa", markerColor = "white"),
+  Fungi = makeAwesomeIcon(text = fa("bacterium"), library = "fa", markerColor = "white"),
+  Unknown = makeAwesomeIcon(text = fa("question-circle"), library = "fa", markerColor = "gray")
+)
+
+# Create Leaflet map with markers and icons
+leaflet(observations) %>%
+  addTiles() %>%
+  addAwesomeMarkers(
+    lng = ~lng, lat = ~lat,
+    icon = ~icoLst[taxon.iconic_taxon_name],
+    popup = ~paste("Species: ", taxon.preferred_common_name, "<br>",
+                   "Scientific Name: ", taxon.name, "<br>",
+                   "Date: ", observed_on, "<br>",
+                   "Type: ", taxon.iconic_taxon_name, "<br>",
+                   "Location: ", location,
+                   "<br><img src='", taxon.default_photo.square_url, "' alt='Species Image' style='width:50px;height:50px;'>"),
+    clusterOptions = markerClusterOptions()
+  )
+```
+

@@ -6,6 +6,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/mapping-species-sightings/mapping-species-sightings.html",
       "/projects/2024-04-13-spotify-predictions/index.html",
       "/projects/2023-12-15-plant-population-prediction/index.html",
       "/projects/2023-12-10-research-ethics-kaza/index.html",

@@ -15,11 +15,11 @@ about:
     - text: Email
       href: mailto::shmuir1@gmail.com
       icon: envelope
-
+icon_under_picture: images/logo_tab.png
 ---
 ## Hello!
 
-My name is Sam and I am recent graduate from the Master of Environmental Data Science program at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. My experience encompasses a range of projects focused on land cover change, spatial modeling, and the impacts of climate change on environmental health. I'm eager to continue developing my environmental data science skills, leverage my experience to help protect our vital ecosystems, and contribute to environmental justice efforts through accessible science communication.  
+My name is Sam and I am an Environmental Data Scientist and Interdisciplinary Ecologist. My experience encompasses a range of projects focused on land cover change, spatial modeling, and the impacts of climate change on environmental health, which have strengthened my skills in coding, ecological field sampling, and laboratory analysis. I'm eager to continue developing my environmental data science skills, leverage my experience to help protect our vital ecosystems, and contribute to environmental justice efforts through accessible science communication.  
 
 ## Education
 
@@ -28,3 +28,7 @@ University of California Santa Barbara (2024)
 
 **B.S. Biology and B.A. Environmental Studies, Minor in French** <br>
 St. Mary's College of Maryland (2023)
+
+## Experience
+**School Campus Tree Study Intern** - *US Forest Service* | June 2024 - Present  
+**Arnhold Environmental Graduate Fellow** - *emLab* | October 2023 - Present
