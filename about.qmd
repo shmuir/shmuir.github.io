@@ -5,7 +5,7 @@ subtitle: ""
 
 ## {{< fa code >}} Currently
 
-I am currently an intern with the USDA USFS with support from the Conference on Asian Pacific American Leadership. In this role I am working to further environmental equity in K-12 public schools in California through tree cover mapping and remote sensing. Additionally, I am continuing my role as an Arnhold Environmental Graduate Fellow, working with the [emLab](https://emlab.ucsb.edu/) and Conservation International, focusing on elephant habitat connectivity under climate change and land cover shifts.
+I am currently an intern with the USDA USFS with support from the Conference on Asian Pacific American Leadership. In this role I am working to further environmental equity in K-12 public schools in California through land cover image classification modeling using remote sensing data. Additionally, I am continuing my role as an Arnhold Environmental Graduate Fellow, working with the [emLab](https://emlab.ucsb.edu/) and Conservation International's [Spatial Planning for Climate Change](https://www.ci-sparcle.org/) initiative, focusing on African Elephant habitat connectivity under climate change and land cover shifts.
 
 :::{.column-margin}
 ```{r}
@@ -27,10 +27,10 @@ Previously, I completed my undergraduate degrees in Biology and Environmental St
 :::{.column-margin}
 ```{r}
 #| echo: false
-knitr::include_graphics("images/sailing.JPG")
+knitr::include_graphics("images/sam_sedcore.JPG")
 ```
 ::: {.extra-small-text .dark-gray-text .topbr}
-College sailing nationals 2022 at Tulane University. 
+Collecting a sediment core sample in the Susquehanna River, MD. 
 :::
 :::
 
@@ -41,10 +41,10 @@ A big part of my life has been devoted to dinghy sailing, especially during unde
 :::{.column-margin}
 ```{r}
 #| echo: false
-knitr::include_graphics("images/sam_cello.jpg")
+knitr::include_graphics("images/sailing.JPG")
 ```
 ::: {.extra-small-text .dark-gray-text .topbr}
-Sometimes music is best enjoyed (and played) outside :) 
+College sailing nationals 2022 at Tulane University. 
 :::
 :::
 

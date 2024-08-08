@@ -4,7 +4,7 @@ description: "Come explore with me!"
 author:
   - name: Sam Muir
     url: https://shmuir.github.io/
-date: 06-12-2024
+date: 08-08-2024
 categories: [GIS, R, Ecology]
 citation:
   url: https://shmuir.github.io/projects/mapping-species-sightings/
@@ -93,6 +93,8 @@ leaflet(observations) %>%
                    "Location: ", location,
                    "<br><img src='", taxon.default_photo.square_url, "' alt='Species Image' style='width:50px;height:50px;'>"),
     clusterOptions = markerClusterOptions()
-  )
+  ) %>%
+  addScaleBar(position = "bottomleft") %>%
+  addMiniMap(position = "bottomright", width = 100, height = 100)
 ```
 
