@@ -5,7 +5,7 @@ subtitle: ""
 
 ## {{< fa code >}} Currently
 
-I am currently an intern with the USDA USFS with support from the Conference on Asian Pacific American Leadership. In this role I am working to further environmental equity in K-12 public schools in California through land cover image classification modeling using remote sensing data. Additionally, I am continuing my role as an Arnhold Environmental Graduate Fellow, working with the [emLab](https://emlab.ucsb.edu/) and Conservation International's [Spatial Planning for Climate Change](https://www.ci-sparcle.org/) initiative, focusing on African Elephant habitat connectivity under climate change and land cover shifts.
+I am currently based in Seattle, WA as an Associate Consultant for the ecology and biodiversity team at [Ramboll](https://www.ramboll.com/en-us/environmental-nature-based-services/biodiversity-and-nature). My work focuses on evaluating and promoting biodiversity, land rehabilitation, nature-based solutions, and furthering positive environmental interactions. In this role, I have been able to work on a variety of projects, utilizing my data analysis, visualization, GIS, and communication skills. I am excited to continue to grow in this role and contribute to these important ecological projects!
 
 :::{.column-margin}
 ```{r}
@@ -21,6 +21,8 @@ Watering research *Acmispon* plants in the SMCM greenhouse!
 ## {{< fa bacteria >}} Previously
 
 In June 2024, I graduated from the Masters of Environmental Data Science program at the Bren School at the University of California, Santa Barbara. My [masters project](https://bren.ucsb.edu/projects/identifying-priority-survey-sites-early-season-milkweed-conservation) focused on identifying [high-priority survey sites](https://sarah-cusser.shinyapps.io/milkweed-site-finder) for milkweed conservation in the Los Padres National Forest for the Santa Barbara Botanic Garden.
+
+After graduating, I continued my role as an Arnhold Environmental Graduate Fellow, working with the [emLab](https://emlab.ucsb.edu/) and Conservation International's [Spatial Planning for Climate Change](https://www.ci-sparcle.org/) initiative, focusing on African Elephant habitat connectivity under climate change and land cover shifts. Additionally, I worked with the USDA USFS with support from the Conference on Asian Pacific American Leadership. In this role I am worked to further environmental equity in K-12 public schools in California through land cover image classification modeling using remote sensing data.
 
 Previously, I completed my undergraduate degrees in Biology and Environmental Studies (+ French Minor) at St. Mary's College of Maryland (SMCM) where I had two main areas of focus: plant sciences and coastal ecology. I conducted research on salinity effects on plant-microbe interactions in a [plant ecology lab](https://ltorresmartinez.com/) where I was also the lab manager. My undergraduate thesis examined coastal wave mitigation by constructed oyster reefs using DIY wave gauges. I continued on with submerged aquatic vegetation research with my same [thesis advisor](https://gurbisz-coastal-ecology.netlify.app/). Towards the end of my undergraduate experience, I also discovered my passion for environmental data science and GIS. 
 
