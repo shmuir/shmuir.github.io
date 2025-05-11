@@ -31,7 +31,7 @@ library(fontawesome)
 
 This year, I want to start using my Seek (iNaturalist) app more to help with species identification. I thought it would be fun to map out my observations. 
 
-Click the numbers on the map to get pulled into the specific species observations. Each taxon type is indicated by a different symbol:
+Click the numbers on the map to get pulled into the specific species observations. Broader types are indicated by a different symbol:
 
 {{< fa seedling >}} *Plantae*  
 {{< fa mosquito >}} *Insecta*  
@@ -48,7 +48,7 @@ Click on a singular point to see more information on the observation!
 ```{r, fig.height=7}
 # Specify username and observations URL
 username <- "shmuir"
-url <- paste0("https://api.inaturalist.org/v1/observations?user_id=", username)
+url <- paste0("https://api.inaturalist.org/v1/observations?user_id=", username, "&per_page=100")
 
 # Make the GET request
 response <- GET(url)
@@ -67,7 +67,6 @@ observations <- observations %>%
   select(species_guess, observed_on, location, lat, lng, taxon.iconic_taxon_name, taxon.default_photo.square_url, taxon.name, taxon.preferred_common_name) %>%
   mutate(taxon.preferred_common_name = str_to_title(taxon.preferred_common_name))
 
-# Define an awesomeIconList with icons
 icoLst <- awesomeIconList(
   Plantae = makeAwesomeIcon(text = fa("seedling"), library = "fa", markerColor = "white"),
   Insecta = makeAwesomeIcon(text = fa("mosquito"), library = "fa", markerColor = "white"),
@@ -77,8 +76,11 @@ icoLst <- awesomeIconList(
   Reptilia = makeAwesomeIcon(text = fa("worm"), library = "fa", markerColor = "white"),
   Mollusca = makeAwesomeIcon(text = fa("disease"), library = "fa", markerColor = "white"),
   Fungi = makeAwesomeIcon(text = fa("bacterium"), library = "fa", markerColor = "white"),
-  Unknown = makeAwesomeIcon(text = fa("question-circle"), library = "fa", markerColor = "gray")
+  Unknown = makeAwesomeIcon(text = fa("question-circle"), library = "fa", markerColor = "gray"),
+  Chromista = makeAwesomeIcon(icon = fa("disease"), library = "fa", markerColor = "white"),
+  Actinopterygii = makeAwesomeIcon(icon = fa("fish"), library = "fa", markerColor = "white")
 )
+
 
 # Create Leaflet map with markers and icons
 leaflet(observations) %>%
