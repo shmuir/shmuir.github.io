@@ -55,19 +55,20 @@ observations <- observations %>%
   select(species_guess, observed_on, location, lat, lng, taxon.iconic_taxon_name, taxon.default_photo.square_url, taxon.name, taxon.preferred_common_name) %>%
   mutate(taxon.preferred_common_name = str_to_title(taxon.preferred_common_name))
 
-icoLst <- awesomeIconList(
-  Plantae = makeAwesomeIcon(text = fa("seedling"), library = "fa", markerColor = "white"),
-  Insecta = makeAwesomeIcon(text = fa("mosquito"), library = "fa", markerColor = "white"),
-  Mammalia = makeAwesomeIcon(text = fa("paw"), library = "fa", markerColor = "white"),
-  Animalia = makeAwesomeIcon(text = fa("shield-cat"), library = "fa", markerColor = "white"),
-  Aves = makeAwesomeIcon(text = fa("crow"), library = "fa", markerColor = "white"),
-  Reptilia = makeAwesomeIcon(text = fa("worm"), library = "fa", markerColor = "white"),
-  Mollusca = makeAwesomeIcon(text = fa("disease"), library = "fa", markerColor = "white"),
-  Fungi = makeAwesomeIcon(text = fa("bacterium"), library = "fa", markerColor = "white"),
-  Unknown = makeAwesomeIcon(text = fa("question-circle"), library = "fa", markerColor = "gray"),
-  Chromista = makeAwesomeIcon(icon = fa("disease"), library = "fa", markerColor = "white"),
-  Actinopterygii = makeAwesomeIcon(icon = fa("fish"), library = "fa", markerColor = "white")
-)
+## CURRENTY DOES NOT WORK
+# icoLst <- awesomeIconList(
+#   Plantae = makeAwesomeIcon(text = fa("seedling"), library = "fa", markerColor = "white"),
+#   Insecta = makeAwesomeIcon(text = fa("mosquito"), library = "fa", markerColor = "white"),
+#   Mammalia = makeAwesomeIcon(text = fa("paw"), library = "fa", markerColor = "white"),
+#   Animalia = makeAwesomeIcon(text = fa("shield-cat"), library = "fa", markerColor = "white"),
+#   Aves = makeAwesomeIcon(text = fa("crow"), library = "fa", markerColor = "white"),
+#   Reptilia = makeAwesomeIcon(text = fa("worm"), library = "fa", markerColor = "white"),
+#   Mollusca = makeAwesomeIcon(text = fa("disease"), library = "fa", markerColor = "white"),
+#   Fungi = makeAwesomeIcon(text = fa("bacterium"), library = "fa", markerColor = "white"),
+#   Unknown = makeAwesomeIcon(text = fa("question-circle"), library = "fa", markerColor = "gray"),
+#   Chromista = makeAwesomeIcon(icon = fa("disease"), library = "fa", markerColor = "white"),
+#   Actinopterygii = makeAwesomeIcon(icon = fa("fish"), library = "fa", markerColor = "white")
+# )
 
 
 # Create Leaflet map with markers and icons
@@ -75,7 +76,7 @@ leaflet(observations) %>%
   addTiles() %>%
   addAwesomeMarkers(
     lng = ~lng, lat = ~lat,
-    icon = ~icoLst[taxon.iconic_taxon_name],
+  #  icon = ~icoLst[taxon.iconic_taxon_name],
     popup = ~paste("Species: ", taxon.preferred_common_name, "<br>",
                    "Scientific Name: ", taxon.name, "<br>",
                    "Date: ", observed_on, "<br>",
