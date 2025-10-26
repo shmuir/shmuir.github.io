@@ -31,24 +31,12 @@ library(fontawesome)
 
 This year, I want to start using my Seek (iNaturalist) app more to help with species identification. I thought it would be fun to map out my observations. 
 
-Click the numbers on the map to get pulled into the specific species observations. Broader types are indicated by a different symbol:
-
-{{< fa seedling >}} *Plantae*  
-{{< fa mosquito >}} *Insecta*  
-{{< fa paw >}} *Mammalia*  
-{{< fa worm >}} *Reptilia*  
-{{< fa disease >}} *Mollusca*  
-{{< fa bacterium >}} *Fungi*  
-{{< fa crow >}} *Aves*  
-{{< fa shield-cat >}} *Animalia*   
-
-
-Click on a singular point to see more information on the observation!
+Click the numbers on the map to get pulled into the specific species observations. Click on a singular point to see more information on the observation!
 
 ```{r, fig.height=7}
 # Specify username and observations URL
 username <- "shmuir"
-url <- paste0("https://api.inaturalist.org/v1/observations?user_id=", username, "&per_page=100")
+url <- paste0("https://api.inaturalist.org/v1/observations?user_id=", username, "&per_page=200")
 
 # Make the GET request
 response <- GET(url)
